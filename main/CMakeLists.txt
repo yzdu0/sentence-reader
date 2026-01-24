@@ -8,7 +8,8 @@ add_executable(sentence-reader
     src/main.cpp
     src/Parser.cpp
     src/Rule.cpp
- "src/Earley.cpp" "include/sentence-reader/Earley.h")
+    src/Earley.cpp
+)
 
 target_include_directories(sentence-reader
     PRIVATE

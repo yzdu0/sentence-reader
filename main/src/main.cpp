@@ -6,6 +6,7 @@
 #include <sstream>
 #include <set>
 #include "sentence-reader/Parser.h"
+#include "sentence-reader/Earley.h"
 using namespace std;
 
 void to_lowercase_except(std::string& s) {
@@ -17,7 +18,7 @@ void to_lowercase_except(std::string& s) {
 
 int main() {
 
-    Parser p;
+    Earley p;
 
     //std::vector<std::string> sentence = { "the", "man", "smoked", "a", "young", "fish"};
     //std::vector<std::string> sentence = { "I", "saw", "the", "man", "with", "an", "old", "telescope", "in", "the", "park"};

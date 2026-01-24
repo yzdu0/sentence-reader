@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 #include <string>
 #include <sstream>
@@ -15,5 +17,5 @@ public:
 	void print() const;
 
 	std::string lookup_left(std::vector<std::string> right);
-private:
+
 };

@@ -1,3 +1,6 @@
+#pragma once
+
+
 #include <string>
 #include <vector>
 #include "sentence-reader/Rule.h"
