@@ -2,60 +2,69 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
 Parser::Parser() {
     std::vector<std::string> rules_string = {
         "S -> NP VP",
+        "S -> S Conj S",
+
         "VP -> V",
         "VP -> V NP",
         "VP -> VP PP",
         "VP -> V NP PP",
+        "VP -> VP Conj VP",
 
         "NP -> Pron",
         "NP -> Det N",
-        "NP -> Det Adj N",
+        "NP -> Det AdjP N",
         "NP -> NP PP",
-        "NP->N",
+        "NP -> N",
+        "NP -> NP Conj NP",
 
+        "AdjP -> Adj",
+        "AdjP -> Adj AdjP",
 
         "PP -> P NP",
     };
 
-    std::vector<std::string> words_string = {
-        "Pron -> he",
-        "Pron -> she",
-        "Pron -> they",
-        "Pron -> I",
-        "Det -> the",
-        "Det -> a",
-        "Det -> an",
-        "N -> man",
-        "N -> woman",
-        "N -> dog",
-        "N -> telescope",
-        "N -> park",
-        "N -> fish",
-        "N -> night",
-        "NP -> night",
-        "Adj -> old",
-        "Adj -> young",
-        "Adj -> big",
-        "Adj -> small",
-        "V -> saw",
-        "V -> liked",
-        "V -> walked",
-        "V -> smoked",
-        "P -> with",
-        "P -> in",
-        "P -> on",
-        "P -> at",
-    };
+	std::map<std::string, std::vector<std::string>> words_map = {
+		{"Pron", { "he", "she", "they", "I", "we", "you", "him", "her", "them",
+			"me", "us", "it", "who"
+		}},
+		{"Det", { "the", "a", "an", "this", "that", "these", "those", "my", 
+            "your", "his", "her", "their", "our", "each", "every"
+		}},
+		{"N", { "man", "woman", "dog", "telescope", "park", "fish", "night", "morning",
+		    "boy", "girl", "cat", "bird", "city", "car", "house", "tree", "river", "book", 
+            "teacher", "student", "friend", "child", "food", "music", "movie", "computer", "phone"
+		}},
+		{"Adj", { "old", "young", "big", "small", "tall", "short", "fast", "slow",
+		"happy", "sad", "angry", "calm", "bright", "dark", "loud", "quiet", 
+        "new", "good", "bad", "beautiful"
+		}},
+		{"V", {
+		"saw", "liked", "walked", "smoked", "ran", "ate", "drank", "slept",
+		"talked", "said", "thought", "knew", "found", "made", "took", "gave",
+		"looked", "watched", "played", "worked"
+		}},
+		{"P", {
+		"with", "in", "on", "at", "by", "from", "to", "over",
+		"under", "between", "among", "before", "after", "during", "without"
+		}},
+        {"Conj", {"and", "or", "but", "nor", "yet",
+        "so",
+        }}
+	};
 
     for (std::string rule : rules_string) {
         rules.push_back(Rule(rule));
     }
 
-    for (std::string word : words_string) {
-        words.push_back(Rule(word));
+    for (auto pair : words_map) {
+        //words.push_back(Rule(pair.first, pair.second));
+        for (std::string word : pair.second) {
+            words.push_back(Rule(pair.first, word));
+        }
     }
 
     call_depth = -1;
@@ -64,37 +73,25 @@ bool Parser::parse(
     const std::vector<std::string>& sentence, 
     const std::vector<std::string>& expected) {
     call_depth++;
-    /*print_depth();  std::cout << "Call to Parser:\n";
-    print_depth();  std::cout << "    Sentence: ";
-    for (int i = 0; i < sentence.size(); i++) std::cout << sentence[i] << " ";
-    std::cout << "\n";
-    print_depth();  std::cout << "    Expecting: ";
-    for (int i = 0; i < expected.size(); i++) std::cout << expected[i] << " ";
-    std::cout << "\n";*/
+
+    CacheResult r = lookup_cache(sentence, expected);
+
+    if (r == exists_true) return true;
+    if (r == exists_false) return false;
+
     // Base case - 1 word left, 1 expression expected
     if (Completer(sentence, expected)) {
-        //print_depth();
-        //std::cout << "    Base case reached:\n    > [ " << sentence[0] << " ] [ " << expected[0] << " ]\n";
         call_depth--;
-
         return true;
     }
     // Recursion case 1 - multiple words left, 1 expression expected
     if (Scanner(sentence, expected)) {
         for (const Rule& rule : rules) {
             if (rule.left == expected[0]) {
-                //rule.print();
-                //rule.print();
                 bool res = parse(sentence, rule.right);
-                //std::cout << "HELLO!\n";
-                if (res) {
-                    //std::cout << "[";  for (std::string word : sentence) std::cout << word << " "; 
-                    //std::cout << "] ";
-                    //rule.print();
 
-                    //This eliminates branches but test it for now.
-                    //std::cout << "Parent: [ "
-                    //std::cout << "[ " << expected[0] << " ]\n\n";
+                add_to_cache(sentence, expected, res); 
+                if (res) {
                     call_depth--;
                     return true;
                 }
@@ -114,6 +111,8 @@ bool Parser::parse(
 		cur.push_back(sentence[i]);
 		res = parse(cur, { expected[0] });
 
+        add_to_cache(cur, { expected[0] }, res);
+
 		if (res) {
 			std::vector<std::string> next_sentence;
 			for (std::size_t j = i + 1; j < sentence.size(); j++) {
@@ -123,17 +122,17 @@ bool Parser::parse(
             next_expected.erase(next_expected.begin());
             if (next_sentence.size() && next_expected.size()) {
                 res2 = parse(next_sentence, next_expected);
+
+                add_to_cache(next_sentence, next_expected, res2);
             }
             if (res && res2) {
-                std::cout << "Expression Discovered:\n";
-                //print_depth();
+                //std::cout << "Expression Discovered:\n";
+                if (lookup_left(expected) == "S") std::cout << "Sentence Discovered:\n    ";
                 std::cout << "> [ ";
                 for (std::string word : sentence) std::cout << word << " ";
                 std::cout << "] [";
-                //print_depth();
                 std::cout << lookup_left(expected);
                 std::cout << "]~[ ";
-                
                 for (std::string word : expected) std::cout << word << " ";
                 std::cout << "]\n\n";
                 call_depth--;
@@ -169,13 +168,14 @@ bool Parser::Completer(
     const std::vector<std::string>& sentence, 
     const std::vector<std::string>& expected) const {
 
-    //std::cout << "HELLO";
-
     if (sentence.size() == 1) {
         if (expected.size() == 1) {
-            //std::cout << sentence[0] << " " << expected[0] << "\n";
             for (const Rule& word : words) {
-                //std::cout << word.left << "::" << expected[0] << "--" << word.right[0] << "::" << sentence[0] << "\n";
+                if (word.left == expected[0] && word.right[0] == sentence[0]) {
+                    return true;
+                }
+            }
+            for (const Rule& word : rules) {
                 if (word.left == expected[0] && word.right[0] == sentence[0]) {
                     return true;
                 }
@@ -195,4 +195,23 @@ std::string Parser::lookup_left(std::vector<std::string> right) const {
         }
     }
     return "";
+}
+
+Parser::CacheResult Parser::lookup_cache(
+    const std::vector<std::string>& sentence,
+    const std::vector<std::string>& expected) const {
+
+    Record key{ sentence, expected };
+    auto it = cache.find(key);
+    if (it == cache.end()) return CacheResult::nowhere;
+    return it->second ? CacheResult::exists_true : CacheResult::exists_false;
+}
+
+
+void Parser::add_to_cache(
+    const std::vector<std::string>& sentence,
+    const std::vector<std::string>& expected, bool res) {
+
+    Record key{ sentence, expected };
+    cache[key] = res;
 }

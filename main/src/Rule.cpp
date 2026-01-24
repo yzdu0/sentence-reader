@@ -23,6 +23,11 @@ Rule::Rule(std::string input) {
     }
 }
 
+Rule::Rule(std::string left_, std::string right_) {
+    left = left_;
+    right.push_back(right_);
+}
+
 void Rule::print() const {
     std::cout << left << " -> ";
     for (std::string r : right) std::cout << r << " ";
