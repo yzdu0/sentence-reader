@@ -7,6 +7,7 @@
 
 Earley::Earley() {
     std::vector<std::string> rules_string = {
+        "S0 -> S",
         "S -> NP VP",
         "S -> S Conj S",
 
@@ -16,6 +17,11 @@ Earley::Earley() {
         "VP -> V NP PP",
         "VP -> VP Conj VP",
         "VP -> V Inf",
+        "VP -> Aux AdjP",
+        "VP -> Aux NP",
+        "VP -> Aux Neg AdjP",
+        "VP -> Aux Neg NP",
+        "VP -> Cop AdjP",
 
         "NP -> Pron",
         "NP -> Det N",
@@ -27,11 +33,13 @@ Earley::Earley() {
         "AdjP -> Adj",
         "AdjP -> Adj AdjP",
 
+
         "PP -> P NP",
         "PP -> FOR NP Inf",
         "Inf -> TO VP",
         "TO -> to",
         "FOR -> for",
+       
     };
 
     std::map<std::string, std::vector<std::string>> words_map = {
@@ -39,30 +47,34 @@ Earley::Earley() {
             "me", "us", "it", "who"
         }},
         {"Det", { "the", "a", "an", "this", "that", "these", "those", "my",
-            "your", "his", "her", "their", "our", "each", "every"
+            "your", "his", "her", "their", "our", "each", "every", "all", "no"
         }},
         {"N", { "man", "woman", "dog", "telescope", "park", "fish", "night", "morning",
-            "boy", "girl", "cat", "bird", "city", "car", "house", "tree", "river", "book",
-            "teacher", "student", "friend", "child", "food", "music", "movie", "computer", "phone"
+            "boy", "girl", "cat", "bird", "city", "car", "house", "tree", "river", "book", "human",
+            "teacher", "student", "friend", "child", "food", "music", "movie", "computer", "phone", "humans",
         }},
         {"Adj", { "old", "young", "big", "small", "tall", "short", "fast", "slow",
         "happy", "sad", "angry", "calm", "bright", "dark", "loud", "quiet",
-        "new", "good", "bad", "beautiful"
+        "new", "good", "bad", "beautiful", "mortal",
         }},
         {"V", {
         "saw", "liked", "walked", "smoked", "ran", "ate", "drank", "slept",
         "talked", "said", "thought", "knew", "found", "made", "took", "gave",
-        "looked", "watched", "played", "worked", "tried"
+        "looked", "watched", "played", "worked", "tried", "am",
         }},
         {"P", {
         "with", "in", "on", "at", "by", "from", "over", "for",
         "under", "between", "among", "before", "after", "during", "without"
         }},
         {"Conj", {"and", "or", "but", "nor", "yet",
-        "so",
+        "so", "therefore"
         }},
         {"TO", {"to"} },
-        {"FOR", {"for"}}
+        {"FOR", {"for"}},
+        {"Aux", {"am"}},
+        {"Neg", {"not", "never"}},
+        {"Cop", {"am", "are", "is"}}
+
     };
 
     for (std::string rule : rules_string) {
