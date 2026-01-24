@@ -2,6 +2,8 @@
 #include <vector>
 #include "sentence-reader/Rule.h"
 #include <unordered_map>
+#include <set>
+#include <unordered_set>
 class Parser {
 public:
 	Parser();
@@ -14,6 +16,9 @@ public:
 private:
 	std::vector<Rule> rules;
 	std::vector<Rule> words;
+
+	std::unordered_set<std::string> wordbank;
+
 
 	struct Record {
 		std::vector<std::string> sentence;

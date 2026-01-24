@@ -13,6 +13,7 @@ Parser::Parser() {
         "VP -> VP PP",
         "VP -> V NP PP",
         "VP -> VP Conj VP",
+        "VP -> V Inf",
 
         "NP -> Pron",
         "NP -> Det N",
@@ -25,10 +26,14 @@ Parser::Parser() {
         "AdjP -> Adj AdjP",
 
         "PP -> P NP",
+        "PP -> FOR NP Inf",
+        "Inf -> TO VP",
+        "TO -> to",
+        "FOR -> for",
     };
 
 	std::map<std::string, std::vector<std::string>> words_map = {
-		{"Pron", { "he", "she", "they", "I", "we", "you", "him", "her", "them",
+		{"Pron", { "he", "she", "they", "i", "we", "you", "him", "her", "them",
 			"me", "us", "it", "who"
 		}},
 		{"Det", { "the", "a", "an", "this", "that", "these", "those", "my", 
@@ -45,15 +50,17 @@ Parser::Parser() {
 		{"V", {
 		"saw", "liked", "walked", "smoked", "ran", "ate", "drank", "slept",
 		"talked", "said", "thought", "knew", "found", "made", "took", "gave",
-		"looked", "watched", "played", "worked"
+		"looked", "watched", "played", "worked", "tried"
 		}},
 		{"P", {
-		"with", "in", "on", "at", "by", "from", "to", "over",
+		"with", "in", "on", "at", "by", "from", "over", "for",
 		"under", "between", "among", "before", "after", "during", "without"
 		}},
         {"Conj", {"and", "or", "but", "nor", "yet",
         "so",
-        }}
+        }},
+        {"TO", {"to"} },
+        {"FOR", {"for"}}
 	};
 
     for (std::string rule : rules_string) {
@@ -64,6 +71,7 @@ Parser::Parser() {
         //words.push_back(Rule(pair.first, pair.second));
         for (std::string word : pair.second) {
             words.push_back(Rule(pair.first, word));
+            wordbank.insert(word);
         }
     }
 
@@ -95,7 +103,6 @@ bool Parser::parse(
                     call_depth--;
                     return true;
                 }
-            
             }
         }
         call_depth--;
@@ -127,14 +134,16 @@ bool Parser::parse(
             }
             if (res && res2) {
                 //std::cout << "Expression Discovered:\n";
-                if (lookup_left(expected) == "S") std::cout << "Sentence Discovered:\n    ";
-                std::cout << "> [ ";
-                for (std::string word : sentence) std::cout << word << " ";
-                std::cout << "] [";
-                std::cout << lookup_left(expected);
-                std::cout << "]~[ ";
-                for (std::string word : expected) std::cout << word << " ";
-                std::cout << "]\n\n";
+                if (lookup_left(expected) == "S") {
+                    std::cout << "Sentence Discovered:\n    ";
+                    std::cout << "> [ ";
+                    for (std::string word : sentence) std::cout << word << " ";
+                    std::cout << "] [";
+                    std::cout << lookup_left(expected);
+                    std::cout << "]~[ ";
+                    for (std::string word : expected) std::cout << word << " ";
+                    std::cout << "]\n\n";
+                }
                 call_depth--;
                 return true;
             }
@@ -180,8 +189,18 @@ bool Parser::Completer(
                     return true;
                 }
             }
+
+            if (expected[0] == "V" || expected[0] == "Adj" || expected[0] == "N") {
+                if (!wordbank.count(sentence[0])) {
+                    std::cout << "Guessing... " << sentence[0] << " is a " << expected[0] << "\n";
+
+                    return true;
+                }
+            }
         }
     }
+
+
     return false;
 }   
 void Parser::print_depth() {
@@ -213,5 +232,18 @@ void Parser::add_to_cache(
     const std::vector<std::string>& expected, bool res) {
 
     Record key{ sentence, expected };
+    auto it = cache.find(key);
+    if (it == cache.end() && res) {
+
+        std::cout << "Record added:\n    ";
+        std::cout << "> [ ";
+        for (std::string word : sentence) std::cout << word << " ";
+        std::cout << "] [";
+        std::cout << lookup_left(expected);
+        std::cout << "]~[ ";
+        for (std::string word : expected) std::cout << word << " ";
+        std::cout << "]\n\n";
+    }
     cache[key] = res;
+    
 }

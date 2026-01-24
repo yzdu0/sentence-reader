@@ -8,10 +8,10 @@
 #include "sentence-reader/Parser.h"
 using namespace std;
 
-void to_lowercase_except_I(std::string& s) {
+void to_lowercase_except(std::string& s) {
     std::transform(s.begin(), s.end(), s.begin(),
         [](unsigned char c) {
-            return (c == 'I') ? 'I' : std::tolower(c);
+            return std::tolower(c);
         });
 }
 
@@ -43,7 +43,7 @@ int main() {
         std::string cur;
         std::vector<std::string> sentence;
         while (getline(ss, cur, ' ')) {
-            to_lowercase_except_I(cur);
+            to_lowercase_except(cur);
             sentence.push_back(cur);
         }
 
