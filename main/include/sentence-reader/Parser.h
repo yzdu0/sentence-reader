@@ -15,7 +15,7 @@ public:
 		const std::vector<std::string>& expected);
 
 
-
+	
 private:
 	std::vector<Rule> rules;
 	std::vector<Rule> words;

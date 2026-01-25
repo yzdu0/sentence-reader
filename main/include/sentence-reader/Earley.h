@@ -9,8 +9,14 @@
 #include "sentence-reader/Lexicon.h"
 
 struct StatePointer {
-    int word_index = -1;
-    int item_index = -1;
+    std::size_t word_index = 1000;
+    std::size_t item_index = 1000;
+};
+
+struct WordPointer {
+    std::size_t word_index = 1000;
+    std::string tag = "-";
+    std::string word = "-";
 };
 
 struct State {
@@ -21,6 +27,8 @@ struct State {
 
     StatePointer previous_state_pointer;
     StatePointer symbol_consumed_pointer;
+
+    WordPointer word_pointer;
 };
 
 struct StateHash {
@@ -79,7 +87,9 @@ private:
 
     std::unordered_set<std::string> word_bank;
 
-    void dfs(StatePointer cur, std::vector<Column>& chart);
+    void dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
+
+    void print_depth(int depth);
 
     bool is_finished(const State& state) const;
 
@@ -89,7 +99,7 @@ private:
 
     void predictor(const State& state, std::size_t k, std::vector<Column>& chart);
 
-    void scanner(const State& state, std::size_t k, std::vector<Column>& chart,
+    void scanner(const State& state, StatePointer k_and_idx, std::vector<Column>& chart,
         const std::vector<std::string>& sentence);
 
     void completer (const State& state, StatePointer k_and_idx, std::vector<Column>& chart);

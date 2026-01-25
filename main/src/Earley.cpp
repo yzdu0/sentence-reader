@@ -24,6 +24,7 @@ Earley::Earley() {
 
     for (const Rule& word : words) {
         word.print();
+        std::cout << "\n";
     }
 
     for (const Rule& r : grammar.rules) {
@@ -35,19 +36,43 @@ Earley::Earley() {
     }
 }
 
-void Earley::dfs(StatePointer cur, std::vector<Column>& chart) {
-	if (cur.word_index >= 0 && cur.item_index >= 0) {
+void Earley::dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth) {
+    if (cur.word_index < 1000 && cur.item_index < 1000) {
 		const State& s = chart[cur.word_index].items[cur.item_index];
 
 		if (is_finished(s)) {
-            std::cout << cur.word_index << " | ";
+            print_depth(depth);
+            //std::cout << "[" << s.origin << " " << cur.word_index - 1 << "] | ";
 
-			grammar.rules[s.rule_id].print();
+            if (depth >= 0) {
+                std::cout << "[" << sentence[s.origin];
+                for (std::size_t i = s.origin + 1; i < cur.word_index; i++) {
+                    std::cout << " " << sentence[i];
+                }
+                std::cout << "] [";
 
-			dfs(s.previous_state_pointer, chart);
-			dfs(s.symbol_consumed_pointer, chart);
+                grammar.rules[s.rule_id].print();
+                std::cout << "]\n";
+
+            }
+
+            //std::cout << "PREV POINTER: " << s.previous_state_pointer.item_index << " " << s.previous_state_pointer.word_index << "\n";
+
+            
 		}
+
+        if (s.word_pointer.word_index < 1000) {
+            //std::cout << "----" << s.word_pointer.word_index << " | " << s.word_pointer.tag << " -> " << s.word_pointer.word << "\n";
+        }
+
+        dfs(s.symbol_consumed_pointer, chart, sentence, depth);
+        dfs(s.previous_state_pointer, chart, sentence, depth + 1);
+
 	}
+}
+
+void Earley::print_depth(int depth) {
+    for (int i = 0; i < depth; i++) std::cout << "    ";
 }
 
 bool Earley::is_finished(const State& state) const {
@@ -84,7 +109,8 @@ void Earley::parse(const std::vector<std::string>& sentence,
                 }
                 else {
                     // The next symbol is a terminal (e.g. just a noun)
-                    scanner(cur_state, k, chart, sentence);
+                    StatePointer k_and_idx{ k, x };
+                    scanner(cur_state, k_and_idx, chart, sentence);
                 }
             }
             else {
@@ -97,7 +123,7 @@ void Earley::parse(const std::vector<std::string>& sentence,
 
     bool accepted = false;    // chart.size()
     for (std::size_t i = 0; i < chart.size(); i++) {
-        std::cout << "Index " << i << "\n";
+        //std::cout << "Index " << i << "\n";
         for (const State& s : chart[i].items) {
             /*if (s.rule_id == 0 && is_finished(s) && s.origin == 0) {
                 std::cout << "    Sentence of the first " << i << " words accepted\n    >";
@@ -106,10 +132,10 @@ void Earley::parse(const std::vector<std::string>& sentence,
                 std::cout << "\n";
             }*/
 
-            std::cout << s.progress << " " << s.origin << " | "; grammar.rules[s.rule_id].print();
+            //std::cout << s.progress << " " << s.origin << " | "; grammar.rules[s.rule_id].print();
         }
 
-        std::cout << "\n\n";
+        //std::cout << "\n\n";
     }
 
     std::cout << "Syntax Tree:\n";
@@ -121,8 +147,8 @@ void Earley::parse(const std::vector<std::string>& sentence,
             res.item_index = i;
         }
     }
-
-    dfs(res, chart);
+    
+    dfs(res, chart, sentence, -1);
 }
 /*
 
@@ -142,16 +168,23 @@ This one updates a state when the next symbol is a terminal (e.g. a verb), and w
 can check directly if it is satisfied. 
 Therefore, the node corresponding to the new state should have a pointer to the raw symbol/word. 
 */
-void Earley::scanner(const State& state, std::size_t k,
+void Earley::scanner(const State& state, StatePointer k_and_idx,
     std::vector<Column>& chart,
     const std::vector<std::string>& sentence){
 
-    if (k >= sentence.size()) return;
+    if (k_and_idx.word_index >= sentence.size()) return;
     const std::string& tag = next_symbol(state); 
 
-    if (terminals.count(tag) && lexicon.search_word(sentence[k], tag)){ 
-        State new_state{ state.rule_id, state.progress + 1, state.origin };
-        chart[k + 1].add(new_state);
+    if (terminals.count(tag) && lexicon.search_word(sentence[k_and_idx.word_index], tag)){ 
+        StatePointer previous_state_pointer;
+        State new_state{ state.rule_id, state.progress + 1, state.origin,
+        previous_state_pointer,
+                k_and_idx };
+        std::string word_ = sentence[k_and_idx.word_index];
+        WordPointer word_pointer{ k_and_idx.word_index, tag, word_};
+        new_state.word_pointer = word_pointer;
+        //new_state.word_underneath = sentence[k_and_idx.word_index];
+        chart[k_and_idx.word_index + 1].add(new_state);
     }
 }
 
@@ -205,10 +238,12 @@ void Earley::completer(const State& state, StatePointer k_and_idx, std::vector<C
         if (!is_finished(cur_state) && next_symbol(cur_state) == B) {
             StatePointer previous_state_pointer{ state.origin, i };
             //StatePointer symbol_consumed_pointer{k, 0};
-
+            //previous_state_pointer.item_index = -1;
+            //previous_state_pointer.word_index = -1;
             State new_state{ cur_state.rule_id, cur_state.progress + 1, cur_state.origin,
+                k_and_idx,
                 previous_state_pointer, 
-                k_and_idx
+                
             };
             chart[k_and_idx.word_index].add(new_state);
 
