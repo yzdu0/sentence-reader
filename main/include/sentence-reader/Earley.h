@@ -5,6 +5,8 @@
 #include <vector>
 #include <unordered_set>
 #include "sentence-reader/Rule.h"
+#include "sentence-reader/Grammar.h"
+#include "sentence-reader/Lexicon.h"
 
 struct State {
     int rule_id;
@@ -60,10 +62,12 @@ public:
 		const std::vector<std::string>& expected);
 
 private:
+    Grammar grammar;
 	std::vector<Rule> rules;
 	std::vector<Rule> words;
     std::unordered_set<std::string> nonterminals;
     std::unordered_set<std::string> terminals;
+    Lexicon lexicon;
 
     std::unordered_set<std::string> word_bank;
 

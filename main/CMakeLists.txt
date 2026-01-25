@@ -9,7 +9,7 @@ add_executable(sentence-reader
     src/Parser.cpp
     src/Rule.cpp
     src/Earley.cpp
-    src/Lexicon.cpp)
+    src/Lexicon.cpp "src/Grammar.cpp" "include/sentence-reader/Grammar.h")
 
 target_include_directories(sentence-reader
     PRIVATE

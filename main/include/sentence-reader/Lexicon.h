@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -52,6 +53,8 @@ public:
 	Lexicon();
 
 	std::unordered_map<std::string, std::vector<Word>> dictionary;
+
+	bool search_word(std::string word, std::string POS);
 
 private:
 

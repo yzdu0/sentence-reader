@@ -7,58 +7,9 @@
 #include <set>
 
 Earley::Earley() {
-    std::vector<std::string> rules_string = {
-        "S0 -> S",
-        "S -> NP VP",
-        "S -> S Conj S",
 
-        "VP -> V",
-        "VP -> V NP",
-        "VP -> VP PP",
-        "VP -> V NP PP",
-        "VP -> VP Conj VP",
-        "VP -> V Inf",
-        "VP -> Aux AdjP",
-        "VP -> Aux NP",
-        "VP -> Aux Neg AdjP",
-        "VP -> Aux Neg NP",
-        "VP -> Cop AdjP", 
-        "VP -> Cop NP",
-
-        "NP -> Pron",
-        "NP -> Det N",
-        "NP -> Det AdjP N",
-        "NP -> NP PP",
-        "NP -> N",
-        "NP -> NP Conj NP",
-
-        "AdjP -> Adj",
-        "AdjP -> Adj AdjP",
-
-
-        "PP -> P NP",
-        "PP -> FOR NP Inf",
-        "Inf -> TO VP",
-        "TO -> to",
-        "FOR -> for",
-       
-    };
-
+    //Lexicon lexicon;
     
-
-    for (std::string rule : rules_string) {
-        rules.push_back(Rule(rule));
-    }
-
-    //for (auto pair : words_map) {
-    //    for (std::string word : pair.second) {
-    //        words.push_back(Rule(pair.first, word));
-    //        //rules.push_back(Rule(pair.first, word));
-    //        word_bank.insert(word);
-    //    }
-    //}
-
-    Lexicon lexicon;
 
     for (auto const& [word_string, word_instance] : lexicon.dictionary) {
         //if (word_instance.POS == "N") {
@@ -75,7 +26,7 @@ Earley::Earley() {
         word.print();
     }
 
-    for (const Rule& r : rules) {
+    for (const Rule& r : grammar.rules) {
         nonterminals.insert(r.left);
     }
 
@@ -85,14 +36,14 @@ Earley::Earley() {
 }
 
 bool Earley::is_finished(const State& state) const {
-    if (state.progress >= rules[state.rule_id].right.size()) {
+    if (state.progress >= grammar.rules[state.rule_id].right.size()) {
         return true;
     }
     return false;
 }
 
 std::string Earley::next_symbol(const State& state) const {
-    return rules[state.rule_id].right[state.progress];
+    return grammar.rules[state.rule_id].right[state.progress];
 }
 
 bool Earley::next_symbol_is_nonterminal(const State& state) const {
@@ -113,13 +64,16 @@ void Earley::parse(const std::vector<std::string>& sentence,
 
             if (!is_finished(cur_state)) {
                 if (next_symbol_is_nonterminal(cur_state)) {
+                    // For the next symbol, we advance to all possible children grammars
                     predictor(cur_state, k, chart);
                 }
                 else {
+                    // The next symbol is a terminal (e.g. just a noun)
                     scanner(cur_state, k, chart, sentence);
                 }
             }
             else {
+                // We have finished the current state, so we can update all states waiting on the current one
                 completer(cur_state, k, chart);
             }
         }
@@ -141,8 +95,8 @@ void Earley::parse(const std::vector<std::string>& sentence,
 void Earley::predictor(const State& state, std::size_t k, std::vector<Column>& chart) {
     std::string B = next_symbol(state);
 
-    for (std::size_t i = 0; i < rules.size(); i++) {
-        if (rules[i].left == B) {
+    for (std::size_t i = 0; i < grammar.rules.size(); i++) {
+        if (grammar.rules[i].left == B) {
             State new_state{ i, 0, k };
             chart[k].add(new_state);
         }
@@ -151,24 +105,22 @@ void Earley::predictor(const State& state, std::size_t k, std::vector<Column>& c
 
 void Earley::scanner(const State& state, std::size_t k,
     std::vector<Column>& chart,
-    const std::vector<std::string>& sentence)
-{
-    if (k >= sentence.size()) return;
+    const std::vector<std::string>& sentence){
 
+    if (k >= sentence.size()) return;
     const std::string& tag = next_symbol(state); 
 
     if (terminals.count(tag) &&
-        word_has_tag(sentence[k], tag)) {
-
+        lexicon.search_word(sentence[k], tag)){ 
+        //word_has_tag(sentence[k], tag)) {
         State new_state{ state.rule_id, state.progress + 1, state.origin };
-
         chart[k + 1].add(new_state);
     }
 }
 
 
 void Earley::completer(const State& state, std::size_t k, std::vector<Column>& chart) {
-    const std::string B = rules[state.rule_id].left;
+    const std::string B = grammar.rules[state.rule_id].left;
 
     for (std::size_t i = 0; i < chart[state.origin].size(); i++) {
         const State cur_state = chart[state.origin].items[i];

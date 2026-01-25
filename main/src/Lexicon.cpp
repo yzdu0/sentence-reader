@@ -61,6 +61,15 @@ void Lexicon::add_to_dictionary(std::string word, std::string POS) {
 	}
 }
 
+bool Lexicon::search_word(std::string word, std::string POS) {
+	for (const Word& it : dictionary[word]) {
+		if (it.word == word && it.POS == POS) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void Lexicon::create_nouns(std::vector<std::string> input) {
 	// We currently care about two forms - singular and plural. 
 	// We assume input is the singular form, then tack on an S for the plural.
