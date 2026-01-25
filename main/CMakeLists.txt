@@ -9,9 +9,14 @@ add_executable(sentence-reader
     src/Parser.cpp
     src/Rule.cpp
     src/Earley.cpp
-)
+    src/Lexicon.cpp)
 
 target_include_directories(sentence-reader
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
+add_custom_command(TARGET sentence-reader POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${CMAKE_SOURCE_DIR}/data
+          $<TARGET_FILE_DIR:sentence-reader>/data)

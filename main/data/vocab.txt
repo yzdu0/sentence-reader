@@ -1,0 +1,83 @@
+# Closed classes (just list surface forms)
+Pron: he she they i we you him her them me us it who
+Det: the a an this that these those my your his her their our each every all no
+P: with in on at by from over for under between among before after during without
+Conj: and or but nor yet so therefore
+Neg: not never
+Aux: am
+Cop: am are is
+TO: to
+FOR: for
+
+# Open classes: give lemma, then optional overrides after '|'
+# Verbs: lemma [| past=... pres3=... gerund=... part=...]
+V: walk
+V: like
+V: smoke
+V: work
+V: try | past=tried pres3=tries gerund=trying
+V: see | past=saw part=seen
+V: run | past=ran part=run
+V: eat | past=ate part=eaten
+V: drink | past=drank part=drunk
+V: sleep | past=slept part=slept
+V: say | past=said part=said
+V: think | past=thought part=thought
+V: know | past=knew part=known
+V: take | past=took part=taken
+V: give | past=gave part=given
+V: find | past=found part=found
+V: make | past=made part=made
+
+# Nouns: lemma [| plural=...]
+N: man | plural=men
+N: woman | plural=women
+N: child | plural=children
+N: human | plural=humans
+N: dog
+N: telescope
+N: park
+N: fish | plural=fish
+N: night
+N: morning
+N: boy
+N: girl
+N: cat
+N: bird
+N: city | plural=cities
+N: car
+N: house
+N: tree
+N: river
+N: book
+N: teacher
+N: student
+N: friend
+N: food
+N: music
+N: movie
+N: computer
+N: phone
+
+# Adjectives: lemma [| comparative=... superlative=...]
+Adj: old
+Adj: young
+Adj: big
+Adj: small
+Adj: tall
+Adj: short
+Adj: fast
+Adj: slow
+Adj: happy | comparative=happier superlative=happiest
+Adj: sad
+Adj: angry
+Adj: calm
+Adj: bright
+Adj: dark
+Adj: loud
+Adj: quiet
+Adj: new
+Adj: good | comparative=better superlative=best
+Adj: bad | comparative=worse superlative=worst
+Adj: beautiful
+Adj: mortal

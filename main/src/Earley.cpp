@@ -2,6 +2,7 @@
 #include <vector>
 #include "sentence-reader/Rule.h"
 #include "sentence-reader/Earley.h"
+#include "sentence-reader/Lexicon.h"
 #include <map>
 #include <set>
 
@@ -42,51 +43,24 @@ Earley::Earley() {
        
     };
 
-    std::map<std::string, std::vector<std::string>> words_map = {
-        {"Pron", { "he", "she", "they", "i", "we", "you", "him", "her", "them",
-            "me", "us", "it", "who"
-        }},
-        {"Det", { "the", "a", "an", "this", "that", "these", "those", "my",
-            "your", "his", "her", "their", "our", "each", "every", "all", "no"
-        }},
-        {"N", { "man", "woman", "dog", "telescope", "park", "fish", "night", "morning",
-            "boy", "girl", "cat", "bird", "city", "car", "house", "tree", "river", "book", "human",
-            "teacher", "student", "friend", "child", "food", "music", "movie", "computer", "phone", "humans",
-        }},
-        {"Adj", { "old", "young", "big", "small", "tall", "short", "fast", "slow",
-        "happy", "sad", "angry", "calm", "bright", "dark", "loud", "quiet",
-        "new", "good", "bad", "beautiful", "mortal",
-        }},
-        {"V", {
-        "saw", "liked", "walked", "smoked", "ran", "ate", "drank", "slept",
-        "talked", "said", "thought", "knew", "found", "made", "took", "gave",
-        "looked", "watched", "played", "worked", "tried", "am",
-        }},
-        {"P", {
-        "with", "in", "on", "at", "by", "from", "over", "for",
-        "under", "between", "among", "before", "after", "during", "without"
-        }},
-        {"Conj", {"and", "or", "but", "nor", "yet",
-        "so", "therefore"
-        }},
-        {"TO", {"to"} },
-        {"FOR", {"for"}},
-        {"Aux", {"am"}},
-        {"Neg", {"not", "never"}},
-        {"Cop", {"am", "are", "is"}}
-
-    };
+    
 
     for (std::string rule : rules_string) {
         rules.push_back(Rule(rule));
     }
 
-    for (auto pair : words_map) {
-        for (std::string word : pair.second) {
-            words.push_back(Rule(pair.first, word));
-            //rules.push_back(Rule(pair.first, word));
-            word_bank.insert(word);
-        }
+    //for (auto pair : words_map) {
+    //    for (std::string word : pair.second) {
+    //        words.push_back(Rule(pair.first, word));
+    //        //rules.push_back(Rule(pair.first, word));
+    //        word_bank.insert(word);
+    //    }
+    //}
+
+    Lexicon lexicon;
+
+    for (auto const& [word_string, word_instance] : lexicon.dictionary) {
+        words.push_back(Rule(word_instance.POS, word_string));
     }
 
     for (const Rule& r : rules) {
