@@ -33,7 +33,7 @@ V: make | past=made part=made
 N: man | plural=men
 N: woman | plural=women
 N: child | plural=children
-N: human | plural=humans
+N: human
 N: dog
 N: telescope
 N: park

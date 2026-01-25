@@ -8,11 +8,19 @@
 #include "sentence-reader/Grammar.h"
 #include "sentence-reader/Lexicon.h"
 
+struct StatePointer {
+    int word_index = -1;
+    int item_index = -1;
+};
+
 struct State {
     int rule_id;
     // The dot is BEFORE this index.
     int progress;
     int origin;
+
+    StatePointer previous_state_pointer;
+    StatePointer symbol_consumed_pointer;
 };
 
 struct StateHash {
@@ -71,6 +79,8 @@ private:
 
     std::unordered_set<std::string> word_bank;
 
+    void dfs(StatePointer cur, std::vector<Column>& chart);
+
     bool is_finished(const State& state) const;
 
     std::string next_symbol(const State& state) const;
@@ -82,7 +92,7 @@ private:
     void scanner(const State& state, std::size_t k, std::vector<Column>& chart,
         const std::vector<std::string>& sentence);
 
-    void completer (const State& state, std::size_t k, std::vector<Column>& chart);
+    void completer (const State& state, StatePointer k_and_idx, std::vector<Column>& chart);
 
     bool word_has_tag(const std::string& sentence_word, const std::string& symbol) const;
 };
