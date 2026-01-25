@@ -1,0 +1,31 @@
+# Closed classes (just list surface forms)
+Pron: he she they i we you him her them me us it who
+Det: the a an this that these
+P: with in on
+Conj: and or 
+Neg: not never
+Aux: am
+Cop: am are is
+TO: to
+FOR: for
+
+# Open classes: give lemma, then optional overrides after '|'. 
+# Verbs: lemma [| past=... pres3=... gerund=... part=...]
+V: walk
+V: like
+V: smoke
+V: work
+V: try | past=tried pres3=tries gerund=trying
+V: see | past=saw part=seen
+
+# Nouns: lemma [| plural=...]
+N: man | plural=men
+N: woman | plural=women
+N: child | plural=children
+N: human | plural=humans
+
+# Adjectives: lemma [| comparative=... superlative=...]
+Adj: old
+Adj: young
+Adj: big
+Adj: small

@@ -22,7 +22,8 @@ Earley::Earley() {
         "VP -> Aux NP",
         "VP -> Aux Neg AdjP",
         "VP -> Aux Neg NP",
-        "VP -> Cop AdjP",
+        "VP -> Cop AdjP", 
+        "VP -> Cop NP",
 
         "NP -> Pron",
         "NP -> Det N",
@@ -60,7 +61,18 @@ Earley::Earley() {
     Lexicon lexicon;
 
     for (auto const& [word_string, word_instance] : lexicon.dictionary) {
-        words.push_back(Rule(word_instance.POS, word_string));
+        //if (word_instance.POS == "N") {
+            //std::cout << word_instance.POS << " <- [" << word_string << "]\n";
+       // }
+        //words.push_back(Rule(word_instance.POS, word_string));
+
+        for (const Word& word : word_instance) {
+            words.push_back(Rule(word.POS, word_string));
+        }
+    }
+
+    for (const Rule& word : words) {
+        word.print();
     }
 
     for (const Rule& r : rules) {

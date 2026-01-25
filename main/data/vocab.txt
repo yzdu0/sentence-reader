@@ -9,7 +9,7 @@ Cop: am are is
 TO: to
 FOR: for
 
-# Open classes: give lemma, then optional overrides after '|'
+# Open classes: give lemma, then optional overrides after '|'. 
 # Verbs: lemma [| past=... pres3=... gerund=... part=...]
 V: walk
 V: like

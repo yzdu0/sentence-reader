@@ -1,45 +1,23 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <iostream>
 #include <sstream>
 #include "sentence-reader/Lexicon.h"
+
+Word::Word() {
+	word = "";
+	POS = "";
+}
 
 Word::Word(std::string word, std::string POS) :
 	word(word), POS(POS) {
 
-	if (POS.back() == ':') {
-		POS.pop_back();
+	if (this->POS.back() == ':') {
+		this->POS.pop_back();
 	}
 }
-//
-//std::string Word::get_POS() {
-//	switch (pos) {
-//	case Verb:
-//		return "V";
-//	case Noun:
-//		return "N";
-//	case Adjective:
-//		return "Adj";
-//	case Pronoun:
-//		return "Pron";
-//	case Determiner:
-//		return "Det";
-//	case Conjunction:
-//		return "Conj";
-//	case Negation:
-//		return "Neg";
-//	case AuxillaryVerb:
-//		return "Aux";
-//	case Adverb:
-//		return "Adv";
-//	case CopulaVerb:
-//		return "Cop";
-//	case TO:
-//		return "TO";
-//	case FOR:
-//		return "FOR";
-//	}
-//}
+
 Lexicon::Lexicon() {
 	std::ifstream file("data/vocab.txt");
 	std::string str;
@@ -56,10 +34,10 @@ Lexicon::Lexicon() {
 			if (cur != "|") {
 				line.push_back(cur);
 			}
-		}
+		}//
 
 		if (line[0] == "N:") {
-			create_nouns(line);
+			create_nouns(line);//
 		}
 		else if (line[0] == "V:") {
 			create_verbs(line);
@@ -73,38 +51,79 @@ Lexicon::Lexicon() {
 	}
 }
 
+void Lexicon::add_to_dictionary(std::string word, std::string POS) {
+	// Word doesn't exist
+	if (dictionary.find(word) == dictionary.end()) {
+		dictionary[word] = { Word(word, POS) };
+	}
+	else {
+		dictionary[word].push_back(Word(word, POS));
+	}
+}
+
 void Lexicon::create_nouns(std::vector<std::string> input) {
 	// We currently care about two forms - singular and plural. 
 	// We assume input is the singular form, then tack on an S for the plural.
 	// Basically have overloading support for weirder nouns
 	std::string base_word = input[1];
-	dictionary[base_word] = Word(base_word, input[0]);
-	dictionary[base_word].plurality = Word::Plurality::Singular;
+	//dictionary[base_word] = Word(base_word, input[0]);
+	std::string POS = input[0];
+	add_to_dictionary(base_word, POS);
+	//dictionary[base_word].plurality = Word::Plurality::Singular;
 
 	std::string plural_version = find_overload(input, "plural");
 
+	// Plural - just tack an S on the end
 	if (plural_version == "-") {
 		plural_version = base_word;
 		plural_version.push_back('s');
 	}
 
-	dictionary[plural_version] = Word(plural_version, input[0]);
-	dictionary[plural_version].plurality = Word::Plurality::Plural;
+	//dictionary[plural_version] = Word(plural_version, input[0]);
+	add_to_dictionary(plural_version, POS);
+	//dictionary[plural_version].plurality = Word::Plurality::Plural;
 }
 
 void Lexicon::create_verbs(std::vector<std::string> input) {
+	std::string POS = input[0];
 	std::string base_word = input[1];
-	dictionary[base_word] = Word(base_word, input[0]);
+	//dictionary[base_word] = Word(base_word, input[0]);
+	add_to_dictionary(base_word, POS);
+	// Past tense - tack an -ed on the end. (Or just -d if it already ends with e).
+	std::string past_tense = find_overload(input, "past");
+	if (past_tense == "-") {
+		past_tense = base_word;
+		if (past_tense.back() != 'e') past_tense.push_back('e');
+		past_tense.push_back('d');
+	}
+	add_to_dictionary(past_tense, POS);
+	//dictionary[past_tense] = Word(past_tense, input[0]);
+	//dictionary[past_tense].tense = Word::Tense::Past;
+
+	// Present tense - tack a -ing on the end. Absorb e if it's the last letter.
+	std::string present_tense = find_overload(input, "pres3");
+	if (present_tense == "-") {
+		present_tense = base_word;
+		if (present_tense.back() == 'e') present_tense.pop_back();
+		present_tense.push_back('i');
+		present_tense.push_back('n');
+		present_tense.push_back('g');
+	}
+	add_to_dictionary(present_tense, POS);
+	//dictionary[present_tense] = Word(present_tense, input[0]);
+	//dictionary[present_tense].tense = Word::Tense::Present;
 }
 
 void Lexicon::create_adjectives(std::vector<std::string> input) {
 	std::string base_word = input[1];
-	dictionary[base_word] = Word(base_word, input[0]);
+	add_to_dictionary(base_word, input[0]);
+	//dictionary[base_word] = Word(base_word, input[0]);
 }
 
 void Lexicon::create_misc(std::vector<std::string> input) {
 	for (std::size_t i = 1; i < input.size(); i++) {
-		dictionary[input[i]] = Word(input[i], input[0]);
+		//dictionary[input[i]] = Word(input[i], input[0]);
+		add_to_dictionary(input[i], input[0]);
 	}
 }
 
@@ -117,15 +136,20 @@ std::string Lexicon::find_overload(const std::vector<std::string>& input, const 
 				pos = i + 1;
 				break;
 			}
-			candidate_key.push_back(token[i]);
+			else {
+				candidate_key.push_back(token[i]);
+			}
 		}
 		std::string res = "";
+		//std::cout << candidate_key << " ";
 		if (candidate_key == key) {
+			//std::cout << key << " ";
 			for (std::size_t j = pos; j < token.size(); j++) {
 				res.push_back(token[j]);
 			}
+			return res;
+
 		}
-		return res;
 	}
 	return "-";
 }

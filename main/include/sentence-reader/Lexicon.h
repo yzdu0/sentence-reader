@@ -22,7 +22,7 @@ public:
 		FOR,
 	};*/
 
-	enum Plurality {
+	/*enum Plurality {
 		NA,
 		Singular,
 		Plural,
@@ -34,11 +34,13 @@ public:
 		Past,
 		Present,
 		Future,
-	};
+	};*/
 
 	//PartOfSpeech pos;
-	Plurality plurality = Plurality::NA;
-	Tense tense = Tense::NA;
+	//Plurality plurality = Plurality::NA;
+	//Tense tense = Tense::NA;
+
+	Word();
 
 	Word(std::string word, std::string POS);
 
@@ -49,9 +51,11 @@ class Lexicon {
 public:
 	Lexicon();
 
-	std::unordered_map<std::string, Word> dictionary;
+	std::unordered_map<std::string, std::vector<Word>> dictionary;
 
 private:
+
+	void add_to_dictionary(std::string word, std::string POS);
 
 	void create_nouns(std::vector<std::string> input);
 
