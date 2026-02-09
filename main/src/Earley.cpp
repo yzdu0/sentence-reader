@@ -91,7 +91,7 @@ void Earley::dfs(StatePointer cur,
 
     //dfs(s.reasons[0].p_left, chart, sentence, depth);
 }
-
+/*
 static bool valid(const StatePointer& p) {
     return p.word_index < 1000 && p.item_index < 1000;
 }
@@ -102,9 +102,9 @@ static bool has_down(const BackP& bp) {
 
 static bool has_word(const BackP& bp) {
     return bp.word_pointer.word_index < 1000; // assuming default 1000 means null
-}
+}*/
 
-std::string Earley::dfs2(StatePointer cur,
+/*std::string Earley::dfs2(StatePointer cur,
     std::vector<Column>& chart,
     const std::vector<std::string>& sentence,
     int depth)
@@ -149,9 +149,9 @@ std::string Earley::dfs2(StatePointer cur,
     out += ")";
 
     return out;
-}
-
-std::vector<std::string> Earley::dfs3(StatePointer cur,
+}*/
+// WORST function to code EVER :v:
+/*std::vector<std::string> Earley::dfs3(StatePointer cur,
     std::vector<Column>& chart,
     const std::vector<std::string>& sentence,
     int depth)
@@ -162,35 +162,158 @@ std::vector<std::string> Earley::dfs3(StatePointer cur,
 
     if (!is_finished(s)) return { "" };
 
-    //const BackP& reason = s.reasons[0];
+    std::vector<std::string> res_all;
+
     std::vector<std::string> res;
-    std::vector<std::string> children;
+    std::vector<std::vector<std::string>> children;
     StatePointer walk = cur;
     while (true) {
         const State& ws = chart[walk.word_index].items[walk.item_index];
         if (ws.reasons.empty()) break;
-        const BackP& bp = ws.reasons.back();
+        const BackP& bp = ws.reasons[0];
+
         if (has_down(bp)) {
-            children.push_back(dfs3(bp.p_down, chart, sentence, depth + 1)[0]);
+            children.push_back(dfs3(bp.p_down, chart, sentence, depth + 1));
         }
         else if (has_word(bp)) {
-            children.push_back("(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")");
+            children.push_back({ "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" });
         }
         if (!valid(bp.p_left)) break;
         walk = bp.p_left;
     }
     std::reverse(children.begin(), children.end());
-    std::string out = "(";
-    if (depth >= 0) out += grammar.rules[s.rule_id].left; // skip S0
-    for (const auto& c : children) {
-        if (!c.empty()) out += " " + c;
+    std::vector<std::string> out = cartesian_product(grammar.rules[s.rule_id].left, children);
+
+
+    for (std::string& s : out) {
+        res_all.push_back(s);
     }
-    out += ")";
-    res.push_back(out);
+
+    return res_all;
+}
+
+std::vector<std::string> Earley::cartesian_product(std::string rule_left, std::vector<std::vector<std::string>>& children) {
+    std::size_t product_size = 1;
+    for (auto& v: children) product_size *= v.size();
+    // We need to create a string for each possible product
+    std::string starting = "(" + rule_left;
+    std::vector<std::string> res(0, starting);
+
+    std::vector<std::string> starting_vector(0);
+
+    cartesian_recurse(children, starting_vector, res, rule_left);
 
     return res;
 }
-// ( (S (NP (Pron "i")) (VP (VP (V "saw") (NP (Det "the") (N "man"))) (PP (P "with") (NP (Det "a") (N "telescope"))))))  
+
+
+void Earley::cartesian_recurse(std::vector<std::vector<std::string>>& children, std::vector<std::string> cur,
+    std::vector<std::string>& res, std::string rule_left) {
+    // If reached end, concetenate strings and append to result
+    if (cur.size() >= children.size()) {
+        std::string temp = "(" + rule_left;
+        for (const std::string& s : cur) temp += s;
+        temp += ")";
+        res.push_back(temp);
+        return;
+    }
+
+    std::size_t cur_pos = cur.size();
+
+    for (std::size_t i = 0; i < children[cur_pos].size(); i++) {
+        cur.push_back(children[cur_pos][i]);
+        cartesian_recurse(children, cur, res, rule_left);
+        cur.pop_back();
+    }
+}*/
+// Helpers
+static bool valid(const StatePointer& p) {
+    return p.word_index < 1000 && p.item_index < 1000;
+}
+static bool has_down(const BackP& bp) { return valid(bp.p_down); }
+static bool has_word(const BackP& bp) { return bp.word_pointer.word_index < 1000; } // adjust name
+static std::vector<std::string> prefix_all(const std::vector<std::string>& base,
+    const std::string& add) {
+    std::vector<std::string> out;
+    out.reserve(base.size());
+    for (auto& s : base) out.push_back(s + add);
+    return out;
+}
+std::vector<std::string> Earley::cartesian_product(const std::vector<std::string>& A,
+    const std::vector<std::string>& B) {
+    std::vector<std::string> out;
+    for (auto& a : A) {
+        for (auto& b : B) {
+            out.push_back(a + b);
+        }
+    }
+    return out;
+}
+
+// Returns the right hand of the grammar rule eg the NP VP in S -> NP VP
+std::vector<std::string> Earley::dfs_helper(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence)
+{
+    // base cases 
+    if (!valid(cur)) return { "" };
+    const State& st = chart[cur.word_index].items[cur.item_index];
+
+    if (st.progress == 0) return { "" };
+
+    std::vector<std::string> all;
+    for (const BackP& bp : st.reasons) {
+
+        std::vector<std::string> rest = dfs_helper(bp.p_left, chart, sentence);
+
+        std::vector<std::string> child_alts;
+        if (has_down(bp)) {
+            child_alts = dfs3(bp.p_down, chart, sentence, 0);
+        }
+        else if (has_word(bp)) {
+            child_alts = { "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" };
+        }
+        else {
+            child_alts = { "" };
+        }
+        for (auto& c : child_alts) c = " " + c;
+
+        std::vector<std::string> combined = cartesian_product(rest, child_alts);
+        for (auto& x : combined) {
+            all.push_back(x);
+        }
+    }
+    return all;
+}
+
+std::vector<std::string> Earley::dfs3(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence,
+    int depth)
+{
+    if (!valid(cur)) return { "" };
+
+    const State& s = chart[cur.word_index].items[cur.item_index];
+    if (!is_finished(s)) return { "" };
+
+    std::string lhs = grammar.rules[s.rule_id].left;
+
+    // Build RHS alternatives (children sequence)
+    std::vector<std::string> rhs = dfs_helper(cur, chart, sentence);
+
+    std::vector<std::string> out;
+    for (auto& r : rhs) {
+        out.push_back("(" + lhs + r + ")");
+    }
+    return out;
+}
+
+// (S0(S(NP(Pron "i"))(VP(V "saw")(NP(NP(Det "the")(N "man"))(PP(P "with")(NP(Det "my")(N "telescope")))))))
+// (S0(S(NP(Pron "i"))(VP(VP(V "saw")(NP(Det "the")(N "man")))(PP(P "with")(NP(Det "my")(N "telescope"))))))
+// 
+// 
+// ( (S (NP (Pron "i")) (VP (VP (V "saw") (NP (Det "the") (N "man"))) (PP (P "with") (NP (Det "a") (N "telescope"))))))
+// ( (S (NP (Pron "i")) (VP (V "saw") (NP (NP (Det "the") (N "man")) (PP (P "with") (NP (Det "the") (N "telescope"))))))) 
 void Earley::print_depth(int depth) {
     for (int i = 0; i < depth; i++) std::cout << "|   ";
 }
