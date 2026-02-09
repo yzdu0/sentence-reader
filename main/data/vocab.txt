@@ -5,7 +5,7 @@ P: with in on at by from over for under between among before after during withou
 Conj: and or but nor yet so therefore
 Neg: not never
 Aux: am
-Cop: am are is
+Cop: am are is was
 TO: to
 FOR: for
 

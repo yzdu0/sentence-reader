@@ -8,71 +8,191 @@
 
 Earley::Earley() {
 
-    //Lexicon lexicon;
-    
-
     for (auto const& [word_string, word_instance] : lexicon.dictionary) {
-        //if (word_instance.POS == "N") {
-            //std::cout << word_instance.POS << " <- [" << word_string << "]\n";
-       // }
-        //words.push_back(Rule(word_instance.POS, word_string));
-
         for (const Word& word : word_instance) {
             words.push_back(Rule(word.POS, word_string));
         }
     }
-
-    for (const Rule& word : words) {
+    /*for (const Rule& word : words) {
         word.print();
         std::cout << "\n";
-    }
+    }*/
 
-    for (const Rule& r : grammar.rules) {
+    for (const Rule& r : grammar.rules) 
         nonterminals.insert(r.left);
-    }
 
-    for (const Rule& r : words) {
+    for (const Rule& r : words) 
         terminals.insert(r.left);
-    }
 }
 
-void Earley::dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth) {
-    if (cur.word_index < 1000 && cur.item_index < 1000) {
-		const State& s = chart[cur.word_index].items[cur.item_index];
+//void Earley::dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth) {
+//    if (cur.word_index < 1000 && cur.item_index < 1000) {
+//		const State& s = chart[cur.word_index].items[cur.item_index];
+//
+//        if (is_finished(s)) {
+//            print_depth(depth);
+//
+//            if (depth >= 0) {
+//                std::cout << "[" << sentence[s.origin];
+//                for (std::size_t i = s.origin + 1; i < cur.word_index; i++) {
+//                    std::cout << " " << sentence[i];
+//                }
+//                std::cout << "] [";
+//
+//                grammar.rules[s.rule_id].print();
+//                std::cout << "]\n";
+//
+//            }
+//        }
+//        dfs(s.p_left, chart, sentence, depth);
+//        dfs(s.p_down, chart, sentence, depth + 1);
+//	}
+//}
 
-		if (is_finished(s)) {
-            print_depth(depth);
-            //std::cout << "[" << s.origin << " " << cur.word_index - 1 << "] | ";
+void Earley::dfs(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence,
+    int depth){
 
-            if (depth >= 0) {
-                std::cout << "[" << sentence[s.origin];
-                for (std::size_t i = s.origin + 1; i < cur.word_index; i++) {
-                    std::cout << " " << sentence[i];
-                }
-                std::cout << "] [";
+    if (cur.word_index >= 1000 || cur.item_index >= 1000) return;
 
-                grammar.rules[s.rule_id].print();
-                std::cout << "]\n";
+    const State& s = chart[cur.word_index].items[cur.item_index];
 
-            }
+    if (is_finished(s) && depth >= 0) {
+        print_depth(depth);
 
-            //std::cout << "PREV POINTER: " << s.previous_state_pointer.item_index << " " << s.previous_state_pointer.word_index << "\n";
+        std::cout << "[" << sentence[s.origin];
+        for (std::size_t i = s.origin + 1; i < cur.word_index; i++) {
+            std::cout << " " << sentence[i];
+        }
+        std::cout << "] [";
+        grammar.rules[s.rule_id].print();
+        std::cout << "] ";
+        if (s.reasons.size() > 1) std::cout << "[Ambiguous]";
+        std::cout << "\n";
+        //<< s.reasons.size() << "\n";
+    }
 
-            
-		}
+    if (s.reasons.size() == 0) return;
 
-        if (s.word_pointer.word_index < 1000) {
-            //std::cout << "----" << s.word_pointer.word_index << " | " << s.word_pointer.tag << " -> " << s.word_pointer.word << "\n";
+    dfs(s.reasons[0].p_left, chart, sentence, depth);
+
+    // Recurse only if this was from completion
+    if (s.reasons[0].p_down.word_index < 1000 && s.reasons[0].p_down.item_index < 1000) {
+        dfs(s.reasons[0].p_down, chart, sentence, depth + 1);
+    }
+    // Otherwise print the leaf (from scan)
+    else if (s.reasons[0].word_pointer.word_index < 1000) {
+        print_depth(depth + 1);
+        std::cout << "[" << s.reasons[0].word_pointer.word << "] ["
+            << s.reasons[0].word_pointer.tag << " -> " << s.reasons[0].word_pointer.word
+            << "]\n";
+    }
+
+    //dfs(s.reasons[0].p_left, chart, sentence, depth);
+}
+
+static bool valid(const StatePointer& p) {
+    return p.word_index < 1000 && p.item_index < 1000;
+}
+
+static bool has_down(const BackP& bp) {
+    return valid(bp.p_down);
+}
+
+static bool has_word(const BackP& bp) {
+    return bp.word_pointer.word_index < 1000; // assuming default 1000 means null
+}
+
+std::string Earley::dfs2(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence,
+    int depth)
+{
+    if (!valid(cur)) return "";
+
+    const State& s = chart[cur.word_index].items[cur.item_index];
+
+    if (!is_finished(s)) return "";
+
+    const BackP& reason = s.reasons[0];
+
+    std::vector<std::string> children;
+    StatePointer walk = cur;
+
+    while (true) {
+        const State& ws = chart[walk.word_index].items[walk.item_index];
+        if (ws.reasons.empty()) break;
+
+        const BackP& bp = ws.reasons[0];
+
+        if (has_down(bp)) {
+            children.push_back(dfs2(bp.p_down, chart, sentence, depth + 1));
+        }
+        else if (has_word(bp)) {
+            children.push_back("(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")");
         }
 
-        dfs(s.symbol_consumed_pointer, chart, sentence, depth);
-        dfs(s.previous_state_pointer, chart, sentence, depth + 1);
+        if (!valid(bp.p_left)) break;
+        walk = bp.p_left;
+    }
 
-	}
+    std::reverse(children.begin(), children.end());
+
+    std::string out = "(";
+
+    if (depth >= 0) out += grammar.rules[s.rule_id].left; // skip S0
+
+    for (const auto& c : children) {
+        if (!c.empty()) out += " " + c;
+    }
+    out += ")";
+
+    return out;
 }
 
+std::vector<std::string> Earley::dfs3(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence,
+    int depth)
+{
+    if (!valid(cur)) return { "" };
+
+    const State& s = chart[cur.word_index].items[cur.item_index];
+
+    if (!is_finished(s)) return { "" };
+
+    //const BackP& reason = s.reasons[0];
+    std::vector<std::string> res;
+    std::vector<std::string> children;
+    StatePointer walk = cur;
+    while (true) {
+        const State& ws = chart[walk.word_index].items[walk.item_index];
+        if (ws.reasons.empty()) break;
+        const BackP& bp = ws.reasons.back();
+        if (has_down(bp)) {
+            children.push_back(dfs3(bp.p_down, chart, sentence, depth + 1)[0]);
+        }
+        else if (has_word(bp)) {
+            children.push_back("(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")");
+        }
+        if (!valid(bp.p_left)) break;
+        walk = bp.p_left;
+    }
+    std::reverse(children.begin(), children.end());
+    std::string out = "(";
+    if (depth >= 0) out += grammar.rules[s.rule_id].left; // skip S0
+    for (const auto& c : children) {
+        if (!c.empty()) out += " " + c;
+    }
+    out += ")";
+    res.push_back(out);
+
+    return res;
+}
+// ( (S (NP (Pron "i")) (VP (VP (V "saw") (NP (Det "the") (N "man"))) (PP (P "with") (NP (Det "a") (N "telescope"))))))  
 void Earley::print_depth(int depth) {
-    for (int i = 0; i < depth; i++) std::cout << "    ";
+    for (int i = 0; i < depth; i++) std::cout << "|   ";
 }
 
 bool Earley::is_finished(const State& state) const {
@@ -98,7 +218,7 @@ void Earley::parse(const std::vector<std::string>& sentence,
     chart[0].add(start_state);
 
     for (std::size_t k = 0; k <= sentence.size(); k++) {
-        // For every state in S(k)
+
         for (std::size_t x = 0; x < chart[k].size(); x++) {
             const State cur_state = chart[k].items[x]; // COPY it
 
@@ -121,23 +241,6 @@ void Earley::parse(const std::vector<std::string>& sentence,
         }
     }
 
-    bool accepted = false;    // chart.size()
-    for (std::size_t i = 0; i < chart.size(); i++) {
-        //std::cout << "Index " << i << "\n";
-        for (const State& s : chart[i].items) {
-            /*if (s.rule_id == 0 && is_finished(s) && s.origin == 0) {
-                std::cout << "    Sentence of the first " << i << " words accepted\n    >";
-
-                for (std::size_t j = 0; j < i; j++) std::cout << sentence[j] << " ";
-                std::cout << "\n";
-            }*/
-
-            //std::cout << s.progress << " " << s.origin << " | "; grammar.rules[s.rule_id].print();
-        }
-
-        //std::cout << "\n\n";
-    }
-
     std::cout << "Syntax Tree:\n";
     StatePointer res;
     for (std::size_t i = 0; i < chart.back().size(); i++) {
@@ -148,11 +251,13 @@ void Earley::parse(const std::vector<std::string>& sentence,
         }
     }
     
-    dfs(res, chart, sentence, -1);
-}
-/*
+    std::vector<std::string> x = dfs3(res, chart, sentence, -1);
 
-*/
+    for (std::string cur : x) {
+        std::cout << cur << "\n";
+    }
+}
+
 void Earley::predictor(const State& state, std::size_t k, std::vector<Column>& chart) {
     std::string B = next_symbol(state);
 
@@ -176,14 +281,15 @@ void Earley::scanner(const State& state, StatePointer k_and_idx,
     const std::string& tag = next_symbol(state); 
 
     if (terminals.count(tag) && lexicon.search_word(sentence[k_and_idx.word_index], tag)){ 
-        StatePointer previous_state_pointer;
-        State new_state{ state.rule_id, state.progress + 1, state.origin,
-        previous_state_pointer,
-                k_and_idx };
+        State new_state{ state.rule_id, state.progress + 1, state.origin};
+        //new_state.p_left = k_and_idx;
+        //new_state.p_down = StatePointer{};
+
         std::string word_ = sentence[k_and_idx.word_index];
         WordPointer word_pointer{ k_and_idx.word_index, tag, word_};
-        new_state.word_pointer = word_pointer;
-        //new_state.word_underneath = sentence[k_and_idx.word_index];
+        //new_state.word_pointer = word_pointer;
+
+        new_state.reasons.push_back({ k_and_idx, StatePointer{}, word_pointer });
         chart[k_and_idx.word_index + 1].add(new_state);
     }
 }
@@ -237,20 +343,15 @@ void Earley::completer(const State& state, StatePointer k_and_idx, std::vector<C
         */
         if (!is_finished(cur_state) && next_symbol(cur_state) == B) {
             StatePointer previous_state_pointer{ state.origin, i };
-            //StatePointer symbol_consumed_pointer{k, 0};
-            //previous_state_pointer.item_index = -1;
-            //previous_state_pointer.word_index = -1;
-            State new_state{ cur_state.rule_id, cur_state.progress + 1, cur_state.origin,
-                k_and_idx,
-                previous_state_pointer, 
-                
-            };
-            chart[k_and_idx.word_index].add(new_state);
 
-            /*std::cout << "Index " << k_and_idx.word_index << " ";
-            grammar.rules[state.rule_id].print();
-            grammar.rules[cur_state.rule_id].print();
-            std::cout << "\n";*/
+            State new_state{ cur_state.rule_id, cur_state.progress + 1, cur_state.origin};
+
+            //new_state.p_left = previous_state_pointer;
+            //new_state.p_down = k_and_idx;
+
+            new_state.reasons.push_back({ previous_state_pointer, k_and_idx, WordPointer{} });
+
+            chart[k_and_idx.word_index].add(new_state);
         }
     }
 }

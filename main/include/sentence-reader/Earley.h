@@ -19,16 +19,25 @@ struct WordPointer {
     std::string word = "-";
 };
 
+struct BackP {
+    StatePointer p_left;
+    StatePointer p_down;
+    WordPointer word_pointer;
+};
+
+
 struct State {
     int rule_id;
     // The dot is BEFORE this index.
     int progress;
     int origin;
 
-    StatePointer previous_state_pointer;
-    StatePointer symbol_consumed_pointer;
+    /*StatePointer p_left;
+    StatePointer p_down;
 
-    WordPointer word_pointer;
+    WordPointer word_pointer;*/
+
+    std::vector<BackP> reasons;
 };
 
 struct StateHash {
@@ -56,6 +65,14 @@ struct Column {
             items.push_back(s);
             return true;
         }
+
+        for (State& item : items) {
+            StateEq eq;
+            if (eq(item, s) && s.reasons.size()){
+                item.reasons.push_back(s.reasons[0]);
+            }
+        }
+
         return false;
     }
 
@@ -88,6 +105,10 @@ private:
     std::unordered_set<std::string> word_bank;
 
     void dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
+
+    std::string dfs2(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
+
+    std::vector<std::string> dfs3(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
 
     void print_depth(int depth);
 

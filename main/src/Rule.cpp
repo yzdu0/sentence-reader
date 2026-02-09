@@ -29,8 +29,8 @@ Rule::Rule(std::string left_, std::string right_) {
 }
 
 void Rule::print() const {
-    std::cout << left << " -> ";
-    for (std::string r : right) std::cout << r << " ";
+    std::cout << left << " ->";
+    for (std::string r : right) std::cout << " " << r;
     //std::cout << "";
 }
 

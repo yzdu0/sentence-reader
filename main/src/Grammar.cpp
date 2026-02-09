@@ -11,7 +11,6 @@ Grammar::Grammar() {
         "VP -> V",
         "VP -> V NP",
         "VP -> VP PP",
-        "VP -> V NP PP",
         "VP -> VP Conj VP",
         "VP -> V Inf",
         "VP -> Aux AdjP",

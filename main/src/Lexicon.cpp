@@ -71,34 +71,25 @@ bool Lexicon::search_word(std::string word, std::string POS) {
 }
 
 void Lexicon::create_nouns(std::vector<std::string> input) {
-	// We currently care about two forms - singular and plural. 
-	// We assume input is the singular form, then tack on an S for the plural.
-	// Basically have overloading support for weirder nouns
 	std::string base_word = input[1];
-	//dictionary[base_word] = Word(base_word, input[0]);
 	std::string POS = input[0];
 	add_to_dictionary(base_word, POS);
-	//dictionary[base_word].plurality = Word::Plurality::Singular;
 
 	std::string plural_version = find_overload(input, "plural");
 
-	// Plural - just tack an S on the end
+	// Plural - just tack an S on the end if no overload exists
 	if (plural_version == "-") {
 		plural_version = base_word;
 		plural_version.push_back('s');
 	}
-
-	//dictionary[plural_version] = Word(plural_version, input[0]);
 	add_to_dictionary(plural_version, POS);
-	//dictionary[plural_version].plurality = Word::Plurality::Plural;
 }
 
 void Lexicon::create_verbs(std::vector<std::string> input) {
 	std::string POS = input[0];
 	std::string base_word = input[1];
-	//dictionary[base_word] = Word(base_word, input[0]);
 	add_to_dictionary(base_word, POS);
-	// Past tense - tack an -ed on the end. (Or just -d if it already ends with e).
+	// Past tense - add an -ed on the end. (Or just -d if it already ends with e).
 	std::string past_tense = find_overload(input, "past");
 	if (past_tense == "-") {
 		past_tense = base_word;
@@ -106,8 +97,6 @@ void Lexicon::create_verbs(std::vector<std::string> input) {
 		past_tense.push_back('d');
 	}
 	add_to_dictionary(past_tense, POS);
-	//dictionary[past_tense] = Word(past_tense, input[0]);
-	//dictionary[past_tense].tense = Word::Tense::Past;
 
 	// Present tense - tack a -ing on the end. Absorb e if it's the last letter.
 	std::string present_tense = find_overload(input, "pres3");
@@ -119,19 +108,15 @@ void Lexicon::create_verbs(std::vector<std::string> input) {
 		present_tense.push_back('g');
 	}
 	add_to_dictionary(present_tense, POS);
-	//dictionary[present_tense] = Word(present_tense, input[0]);
-	//dictionary[present_tense].tense = Word::Tense::Present;
 }
 
 void Lexicon::create_adjectives(std::vector<std::string> input) {
 	std::string base_word = input[1];
 	add_to_dictionary(base_word, input[0]);
-	//dictionary[base_word] = Word(base_word, input[0]);
 }
 
 void Lexicon::create_misc(std::vector<std::string> input) {
 	for (std::size_t i = 1; i < input.size(); i++) {
-		//dictionary[input[i]] = Word(input[i], input[0]);
 		add_to_dictionary(input[i], input[0]);
 	}
 }
@@ -150,14 +135,11 @@ std::string Lexicon::find_overload(const std::vector<std::string>& input, const 
 			}
 		}
 		std::string res = "";
-		//std::cout << candidate_key << " ";
 		if (candidate_key == key) {
-			//std::cout << key << " ";
 			for (std::size_t j = pos; j < token.size(); j++) {
 				res.push_back(token[j]);
 			}
 			return res;
-
 		}
 	}
 	return "-";
