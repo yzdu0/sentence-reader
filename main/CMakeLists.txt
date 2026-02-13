@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(sentence-reader
     src/main.cpp
-    src/Parser.cpp
+    src/deprecated/Parser.cpp
     src/Rule.cpp
     src/Earley.cpp
-    src/Lexicon.cpp "src/Grammar.cpp" "include/sentence-reader/Grammar.h")
+    src/Lexicon.cpp "src/Grammar.cpp" "include/sentence-reader/Grammar.h" "include/sentence-reader/SyntaxTree.h" "include/sentence-reader/Util.h")
 
 target_include_directories(sentence-reader
     PRIVATE

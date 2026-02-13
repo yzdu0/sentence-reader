@@ -9,11 +9,15 @@
 #include "sentence-reader/Earley.h"
 using namespace std;
 
-void to_lowercase_except(std::string& s) {
+void process(std::string& s) {
     std::transform(s.begin(), s.end(), s.begin(),
         [](unsigned char c) {
             return std::tolower(c);
         });
+
+    if (s.back() == ',' || s.back() == '.') {
+        s.pop_back();
+    }
 }
 
 int main() {
@@ -44,7 +48,7 @@ int main() {
         std::string cur;
         std::vector<std::string> sentence;
         while (getline(ss, cur, ' ')) {
-            to_lowercase_except(cur);
+            process(cur);
             sentence.push_back(cur);
         }
 

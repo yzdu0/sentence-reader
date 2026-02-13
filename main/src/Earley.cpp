@@ -3,6 +3,7 @@
 #include "sentence-reader/Rule.h"
 #include "sentence-reader/Earley.h"
 #include "sentence-reader/Lexicon.h"
+#include "sentence-reader/Util.h"
 #include <map>
 #include <set>
 
@@ -24,30 +25,6 @@ Earley::Earley() {
     for (const Rule& r : words) 
         terminals.insert(r.left);
 }
-
-//void Earley::dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth) {
-//    if (cur.word_index < 1000 && cur.item_index < 1000) {
-//		const State& s = chart[cur.word_index].items[cur.item_index];
-//
-//        if (is_finished(s)) {
-//            print_depth(depth);
-//
-//            if (depth >= 0) {
-//                std::cout << "[" << sentence[s.origin];
-//                for (std::size_t i = s.origin + 1; i < cur.word_index; i++) {
-//                    std::cout << " " << sentence[i];
-//                }
-//                std::cout << "] [";
-//
-//                grammar.rules[s.rule_id].print();
-//                std::cout << "]\n";
-//
-//            }
-//        }
-//        dfs(s.p_left, chart, sentence, depth);
-//        dfs(s.p_down, chart, sentence, depth + 1);
-//	}
-//}
 
 void Earley::dfs(StatePointer cur,
     std::vector<Column>& chart,
@@ -91,154 +68,13 @@ void Earley::dfs(StatePointer cur,
 
     //dfs(s.reasons[0].p_left, chart, sentence, depth);
 }
-/*
-static bool valid(const StatePointer& p) {
-    return p.word_index < 1000 && p.item_index < 1000;
-}
-
-static bool has_down(const BackP& bp) {
-    return valid(bp.p_down);
-}
-
-static bool has_word(const BackP& bp) {
-    return bp.word_pointer.word_index < 1000; // assuming default 1000 means null
-}*/
-
-/*std::string Earley::dfs2(StatePointer cur,
-    std::vector<Column>& chart,
-    const std::vector<std::string>& sentence,
-    int depth)
-{
-    if (!valid(cur)) return "";
-
-    const State& s = chart[cur.word_index].items[cur.item_index];
-
-    if (!is_finished(s)) return "";
-
-    const BackP& reason = s.reasons[0];
-
-    std::vector<std::string> children;
-    StatePointer walk = cur;
-
-    while (true) {
-        const State& ws = chart[walk.word_index].items[walk.item_index];
-        if (ws.reasons.empty()) break;
-
-        const BackP& bp = ws.reasons[0];
-
-        if (has_down(bp)) {
-            children.push_back(dfs2(bp.p_down, chart, sentence, depth + 1));
-        }
-        else if (has_word(bp)) {
-            children.push_back("(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")");
-        }
-
-        if (!valid(bp.p_left)) break;
-        walk = bp.p_left;
-    }
-
-    std::reverse(children.begin(), children.end());
-
-    std::string out = "(";
-
-    if (depth >= 0) out += grammar.rules[s.rule_id].left; // skip S0
-
-    for (const auto& c : children) {
-        if (!c.empty()) out += " " + c;
-    }
-    out += ")";
-
-    return out;
-}*/
-// WORST function to code EVER :v:
-/*std::vector<std::string> Earley::dfs3(StatePointer cur,
-    std::vector<Column>& chart,
-    const std::vector<std::string>& sentence,
-    int depth)
-{
-    if (!valid(cur)) return { "" };
-
-    const State& s = chart[cur.word_index].items[cur.item_index];
-
-    if (!is_finished(s)) return { "" };
-
-    std::vector<std::string> res_all;
-
-    std::vector<std::string> res;
-    std::vector<std::vector<std::string>> children;
-    StatePointer walk = cur;
-    while (true) {
-        const State& ws = chart[walk.word_index].items[walk.item_index];
-        if (ws.reasons.empty()) break;
-        const BackP& bp = ws.reasons[0];
-
-        if (has_down(bp)) {
-            children.push_back(dfs3(bp.p_down, chart, sentence, depth + 1));
-        }
-        else if (has_word(bp)) {
-            children.push_back({ "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" });
-        }
-        if (!valid(bp.p_left)) break;
-        walk = bp.p_left;
-    }
-    std::reverse(children.begin(), children.end());
-    std::vector<std::string> out = cartesian_product(grammar.rules[s.rule_id].left, children);
-
-
-    for (std::string& s : out) {
-        res_all.push_back(s);
-    }
-
-    return res_all;
-}
-
-std::vector<std::string> Earley::cartesian_product(std::string rule_left, std::vector<std::vector<std::string>>& children) {
-    std::size_t product_size = 1;
-    for (auto& v: children) product_size *= v.size();
-    // We need to create a string for each possible product
-    std::string starting = "(" + rule_left;
-    std::vector<std::string> res(0, starting);
-
-    std::vector<std::string> starting_vector(0);
-
-    cartesian_recurse(children, starting_vector, res, rule_left);
-
-    return res;
-}
-
-
-void Earley::cartesian_recurse(std::vector<std::vector<std::string>>& children, std::vector<std::string> cur,
-    std::vector<std::string>& res, std::string rule_left) {
-    // If reached end, concetenate strings and append to result
-    if (cur.size() >= children.size()) {
-        std::string temp = "(" + rule_left;
-        for (const std::string& s : cur) temp += s;
-        temp += ")";
-        res.push_back(temp);
-        return;
-    }
-
-    std::size_t cur_pos = cur.size();
-
-    for (std::size_t i = 0; i < children[cur_pos].size(); i++) {
-        cur.push_back(children[cur_pos][i]);
-        cartesian_recurse(children, cur, res, rule_left);
-        cur.pop_back();
-    }
-}*/
-// Helpers
 static bool valid(const StatePointer& p) {
     return p.word_index < 1000 && p.item_index < 1000;
 }
 static bool has_down(const BackP& bp) { return valid(bp.p_down); }
-static bool has_word(const BackP& bp) { return bp.word_pointer.word_index < 1000; } // adjust name
-static std::vector<std::string> prefix_all(const std::vector<std::string>& base,
-    const std::string& add) {
-    std::vector<std::string> out;
-    out.reserve(base.size());
-    for (auto& s : base) out.push_back(s + add);
-    return out;
-}
+
+static bool has_word(const BackP& bp) { return bp.word_pointer.word_index < 1000; }
+
 std::vector<std::string> Earley::cartesian_product(const std::vector<std::string>& A,
     const std::vector<std::string>& B) {
     std::vector<std::string> out;
@@ -250,7 +86,8 @@ std::vector<std::string> Earley::cartesian_product(const std::vector<std::string
     return out;
 }
 
-// Returns the right hand of the grammar rule eg the NP VP in S -> NP VP
+// WORST function to code EVER :v:
+// Given a state, returns the right hand of the grammar rule eg the NP VP in S -> NP VP 
 std::vector<std::string> Earley::dfs_helper(StatePointer cur,
     std::vector<Column>& chart,
     const std::vector<std::string>& sentence)
@@ -262,14 +99,17 @@ std::vector<std::string> Earley::dfs_helper(StatePointer cur,
     if (st.progress == 0) return { "" };
 
     std::vector<std::string> all;
+    // Loop through every possible path to this state 
     for (const BackP& bp : st.reasons) {
 
         std::vector<std::string> rest = dfs_helper(bp.p_left, chart, sentence);
 
         std::vector<std::string> child_alts;
+        // Recursive descent; to another state
         if (has_down(bp)) {
             child_alts = dfs3(bp.p_down, chart, sentence, 0);
         }
+        // Base case: we reach a single word
         else if (has_word(bp)) {
             child_alts = { "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" };
         }
@@ -278,7 +118,7 @@ std::vector<std::string> Earley::dfs_helper(StatePointer cur,
         }
         for (auto& c : child_alts) c = " " + c;
 
-        std::vector<std::string> combined = cartesian_product(rest, child_alts);
+        std::vector<std::string> combined = Util::cartesian_product<std::string>(rest, child_alts);
         for (auto& x : combined) {
             all.push_back(x);
         }
@@ -307,6 +147,57 @@ std::vector<std::string> Earley::dfs3(StatePointer cur,
     }
     return out;
 }
+
+/*std::vector<SyntaxTree> Earley::treeDFS(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence,
+    int depth)
+{
+    if (!valid(cur)) return {};
+    const State& s = chart[cur.word_index].items[cur.item_index];
+    if (!is_finished(s)) return {};
+
+    std::string lhs = grammar.rules[s.rule_id].left;
+
+    std::vector<SyntaxTree> rhs = treeDFShelper(cur, chart, sentence);
+}
+
+std::vector<SyntaxTree> Earley::treeDFShelper(StatePointer cur,
+    std::vector<Column>& chart,
+    const std::vector<std::string>& sentence) {
+    // base cases 
+    if (!valid(cur)) return {};
+    const State& st = chart[cur.word_index].items[cur.item_index];
+
+    if (st.progress == 0) return {};
+
+    std::vector<SyntaxTree> all;
+    // Loop through every possible path to this state 
+    for (const BackP& bp : st.reasons) {
+
+        std::vector<SyntaxTree> rest = treeDFShelper(bp.p_left, chart, sentence);
+
+        std::vector<SyntaxTree> child_alts;
+        // Recursive descent; to another state
+        if (has_down(bp)) {
+            child_alts = treeDFS(bp.p_down, chart, sentence, 0);
+        }
+        // Base case: we reach a single word
+        else if (has_word(bp)) {
+            //child_alts = { "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" };
+            child_alts = { SyntaxTree(bp.word_pointer.tag) };
+        }
+        else {
+            child_alts = {};
+        }
+
+        //std::vector<std::string> combined = cartesian_product(rest, child_alts);
+        for (auto& x : combined) {
+            all.push_back(x);
+        }
+    }
+    return all;
+}*/
 
 // (S0(S(NP(Pron "i"))(VP(V "saw")(NP(NP(Det "the")(N "man"))(PP(P "with")(NP(Det "my")(N "telescope")))))))
 // (S0(S(NP(Pron "i"))(VP(VP(V "saw")(NP(Det "the")(N "man")))(PP(P "with")(NP(Det "my")(N "telescope"))))))
@@ -373,14 +264,15 @@ void Earley::parse(const std::vector<std::string>& sentence,
             res.item_index = i;
         }
     }
-    
+    dfs(res, chart, sentence, -1);
+
     std::vector<std::string> x = dfs3(res, chart, sentence, -1);
 
     for (std::string cur : x) {
         std::cout << cur << "\n";
     }
 }
-
+// Generate new states
 void Earley::predictor(const State& state, std::size_t k, std::vector<Column>& chart) {
     std::string B = next_symbol(state);
 
@@ -405,55 +297,16 @@ void Earley::scanner(const State& state, StatePointer k_and_idx,
 
     if (terminals.count(tag) && lexicon.search_word(sentence[k_and_idx.word_index], tag)){ 
         State new_state{ state.rule_id, state.progress + 1, state.origin};
-        //new_state.p_left = k_and_idx;
-        //new_state.p_down = StatePointer{};
 
         std::string word_ = sentence[k_and_idx.word_index];
         WordPointer word_pointer{ k_and_idx.word_index, tag, word_};
-        //new_state.word_pointer = word_pointer;
 
         new_state.reasons.push_back({ k_and_idx, StatePointer{}, word_pointer });
         chart[k_and_idx.word_index + 1].add(new_state);
     }
 }
 
-/*
-Because the argument state has reached its end, we are trying to propagate its status to
-all of the previous states directly relying on this one. 
-For example, the super simple sentence "I saw".
-After "saw", we manage to resolve a verb phrase (VP -> V, starting at index 1). 
-If we go back to look at index 1, there is another state (S -> NP dot VP starting at index 0)
-that is relying on this verb phrase. 
-
-On its own, Completer will create an updated state at index 2; this state is an exact copy but 
-with the progress incremented by one (e.g. S -> NP VP). 
-We can see during this update that the new S relies on VP. 
-Therefore, we want the node corresponding to S to have another pointer to a child; in this case the VP state. 
-
-(Also note that for an ambiguous sentence, there would be multiple ways this state can be reached, but only 
-one is used in the Chart so we don't solve the same problem twice/go into a recursive infinite loop.)
-
-
----
-
-For each State, we store two pointers. A pointer that points to the previous version of the state
-e.g. (S->NP VP dot, 0) in chart[2] has a pointer to (S->NP dot VP, 0) in chart[1]. 
-And also a pointer that points to the symbol that was consumed in order to advance the state.
-In this case, we're pointing to (VP -> V dot, 1) in chart[2]. 
-
-Of course, the (S->NP dot VP, 0) state in chart[1] will also have two pointers. One to the previous version
-in chart[0], and another to the symbol that was consumed to advance to this one; (NP -> Pron) in chart[1].
-
-By backtracking along the "state evolution" pointers from the originally mentioned (S->NP VP dot, 0) state,
-we encounter all of the (S-> NP VP) states used to evolve this. Each of these contains another pointer,
-the pointer being used to consume.
-In fact the direction doesn't actually matter, since the pointers to "consumed symbols" may as well have
-interesting parse trees of their own. So we can just DFS from the completed sentence node, and this will show
-us the entire forest of interest. 
-
-Later on, I need to ensure each state can store an array of (pairs of) pointers, so we can parse for ambuigity.
-Scanner needs to own pointers too but the idea will be very similar.
-*/
+// Updates all states waiting on the current state, now that the current one is completed
 void Earley::completer(const State& state, StatePointer k_and_idx, std::vector<Column>& chart) {
     const std::string B = grammar.rules[state.rule_id].left;
 
@@ -468,12 +321,7 @@ void Earley::completer(const State& state, StatePointer k_and_idx, std::vector<C
             StatePointer previous_state_pointer{ state.origin, i };
 
             State new_state{ cur_state.rule_id, cur_state.progress + 1, cur_state.origin};
-
-            //new_state.p_left = previous_state_pointer;
-            //new_state.p_down = k_and_idx;
-
             new_state.reasons.push_back({ previous_state_pointer, k_and_idx, WordPointer{} });
-
             chart[k_and_idx.word_index].add(new_state);
         }
     }

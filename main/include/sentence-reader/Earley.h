@@ -7,6 +7,7 @@
 #include "sentence-reader/Rule.h"
 #include "sentence-reader/Grammar.h"
 #include "sentence-reader/Lexicon.h"
+#include "sentence-reader/SyntaxTree.h"
 
 struct StatePointer {
     std::size_t word_index = 1000;
@@ -106,19 +107,10 @@ private:
 
     void dfs(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
 
-    //std::string dfs2(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
-
-    //std::vector<std::string> dfs3(StatePointer cur, std::vector<Column>& chart, const std::vector<std::string>& sentence, int depth);
-
     std::vector<std::string> Earley::dfs3(StatePointer cur,
         std::vector<Column>& chart,
         const std::vector<std::string>& sentence,
         int depth);
-
-    //std::vector<std::string> cartesian_product(std::string rule_left, std::vector<std::vector<std::string>>& children);
-
-    //void cartesian_recurse(std::vector<std::vector<std::string>>& children, std::vector<std::string> cur,
-     //   std::vector<std::string>& res, std::string rule_left);
 
     std::vector<std::string> Earley::dfs_helper(StatePointer cur,
         std::vector<Column>& chart,
@@ -126,6 +118,17 @@ private:
 
     std::vector<std::string> cartesian_product(const std::vector<std::string>& A,
         const std::vector<std::string>& B);
+
+    std::vector<SyntaxTree> treeDFShelper(StatePointer cur,
+        std::vector<Column>& chart,
+        const std::vector<std::string>& sentence);
+
+    std::vector<SyntaxTree> treeDFS(StatePointer cur,
+        std::vector<Column>& chart,
+        const std::vector<std::string>& sentence,
+        int depth);
+
+    
 
     void print_depth(int depth);
 
