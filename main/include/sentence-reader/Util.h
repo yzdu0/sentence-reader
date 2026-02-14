@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <iostream>
 
 class Util {
 public:
@@ -13,4 +14,12 @@ public:
 		}
 		return out;
 	}
+
+	static void print_stack_depth(int depth) {
+		for (int i = 0; i < depth; i++) {
+			std::cout << "|   ";
+		}
+	}
+
+	
 };

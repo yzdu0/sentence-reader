@@ -1,10 +1,19 @@
 # Closed classes (just list surface forms)
 Pron: he she they i we you him her them me us it who
-Det: the a an this that these those my your his her their our each every all no
+Det: the a an this that these those my your his her their our each every all no some
 P: with in on at by from over for under between among before after during without
-Conj: and or but nor yet so therefore
+
+# Conjunctions 
+AND: and
+OR: or
+BUT: but
+NOR: nor
+YET: yet
+SO: so
+THEREFORE: therefore
+
 Neg: not never
-Aux: am
+Aux: am are is did
 Cop: am are is was
 TO: to
 FOR: for

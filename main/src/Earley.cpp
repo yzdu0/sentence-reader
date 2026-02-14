@@ -4,6 +4,7 @@
 #include "sentence-reader/Earley.h"
 #include "sentence-reader/Lexicon.h"
 #include "sentence-reader/Util.h"
+#include "sentence-reader/SyntaxTree.h"
 #include <map>
 #include <set>
 
@@ -31,7 +32,10 @@ void Earley::dfs(StatePointer cur,
     const std::vector<std::string>& sentence,
     int depth){
 
-    if (cur.word_index >= 1000 || cur.item_index >= 1000) return;
+    // Only for invalid sentences
+    //if (depth > 1) return;
+
+    //if (cur.word_index >= 1000 || cur.item_index >= 1000) return;
 
     const State& s = chart[cur.word_index].items[cur.item_index];
 
@@ -65,8 +69,6 @@ void Earley::dfs(StatePointer cur,
             << s.reasons[0].word_pointer.tag << " -> " << s.reasons[0].word_pointer.word
             << "]\n";
     }
-
-    //dfs(s.reasons[0].p_left, chart, sentence, depth);
 }
 static bool valid(const StatePointer& p) {
     return p.word_index < 1000 && p.item_index < 1000;
@@ -93,7 +95,7 @@ std::vector<std::string> Earley::dfs_helper(StatePointer cur,
     const std::vector<std::string>& sentence)
 {
     // base cases 
-    if (!valid(cur)) return { "" };
+    //if (!valid(cur)) return { "" };
     const State& st = chart[cur.word_index].items[cur.item_index];
 
     if (st.progress == 0) return { "" };
@@ -148,56 +150,62 @@ std::vector<std::string> Earley::dfs3(StatePointer cur,
     return out;
 }
 
-/*std::vector<SyntaxTree> Earley::treeDFS(StatePointer cur,
-    std::vector<Column>& chart,
-    const std::vector<std::string>& sentence,
-    int depth)
-{
-    if (!valid(cur)) return {};
-    const State& s = chart[cur.word_index].items[cur.item_index];
-    if (!is_finished(s)) return {};
+/*
+I saw the man
 
-    std::string lhs = grammar.rules[s.rule_id].left;
+VP -> Det V
 
-    std::vector<SyntaxTree> rhs = treeDFShelper(cur, chart, sentence);
-}
+This is represented by three states.
+VP -> * Det V
+VP -> Det * V
+VP -> Det V *
 
+
+VP   VP   VP
+|    |    |
+|    |    V
+|    progress
+starting
+*/
 std::vector<SyntaxTree> Earley::treeDFShelper(StatePointer cur,
     std::vector<Column>& chart,
     const std::vector<std::string>& sentence) {
-    // base cases 
     if (!valid(cur)) return {};
+    // base cases 
     const State& st = chart[cur.word_index].items[cur.item_index];
 
-    if (st.progress == 0) return {};
+    if (st.progress == 0) return { SyntaxTree(grammar.rules[st.rule_id].left) };
 
     std::vector<SyntaxTree> all;
-    // Loop through every possible path to this state 
-    for (const BackP& bp : st.reasons) {
 
+    // Loop through every possible path to this state 
+    //BackP bp = st.reasons[0];
+    for (const BackP& bp : st.reasons) {
         std::vector<SyntaxTree> rest = treeDFShelper(bp.p_left, chart, sentence);
 
-        std::vector<SyntaxTree> child_alts;
+        std::vector<SyntaxTree> child;
         // Recursive descent; to another state
         if (has_down(bp)) {
-            child_alts = treeDFS(bp.p_down, chart, sentence, 0);
+            child = treeDFShelper(bp.p_down, chart, sentence);
         }
         // Base case: we reach a single word
         else if (has_word(bp)) {
-            //child_alts = { "(" + bp.word_pointer.tag + " \"" + bp.word_pointer.word + "\")" };
-            child_alts = { SyntaxTree(bp.word_pointer.tag) };
+            child = { SyntaxTree(bp.word_pointer.tag, bp.word_pointer.word) };
         }
         else {
-            child_alts = {};
+
         }
 
-        //std::vector<std::string> combined = cartesian_product(rest, child_alts);
-        for (auto& x : combined) {
-            all.push_back(x);
+        std::vector<SyntaxTree> combined = Util::cartesian_product(rest, child);
+        for (SyntaxTree& s : combined) {
+            all.push_back(s);
         }
     }
+    //rest.addTreeRight(child);
     return all;
-}*/
+
+    //return rest + child;
+}
 
 // (S0(S(NP(Pron "i"))(VP(V "saw")(NP(NP(Det "the")(N "man"))(PP(P "with")(NP(Det "my")(N "telescope")))))))
 // (S0(S(NP(Pron "i"))(VP(VP(V "saw")(NP(Det "the")(N "man")))(PP(P "with")(NP(Det "my")(N "telescope"))))))
@@ -255,7 +263,7 @@ void Earley::parse(const std::vector<std::string>& sentence,
         }
     }
 
-    std::cout << "Syntax Tree:\n";
+    //std::cout << "Syntax Tree:\n";
     StatePointer res;
     for (std::size_t i = 0; i < chart.back().size(); i++) {
         const State& s = chart.back().items[i];
@@ -264,12 +272,27 @@ void Earley::parse(const std::vector<std::string>& sentence,
             res.item_index = i;
         }
     }
-    dfs(res, chart, sentence, -1);
+    //dfs(res, chart, sentence, -1);
 
     std::vector<std::string> x = dfs3(res, chart, sentence, -1);
 
-    for (std::string cur : x) {
-        std::cout << cur << "\n";
+    if (x.size() == 1) {
+        std::cout << "1 interpretation discovered:\n";
+    }
+    else {
+        std::cout << x.size() << " interpretations discovered:\n";
+    }
+
+    //for (std::string cur : x) {
+    //    std::cout << cur << "\n";
+    //}
+
+    std::vector<SyntaxTree> syntaxTrees = treeDFShelper(res, chart, sentence);
+    //syntaxTrees[0].display();
+    std::cout << "\n";
+    for (SyntaxTree& s : syntaxTrees) {
+        s.display();
+        std::cout << "----\n";
     }
 }
 // Generate new states

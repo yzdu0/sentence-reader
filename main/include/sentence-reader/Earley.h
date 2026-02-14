@@ -85,6 +85,7 @@ struct Column {
         for (const State& state : items) {
             std::cout << "   " << state.rule_id << " " << state.progress << " " << state.origin << "\n";
         }
+        std::cout << "---\n";
     }
 };
 
@@ -123,10 +124,10 @@ private:
         std::vector<Column>& chart,
         const std::vector<std::string>& sentence);
 
-    std::vector<SyntaxTree> treeDFS(StatePointer cur,
+    /*std::vector<SyntaxTree> treeDFS(StatePointer cur,
         std::vector<Column>& chart,
         const std::vector<std::string>& sentence,
-        int depth);
+        int depth);*/
 
     
 

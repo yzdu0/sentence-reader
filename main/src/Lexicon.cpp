@@ -89,6 +89,7 @@ void Lexicon::create_verbs(std::vector<std::string> input) {
 	std::string POS = input[0];
 	std::string base_word = input[1];
 	add_to_dictionary(base_word, POS);
+
 	// Past tense - add an -ed on the end. (Or just -d if it already ends with e).
 	std::string past_tense = find_overload(input, "past");
 	if (past_tense == "-") {
@@ -143,7 +144,7 @@ std::string Lexicon::find_overload(const std::vector<std::string>& input, const 
 		}
 	}
 	return "-";
-}
+}//
 /*
 TODO:
 Verb past tense, present tense, gerund, past participle

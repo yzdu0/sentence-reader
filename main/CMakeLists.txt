@@ -9,7 +9,8 @@ add_executable(sentence-reader
     src/deprecated/Parser.cpp
     src/Rule.cpp
     src/Earley.cpp
-    src/Lexicon.cpp "src/Grammar.cpp" "include/sentence-reader/Grammar.h" "include/sentence-reader/SyntaxTree.h" "include/sentence-reader/Util.h")
+    src/Lexicon.cpp
+    src/SyntaxTree.cpp "src/Grammar.cpp" "include/sentence-reader/Grammar.h" "include/sentence-reader/SyntaxTree.h" "include/sentence-reader/Util.h")
 
 target_include_directories(sentence-reader
     PRIVATE
