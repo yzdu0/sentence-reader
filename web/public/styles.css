@@ -232,8 +232,13 @@ kbd {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+.composer__actions .button {
+  flex: 1 1 15rem;
 }
 
 .button {

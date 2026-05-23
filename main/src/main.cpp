@@ -9,6 +9,8 @@
 #include <vector>
 
 namespace {
+constexpr std::size_t kMaxInterpretationsToOutput = 20;
+
 struct CommandLineOptions {
     std::string sentence;
     bool json_output = false;
@@ -131,6 +133,14 @@ void print_usage(const char* program_name) {
     std::cout << "Usage: " << program_name << " [--json] [--sentence \"text\"]\n";
 }
 
+ParseResult limit_interpretations_for_output(const ParseResult& result) {
+    ParseResult limited = result;
+    if (limited.interpretations.size() > kMaxInterpretationsToOutput) {
+        limited.interpretations.resize(kMaxInterpretationsToOutput);
+    }
+    return limited;
+}
+
 int parse_and_print(Earley& parser, const std::string& raw_input, bool json_output) {
     const std::vector<std::string> sentence = tokenize_sentence(raw_input);
     ParseResult empty_result;
@@ -147,10 +157,11 @@ int parse_and_print(Earley& parser, const std::string& raw_input, bool json_outp
     }
 
     const ParseResult result = parser.parse(sentence);
+    const ParseResult limited_result = limit_interpretations_for_output(result);
     const std::string error_message = result.success ? "" : "No parse found.";
 
     if (json_output) {
-        std::cout << build_json_response(raw_input, sentence, result, error_message) << "\n";
+        std::cout << build_json_response(raw_input, sentence, limited_result, error_message) << "\n";
         return 0;
     }
 
@@ -165,8 +176,11 @@ int parse_and_print(Earley& parser, const std::string& raw_input, bool json_outp
     }
 
     std::cout << "Found " << result.interpretations.size() << " interpretation(s).\n";
-    for (std::size_t i = 0; i < result.interpretations.size(); ++i) {
-        std::cout << "[" << (i + 1) << "] " << result.interpretations[i] << "\n";
+    if (result.interpretations.size() > limited_result.interpretations.size()) {
+        std::cout << "Showing the first " << limited_result.interpretations.size() << ".\n";
+    }
+    for (std::size_t i = 0; i < limited_result.interpretations.size(); ++i) {
+        std::cout << "[" << (i + 1) << "] " << limited_result.interpretations[i] << "\n";
     }
 
     return 0;

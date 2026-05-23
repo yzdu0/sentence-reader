@@ -1,6 +1,7 @@
 const form = document.querySelector("[data-parse-form]");
 const sentenceInput = document.querySelector("#sentence-input");
 const submitButton = document.querySelector("[data-submit-button]");
+const randomButton = document.querySelector("[data-random-button]");
 const resultsPanel = document.querySelector("[data-results-panel]");
 const statusPill = document.querySelector("[data-status-pill]");
 const interpretationCount = document.querySelector("[data-interpretation-count]");
@@ -63,6 +64,14 @@ function resetResults() {
   tokenStrip.replaceChildren();
   unknownStrip.replaceChildren();
   interpretationGrid.replaceChildren();
+}
+
+function setControlsDisabled(disabled) {
+  submitButton.disabled = disabled;
+
+  if (randomButton) {
+    randomButton.disabled = disabled;
+  }
 }
 
 function renderChips(container, values, className) {
@@ -355,6 +364,17 @@ async function requestParse(sentence) {
   return payload;
 }
 
+async function requestRandomSentence() {
+  const response = await fetch("/api/random-sentence");
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.error || "The random sentence request failed.");
+  }
+
+  return payload;
+}
+
 async function handleSubmit(event) {
   event?.preventDefault();
 
@@ -365,7 +385,7 @@ async function handleSubmit(event) {
     return;
   }
 
-  submitButton.disabled = true;
+  setControlsDisabled(true);
   setState("loading", "Parsing");
   message.textContent = "Running the C++ parser and assembling interpretations...";
   interpretationGrid.replaceChildren();
@@ -388,7 +408,31 @@ async function handleSubmit(event) {
     setState("error", "Server error");
     message.textContent = error.message;
   } finally {
-    submitButton.disabled = false;
+    setControlsDisabled(false);
+  }
+}
+
+async function handleRandomSentence() {
+  resetResults();
+  setControlsDisabled(true);
+  setState("loading", "Generating");
+  message.textContent = "Generating a random sentence from the current grammar...";
+
+  try {
+    const result = await requestRandomSentence();
+    sentenceInput.value = result.rawInput || "";
+    sentenceInput.focus();
+
+    if (result.success) {
+      renderSuccess(result);
+    } else {
+      renderFailure(result);
+    }
+  } catch (error) {
+    setState("error", "Server error");
+    message.textContent = error.message;
+  } finally {
+    setControlsDisabled(false);
   }
 }
 
@@ -406,6 +450,10 @@ for (const button of sampleButtons) {
     sentenceInput.focus();
     handleSubmit();
   });
+}
+
+if (randomButton) {
+  randomButton.addEventListener("click", handleRandomSentence);
 }
 
 window.addEventListener("resize", scheduleTreeConnectorLayout);
