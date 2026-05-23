@@ -4,6 +4,12 @@ Sentence Reader is an English sentence parser written in C++. It now includes a 
 
 https://sentence-reader.up.railway.app/
 
+## Planned future features
+
+- Translate to Chinese
+- More words and more grammar rules
+- Add in custom words
+
 ## What changed
 
 - The parser now supports `--json` output for machine-readable integrations.
