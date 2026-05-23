@@ -15,3 +15,5 @@
 18	751	1779512045901653156	CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o	b980618497a2335b
 17	896	1779512045901302699	CMakeFiles/sentence-reader.dir/src/Earley.cpp.o	e2f4afee1474673c
 896	1004	1779512046779875186	sentence-reader	4615674c81ef0e31
+5	644	1779513083940631503	CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o	4d8413dd61df1c13
+645	764	1779513084581051320	sentence-reader	4615674c81ef0e31

@@ -12,7 +12,7 @@ Grammar::Grammar() {
         "Conj -> ConjAdv",
 
         "CoordConj -> AND",
-        "CoordConj -> NOT",
+        "CoordConj -> NOR",
         "CoordConj -> BUT",
         "CoordConj -> OR",
         "CoordConj -> YET",
