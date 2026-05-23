@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/Earley.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Earley.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Earley.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/Earley.cpp.o"
+},
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Grammar.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Grammar.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o"
+},
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Lexicon.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Lexicon.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o"
+},
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/Parser.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Parser.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Parser.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/Parser.cpp.o"
+},
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/Rule.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Rule.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Rule.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/Rule.cpp.o"
+},
+{
+  "directory": "/Users/lukebartram/Documents/GitHub/sentence-reader/build",
+  "command": "/usr/bin/clang++ -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -o CMakeFiles/sentence-reader.dir/src/main.cpp.o -c /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/main.cpp",
+  "file": "/Users/lukebartram/Documents/GitHub/sentence-reader/main/src/main.cpp",
+  "output": "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir/src/main.cpp.o"
+}
+]

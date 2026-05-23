@@ -1,75 +1,39 @@
 #pragma once
+
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
+
 class Word {
 public:
-	std::string word;
-	std::string POS;
-	/*enum PartOfSpeech {
-		Verb,
-		Noun,
-		Adjective,
-		Pronoun,
-		Determiner,
-		Preposition,
-		Conjunction,
-		Negation,
-		AuxillaryVerb,
-		Adverb,
-		CopulaVerb,
+    std::string word;
+    std::string POS;
 
-		TO,
-		FOR,
-	};*/
+    Word();
 
-	/*enum Plurality {
-		NA,
-		Singular,
-		Plural,
-	
-	};
-
-	enum Tense {
-		NA,
-		Past,
-		Present,
-		Future,
-	};*/
-
-	//PartOfSpeech pos;
-	//Plurality plurality = Plurality::NA;
-	//Tense tense = Tense::NA;
-
-	Word();
-
-	Word(std::string word, std::string POS);
-
-	//std::string get_POS();
+    Word(std::string word, std::string POS);
 };
 
 class Lexicon {
 public:
-	Lexicon();
+    Lexicon();
 
-	std::unordered_map<std::string, std::vector<Word>> dictionary;
+    std::unordered_map<std::string, std::vector<Word>> dictionary;
 
-	bool search_word(std::string word, std::string POS);
+    bool search_word(const std::string& word, const std::string& POS) const;
+
+    bool contains_word(const std::string& word) const;
 
 private:
+    void add_to_dictionary(const std::string& word, const std::string& POS);
 
-	void add_to_dictionary(std::string word, std::string POS);
+    void create_nouns(const std::vector<std::string>& input);
 
-	void create_nouns(std::vector<std::string> input);
+    void create_verbs(const std::vector<std::string>& input);
 
-	void create_verbs(std::vector<std::string> input);
+    void create_adjectives(const std::vector<std::string>& input);
 
-	void create_adjectives(std::vector<std::string> input);
+    void create_misc(const std::vector<std::string>& input);
 
-	void create_misc(std::vector<std::string> input);
-
-	std::string find_overload(
-		const std::vector<std::string>& input, 
-		const std::string& key
-	);
+    std::string find_overload(const std::vector<std::string>& input, const std::string& key) const;
 };

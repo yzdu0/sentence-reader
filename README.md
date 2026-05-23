@@ -1,33 +1,46 @@
-A C++ project that parses English sentences. 
+# sentence-reader
+
+A C++ project that parses English sentences and reports one or more syntactic interpretations.
 No machine learning involved.
 
-TODO:
-- Add more words
-- Better formatting, especially for ambiguous sentences
+## Improvements in this version
+
+- The parser now builds cleanly with Clang on macOS.
+- Input is normalized before parsing, so punctuation like commas and periods no longer break valid sentences.
+- One-shot CLI parsing is supported with `--sentence`, which makes the project easier to test and script.
+- Parse output now reports how many interpretations were found and numbers each one.
+- Lexicon inflection generation now creates real third-person singular verb forms such as `walks`.
+- Basic CTest coverage checks ambiguity, punctuation handling, and inflected verbs.
+
+## Build
+
+```bash
+cmake -S main -B build
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+## Examples
+
+```bash
+./build/sentence-reader --sentence "I saw the man with the telescope"
+```
 
 Example output:
 
+```text
+Input: i saw the man with the telescope
+Found 2 interpretation(s).
+[1] (S0 ...)
+[2] (S0 ...)
 ```
-Enter a sentence:
-> All humans are mortal, therefore I am not human
-Syntax Tree:
-[all humans are mortal therefore i am not human] [S -> S Conj S]
-|   [all humans are mortal] [S -> NP VP]
-|   |   [all humans] [NP -> Det N]
-|   |   |   [all] [Det -> all]
-|   |   |   [humans] [N -> humans]
-|   |   [are mortal] [VP -> Cop AdjP]
-|   |   |   [are] [Cop -> are]
-|   |   |   [mortal] [AdjP -> Adj]
-|   |   |   |   [mortal] [Adj -> mortal]
-|   [therefore] [Conj -> therefore]
-|   [i am not human] [S -> NP VP]
-|   |   [i] [NP -> Pron]
-|   |   |   [i] [Pron -> i]
-|   |   [am not human] [VP -> Aux Neg NP]
-|   |   |   [am] [Aux -> am]
-|   |   |   [not] [Neg -> not]
-|   |   |   [human] [NP -> N]
-|   |   |   |   [human] [N -> human]
-(S0 (S (S (NP (Det "all") (N "humans")) (VP (Cop "are") (AdjP (Adj "mortal")))) (Conj "therefore") (S (NP (Pron "i")) (VP (Aux "am") (Neg "not") (NP (N "human"))))))
+
+```bash
+./build/sentence-reader --sentence "All humans are mortal, therefore I am not human."
+```
+
+The parser also still supports interactive mode:
+
+```bash
+./build/sentence-reader
 ```

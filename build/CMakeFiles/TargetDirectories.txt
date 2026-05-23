@@ -1,0 +1,4 @@
+/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/sentence-reader.dir
+/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/test.dir
+/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/edit_cache.dir
+/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/rebuild_cache.dir

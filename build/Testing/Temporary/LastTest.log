@@ -1,0 +1,61 @@
+Start testing: May 23 13:00 NZST
+----------------------------------------------------------
+1/3 Testing: sentence_reader_ambiguous_pp_attachment
+1/3 Test: sentence_reader_ambiguous_pp_attachment
+Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "I saw the man with the telescope"
+Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
+"sentence_reader_ambiguous_pp_attachment" start time: May 23 13:00 NZST
+Output:
+----------------------------------------------------------
+Input: i saw the man with the telescope
+Found 2 interpretation(s).
+[1] (S0 (S (NP (Pron "i")) (VP (V "saw") (NP (NP (Det "the") (N "man")) (PP (P "with") (NP (Det "the") (N "telescope")))))))
+[2] (S0 (S (NP (Pron "i")) (VP (VP (V "saw") (NP (Det "the") (N "man"))) (PP (P "with") (NP (Det "the") (N "telescope"))))))
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Pass Reason:
+Required regular expression found. Regex=[Found 2 interpretation\(s\)\.]
+"sentence_reader_ambiguous_pp_attachment" end time: May 23 13:00 NZST
+"sentence_reader_ambiguous_pp_attachment" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/3 Testing: sentence_reader_handles_punctuation
+2/3 Test: sentence_reader_handles_punctuation
+Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "All humans are mortal, therefore I am not human."
+Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
+"sentence_reader_handles_punctuation" start time: May 23 13:00 NZST
+Output:
+----------------------------------------------------------
+Input: all humans are mortal therefore i am not human
+Found 1 interpretation(s).
+[1] (S0 (S (S (NP (Det "all") (N "humans")) (VP (Cop "are") (AdjP (Adj "mortal")))) (Conj "therefore") (S (NP (Pron "i")) (VP (Aux "am") (Neg "not") (NP (N "human"))))))
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Pass Reason:
+Required regular expression found. Regex=[Found 1 interpretation\(s\)\.]
+"sentence_reader_handles_punctuation" end time: May 23 13:00 NZST
+"sentence_reader_handles_punctuation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/3 Testing: sentence_reader_handles_inflected_verbs
+3/3 Test: sentence_reader_handles_inflected_verbs
+Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "he walks"
+Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
+"sentence_reader_handles_inflected_verbs" start time: May 23 13:00 NZST
+Output:
+----------------------------------------------------------
+Input: he walks
+Found 1 interpretation(s).
+[1] (S0 (S (NP (Pron "he")) (VP (V "walks"))))
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Pass Reason:
+Required regular expression found. Regex=[Found 1 interpretation\(s\)\.]
+"sentence_reader_handles_inflected_verbs" end time: May 23 13:00 NZST
+"sentence_reader_handles_inflected_verbs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 23 13:00 NZST

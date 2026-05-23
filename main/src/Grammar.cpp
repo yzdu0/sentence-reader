@@ -1,4 +1,3 @@
-#pragma once
 #include <sentence-reader/Grammar.h>
 #include <vector>
 
@@ -63,7 +62,6 @@ Grammar::Grammar() {
     }
 }
 
-// TODO
 Grammar Grammar::ChomskyNormalForm(Grammar input) {
     Grammar g;
     return g;

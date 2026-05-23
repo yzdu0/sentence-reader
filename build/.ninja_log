@@ -1,0 +1,11 @@
+# ninja log v7
+3	817	1779497964884895360	CMakeFiles/sentence-reader.dir/src/Rule.cpp.o	7d40c7661847d3b0
+3	823	1779497964884567781	CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o	404e2e634ce6d9ab
+4	689	1779498015817269100	CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o	393b9215365471af
+3	967	1779497964884783820	CMakeFiles/sentence-reader.dir/src/Parser.cpp.o	f87df884e21eb532
+2	54	1779498083557792146	build.ninja	cfbb57270289a918
+2	54	1779498083556677452	/Users/lukebartram/Documents/GitHub/sentence-reader/build/cmake_install.cmake	cfbb57270289a918
+2	54	1779498083557087947	/Users/lukebartram/Documents/GitHub/sentence-reader/build/CTestTestfile.cmake	cfbb57270289a918
+5	654	1779498015817658137	CMakeFiles/sentence-reader.dir/src/main.cpp.o	25c983ce8a84fd85
+3	985	1779497964884371034	CMakeFiles/sentence-reader.dir/src/Earley.cpp.o	e377d885a2926a58
+689	792	1779498016501400425	sentence-reader	954480c104ad37f8

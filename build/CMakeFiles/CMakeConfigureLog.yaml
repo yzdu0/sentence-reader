@@ -1,0 +1,2242 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/opt/homebrew/bin/uname"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/uname"
+      - "/opt/homebrew/sbin/uname"
+      - "/usr/local/bin/uname"
+      - "/System/Cryptexes/App/usr/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Darwin - 24.6.0 - arm64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/opt/homebrew/bin/ninja-build"
+    found: "/opt/homebrew/bin/ninja"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/opt/homebrew/share/cmake/Modules/"
+    found: "/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is AppleClang, found in:
+        /Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/4.1.1/CompilerIdCXX/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:290 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler apple sysroot: "/usr/bin/clang++" "-E" "apple-sdk.cpp"
+        # 1 "apple-sdk.cpp"
+        # 1 "<built-in>" 1
+        # 1 "<built-in>" 3
+        # 514 "<built-in>" 3
+        # 1 "<command line>" 1
+        # 1 "<built-in>" 2
+        # 1 "apple-sdk.cpp" 2
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 1 3 4
+        # 89 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 90 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h" 1 3 4
+        # 91 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 207 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
+        # 196 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 197 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
+        # 33 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 34 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
+        # 198 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
+        # 34 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 3 4
+        # 1 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
+        # 35 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 2 3 4
+        # 199 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 208 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 2 "apple-sdk.cpp" 2
+        
+        
+      Found apple sysroot: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/usr/bin/objcopy"
+      - "/opt/homebrew/bin/objcopy"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/objcopy"
+      - "/opt/homebrew/sbin/objcopy"
+      - "/usr/local/bin/objcopy"
+      - "/System/Cryptexes/App/usr/bin/objcopy"
+      - "/bin/objcopy"
+      - "/usr/sbin/objcopy"
+      - "/sbin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/objcopy"
+      - "/Applications/VMware Fusion.app/Contents/Public/objcopy"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/objcopy"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/usr/bin/readelf"
+      - "/opt/homebrew/bin/readelf"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/readelf"
+      - "/opt/homebrew/sbin/readelf"
+      - "/usr/local/bin/readelf"
+      - "/System/Cryptexes/App/usr/bin/readelf"
+      - "/bin/readelf"
+      - "/usr/sbin/readelf"
+      - "/sbin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/readelf"
+      - "/Applications/VMware Fusion.app/Contents/Public/readelf"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/readelf"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/usr/bin/dlltool"
+      - "/opt/homebrew/bin/dlltool"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/dlltool"
+      - "/opt/homebrew/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/System/Cryptexes/App/usr/bin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/dlltool"
+      - "/Applications/VMware Fusion.app/Contents/Public/dlltool"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/usr/bin/addr2line"
+      - "/opt/homebrew/bin/addr2line"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/addr2line"
+      - "/opt/homebrew/sbin/addr2line"
+      - "/usr/local/bin/addr2line"
+      - "/System/Cryptexes/App/usr/bin/addr2line"
+      - "/bin/addr2line"
+      - "/usr/sbin/addr2line"
+      - "/sbin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/addr2line"
+      - "/Applications/VMware Fusion.app/Contents/Public/addr2line"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/addr2line"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/opt/homebrew/bin/tapi"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/tapi"
+      - "/opt/homebrew/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/System/Cryptexes/App/usr/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/tapi"
+      - "/Applications/VMware Fusion.app/Contents/Public/tapi"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake:76 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_INSTALL_NAME_TOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "install_name_tool"
+    candidate_directories:
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+    searched_directories:
+      - "/opt/homebrew/bin/install_name_tool"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/install_name_tool"
+      - "/opt/homebrew/sbin/install_name_tool"
+      - "/usr/local/bin/install_name_tool"
+      - "/System/Cryptexes/App/usr/bin/install_name_tool"
+    found: "/usr/bin/install_name_tool"
+    search_context:
+      ENV{PATH}:
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F"
+      binary: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_6f20f
+        [1/2] /usr/bin/clang++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk   -v -Wl,-v -MD -MT CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Apple clang version 17.0.0 (clang-1700.6.3.2)
+        Target: arm64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+        ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.2 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F -target-linker-version 1230.1 -v -fcoverage-compilation-dir=/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 17.0.0 (clang-1700.6.3.2) default target arm64-apple-darwin24.6.0
+        ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"
+        ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1
+         /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include
+         /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+         /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+         /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+         /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
+        End of search list.
+        [2/2] : && /usr/bin/clang++ -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_6f20f   && :
+        Apple clang version 17.0.0 (clang-1700.6.3.2)
+        Target: arm64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_6f20f -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+        @(#)PROGRAM:ld PROJECT:ld-1230.1
+        BUILD 06:36:05 Dec  2 2025
+        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
+        will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+        LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+        TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.3.8)
+        Library search paths:
+        	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib
+        	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift
+        Framework search paths:
+        	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:122 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Effective list of requested architectures (possibly empty)  : ""
+      Effective list of architectures found in the ABI info binary: "arm64"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1]
+          add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+          add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+          add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        end of search list found
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1]
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        implicit include dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_6f20f]
+        ignore line: [[1/2] /usr/bin/clang++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk   -v -Wl -v -MD -MT CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.6.3.2)]
+        ignore line: [Target: arm64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+        ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"]
+        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.2 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F -target-linker-version 1230.1 -v -fcoverage-compilation-dir=/Users/lukebartram/Documents/GitHub/sentence-reader/build/CMakeFiles/CMakeScratch/TryCompile-vy3W1F -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 17.0.0 (clang-1700.6.3.2) default target arm64-apple-darwin24.6.0]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [[2/2] : && /usr/bin/clang++ -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_6f20f   && :]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.6.3.2)]
+        ignore line: [Target: arm64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_6f20f -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+          arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+          arg [-demangle] ==> ignore
+          arg [-lto_library] ==> ignore, skip following value
+          arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+          arg [-dynamic] ==> ignore
+          arg [-arch] ==> ignore
+          arg [arm64] ==> ignore
+          arg [-platform_version] ==> ignore
+          arg [macos] ==> ignore
+          arg [15.0.0] ==> ignore
+          arg [26.2] ==> ignore
+          arg [-syslibroot] ==> ignore
+          arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk] ==> ignore
+          arg [-mllvm] ==> ignore
+          arg [-enable-linkonceodr-outlining] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_6f20f] ==> ignore
+          arg [-search_paths_first] ==> ignore
+          arg [-headerpad_max_install_names] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_6f20f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lc++] ==> lib [c++]
+          arg [-lSystem] ==> lib [System]
+          arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        linker tool for 'CXX': /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
+        Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        remove lib [System]
+        remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib]
+        collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        implicit libs: [c++]
+        implicit objs: []
+        implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" "-v"
+      @(#)PROGRAM:ld PROJECT:ld-1230.1
+      BUILD 06:36:05 Dec  2 2025
+      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
+      will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+      LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+      TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.3.8)
+...
+
+---
+events:
+
+---
+events:
+  -
+  -
+    kind: "find-v1"
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CTest.cmake:188 (find_program)"
+      - "CMakeLists.txt:27 (include)"
+    mode: "program"
+    backtrace:
+    variable: "MEMORYCHECK_COMMAND"
+      - "/opt/homebrew/share/cmake/Modules/CTest.cmake:188 (find_program)"
+    description: "Path to the memory checking command, used for memory error detection."
+      - "CMakeLists.txt:27 (include)"
+    settings:
+    mode: "program"
+      SearchFramework: "FIRST"
+    variable: "MEMORYCHECK_COMMAND"
+      SearchAppBundle: "FIRST"
+    description: "Path to the memory checking command, used for memory error detection."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+    names:
+      - "purify"
+      - "purify"
+      - "valgrind"
+      - "valgrind"
+      - "boundscheck"
+      - "drmemory"
+      - "cuda-memcheck"
+      - "compute-sanitizer"
+    candidate_directories:
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/"
+      - "/opt/homebrew/bin/"
+      - "boundscheck"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "drmemory"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "cuda-memcheck"
+      - "/usr/bin/"
+      - "compute-sanitizer"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+    candidate_directories:
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/"
+      - "/opt/pkg/env/active/bin/"
+      - "/opt/homebrew/bin/"
+      - "/opt/pmk/env/global/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/opt/homebrew/sbin/"
+      - "/Users/lukebartram/.cargo/bin/"
+      - "/usr/local/bin/"
+      - "/Applications/Codex.app/Contents/Resources/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/"
+      - "/usr/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/"
+      - "/usr/sbin/"
+      - "/opt/homebrew/bin/"
+      - "/sbin/"
+      - "/opt/homebrew/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/opt/homebrew/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/usr/local/sbin/"
+      - "/opt/pkg/env/active/bin/"
+      - "/usr/local/"
+      - "/opt/pmk/env/global/bin/"
+      - "/usr/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/sbin/"
+      - "/Users/lukebartram/.cargo/bin/"
+      - "/usr/"
+      - "/Applications/Codex.app/Contents/Resources/"
+      - "/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/"
+      - "/sbin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/usr/X11R6/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/"
+      - "/usr/X11R6/sbin/"
+      - "/opt/homebrew/bin/"
+      - "/usr/X11R6/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/pkg/bin/"
+      - "/opt/homebrew/"
+      - "/usr/pkg/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/pkg/"
+      - "/usr/local/sbin/"
+      - "/opt/bin/"
+      - "/usr/local/"
+      - "/opt/sbin/"
+      - "/usr/bin/"
+      - "/opt/"
+      - "/usr/sbin/"
+      - "/sw/bin/"
+      - "/usr/"
+      - "/sw/sbin/"
+      - "/bin/"
+      - "/sw/"
+      - "/sbin/"
+      - "/opt/local/bin/"
+      - "/usr/X11R6/bin/"
+      - "/opt/local/sbin/"
+      - "/usr/X11R6/sbin/"
+      - "/opt/local/"
+      - "/usr/X11R6/"
+      - "/Users/lukebartram/Applications/"
+      - "/usr/pkg/bin/"
+      - "/Applications/"
+      - "/usr/pkg/sbin/"
+      - "/Applications/Xcode.app/Contents/Applications/"
+      - "/usr/pkg/"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/"
+      - "/opt/bin/"
+    searched_directories:
+      - "/opt/sbin/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/purify"
+      - "/opt/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/purify"
+      - "/sw/bin/"
+      - "/opt/homebrew/bin/purify"
+      - "/sw/sbin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/purify"
+      - "/sw/"
+      - "/opt/homebrew/sbin/purify"
+      - "/opt/local/bin/"
+      - "/usr/local/bin/purify"
+      - "/opt/local/sbin/"
+      - "/System/Cryptexes/App/usr/bin/purify"
+      - "/opt/local/"
+      - "/usr/bin/purify"
+      - "/Users/lukebartram/Applications/"
+      - "/bin/purify"
+      - "/Applications/"
+      - "/usr/sbin/purify"
+      - "/Applications/Xcode.app/Contents/Applications/"
+      - "/sbin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/purify"
+    searched_directories:
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/purify"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/purify"
+      - "/opt/pkg/env/active/bin/purify"
+      - "/opt/pmk/env/global/bin/purify"
+      - "/Applications/VMware Fusion.app/Contents/Public/purify"
+      - "/Users/lukebartram/.cargo/bin/purify"
+      - "/Applications/Codex.app/Contents/Resources/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/purify"
+      - "/opt/homebrew/bin/purify"
+      - "/opt/homebrew/sbin/purify"
+      - "/opt/homebrew/purify"
+      - "/usr/local/bin/purify"
+      - "/usr/local/sbin/purify"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/purify"
+      - "/usr/local/purify"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/purify"
+      - "/usr/bin/purify"
+      - "/opt/homebrew/bin/purify"
+      - "/usr/sbin/purify"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/purify"
+      - "/usr/purify"
+      - "/opt/homebrew/sbin/purify"
+      - "/usr/local/bin/purify"
+      - "/System/Cryptexes/App/usr/bin/purify"
+      - "/usr/bin/purify"
+      - "/bin/purify"
+      - "/usr/sbin/purify"
+      - "/sbin/purify"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/purify"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/purify"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/purify"
+      - "/opt/pkg/env/active/bin/purify"
+      - "/opt/pmk/env/global/bin/purify"
+      - "/Applications/VMware Fusion.app/Contents/Public/purify"
+      - "/Users/lukebartram/.cargo/bin/purify"
+      - "/Applications/Codex.app/Contents/Resources/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/purify"
+      - "/bin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/purify"
+      - "/sbin/purify"
+      - "/opt/homebrew/bin/purify"
+      - "/usr/X11R6/bin/purify"
+      - "/opt/homebrew/sbin/purify"
+      - "/usr/X11R6/sbin/purify"
+      - "/opt/homebrew/purify"
+      - "/usr/X11R6/purify"
+      - "/usr/local/bin/purify"
+      - "/usr/pkg/bin/purify"
+      - "/usr/local/sbin/purify"
+      - "/usr/pkg/sbin/purify"
+      - "/usr/local/purify"
+      - "/usr/pkg/purify"
+      - "/usr/bin/purify"
+      - "/opt/bin/purify"
+      - "/usr/sbin/purify"
+      - "/opt/sbin/purify"
+      - "/usr/purify"
+      - "/opt/purify"
+      - "/bin/purify"
+      - "/sw/bin/purify"
+      - "/sw/sbin/purify"
+      - "/sw/purify"
+      - "/opt/local/bin/purify"
+      - "/opt/local/sbin/purify"
+      - "/opt/local/purify"
+      - "/sbin/purify"
+      - "/Users/lukebartram/Applications/purify"
+      - "/usr/X11R6/bin/purify"
+      - "/Applications/purify"
+      - "/usr/X11R6/sbin/purify"
+      - "/Applications/Xcode.app/Contents/Applications/purify"
+      - "/usr/X11R6/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/purify"
+      - "/usr/pkg/bin/purify"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/valgrind"
+      - "/usr/pkg/sbin/purify"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/valgrind"
+      - "/usr/pkg/purify"
+      - "/opt/homebrew/bin/valgrind"
+      - "/opt/bin/purify"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/valgrind"
+      - "/opt/sbin/purify"
+      - "/opt/homebrew/sbin/valgrind"
+      - "/opt/purify"
+      - "/usr/local/bin/valgrind"
+      - "/sw/bin/purify"
+      - "/sw/sbin/purify"
+      - "/System/Cryptexes/App/usr/bin/valgrind"
+      - "/sw/purify"
+      - "/usr/bin/valgrind"
+      - "/bin/valgrind"
+      - "/usr/sbin/valgrind"
+      - "/sbin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/valgrind"
+      - "/opt/pkg/env/active/bin/valgrind"
+      - "/opt/pmk/env/global/bin/valgrind"
+      - "/Applications/VMware Fusion.app/Contents/Public/valgrind"
+      - "/Users/lukebartram/.cargo/bin/valgrind"
+      - "/opt/local/bin/purify"
+      - "/Applications/Codex.app/Contents/Resources/valgrind"
+      - "/opt/local/sbin/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/valgrind"
+      - "/opt/local/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/valgrind"
+      - "/Users/lukebartram/Applications/purify"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/valgrind"
+      - "/Applications/purify"
+      - "/Applications/Xcode.app/Contents/Applications/purify"
+      - "/opt/homebrew/bin/valgrind"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/purify"
+      - "/opt/homebrew/sbin/valgrind"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/valgrind"
+      - "/opt/homebrew/valgrind"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/valgrind"
+      - "/usr/local/bin/valgrind"
+      - "/opt/homebrew/bin/valgrind"
+      - "/usr/local/sbin/valgrind"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/valgrind"
+      - "/opt/homebrew/sbin/valgrind"
+      - "/usr/local/bin/valgrind"
+      - "/System/Cryptexes/App/usr/bin/valgrind"
+      - "/usr/bin/valgrind"
+      - "/usr/local/valgrind"
+      - "/bin/valgrind"
+      - "/usr/bin/valgrind"
+      - "/usr/sbin/valgrind"
+      - "/usr/sbin/valgrind"
+      - "/sbin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/valgrind"
+      - "/opt/pkg/env/active/bin/valgrind"
+      - "/opt/pmk/env/global/bin/valgrind"
+      - "/usr/valgrind"
+      - "/Applications/VMware Fusion.app/Contents/Public/valgrind"
+      - "/bin/valgrind"
+      - "/Users/lukebartram/.cargo/bin/valgrind"
+      - "/sbin/valgrind"
+      - "/Applications/Codex.app/Contents/Resources/valgrind"
+      - "/usr/X11R6/bin/valgrind"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/valgrind"
+      - "/usr/X11R6/sbin/valgrind"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/valgrind"
+      - "/usr/X11R6/valgrind"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/valgrind"
+      - "/usr/pkg/bin/valgrind"
+      - "/opt/homebrew/bin/valgrind"
+      - "/usr/pkg/sbin/valgrind"
+      - "/opt/homebrew/sbin/valgrind"
+      - "/usr/pkg/valgrind"
+      - "/opt/homebrew/valgrind"
+      - "/opt/bin/valgrind"
+      - "/usr/local/bin/valgrind"
+      - "/opt/sbin/valgrind"
+      - "/usr/local/sbin/valgrind"
+      - "/opt/valgrind"
+      - "/usr/local/valgrind"
+      - "/sw/bin/valgrind"
+      - "/usr/bin/valgrind"
+      - "/sw/sbin/valgrind"
+      - "/usr/sbin/valgrind"
+      - "/sw/valgrind"
+      - "/usr/valgrind"
+      - "/opt/local/bin/valgrind"
+      - "/bin/valgrind"
+      - "/opt/local/sbin/valgrind"
+      - "/sbin/valgrind"
+      - "/opt/local/valgrind"
+      - "/usr/X11R6/bin/valgrind"
+      - "/Users/lukebartram/Applications/valgrind"
+      - "/usr/X11R6/sbin/valgrind"
+      - "/Applications/valgrind"
+      - "/usr/X11R6/valgrind"
+      - "/Applications/Xcode.app/Contents/Applications/valgrind"
+      - "/usr/pkg/bin/valgrind"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/valgrind"
+      - "/usr/pkg/sbin/valgrind"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/boundscheck"
+      - "/usr/pkg/valgrind"
+      - "/opt/bin/valgrind"
+      - "/opt/sbin/valgrind"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/boundscheck"
+      - "/opt/valgrind"
+      - "/opt/homebrew/bin/boundscheck"
+      - "/sw/bin/valgrind"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/boundscheck"
+      - "/sw/sbin/valgrind"
+      - "/opt/homebrew/sbin/boundscheck"
+      - "/sw/valgrind"
+      - "/usr/local/bin/boundscheck"
+      - "/opt/local/bin/valgrind"
+      - "/System/Cryptexes/App/usr/bin/boundscheck"
+      - "/opt/local/sbin/valgrind"
+      - "/usr/bin/boundscheck"
+      - "/opt/local/valgrind"
+      - "/bin/boundscheck"
+      - "/Users/lukebartram/Applications/valgrind"
+      - "/usr/sbin/boundscheck"
+      - "/Applications/valgrind"
+      - "/sbin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Applications/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/valgrind"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/boundscheck"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/boundscheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/boundscheck"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/boundscheck"
+      - "/opt/pkg/env/active/bin/boundscheck"
+      - "/opt/homebrew/bin/boundscheck"
+      - "/opt/pmk/env/global/bin/boundscheck"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/boundscheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/boundscheck"
+      - "/opt/homebrew/sbin/boundscheck"
+      - "/Users/lukebartram/.cargo/bin/boundscheck"
+      - "/usr/local/bin/boundscheck"
+      - "/Applications/Codex.app/Contents/Resources/boundscheck"
+      - "/System/Cryptexes/App/usr/bin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/boundscheck"
+      - "/usr/bin/boundscheck"
+      - "/bin/boundscheck"
+      - "/usr/sbin/boundscheck"
+      - "/sbin/boundscheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/boundscheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/boundscheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/boundscheck"
+      - "/opt/homebrew/bin/boundscheck"
+      - "/opt/pkg/env/active/bin/boundscheck"
+      - "/opt/homebrew/sbin/boundscheck"
+      - "/opt/pmk/env/global/bin/boundscheck"
+      - "/opt/homebrew/boundscheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/boundscheck"
+      - "/usr/local/bin/boundscheck"
+      - "/Users/lukebartram/.cargo/bin/boundscheck"
+      - "/usr/local/sbin/boundscheck"
+      - "/Applications/Codex.app/Contents/Resources/boundscheck"
+      - "/usr/local/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/boundscheck"
+      - "/usr/bin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/boundscheck"
+      - "/usr/sbin/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/boundscheck"
+      - "/usr/boundscheck"
+      - "/opt/homebrew/bin/boundscheck"
+      - "/bin/boundscheck"
+      - "/opt/homebrew/sbin/boundscheck"
+      - "/sbin/boundscheck"
+      - "/opt/homebrew/boundscheck"
+      - "/usr/X11R6/bin/boundscheck"
+      - "/usr/local/bin/boundscheck"
+      - "/usr/X11R6/sbin/boundscheck"
+      - "/usr/local/sbin/boundscheck"
+      - "/usr/X11R6/boundscheck"
+      - "/usr/local/boundscheck"
+      - "/usr/pkg/bin/boundscheck"
+      - "/usr/bin/boundscheck"
+      - "/usr/pkg/sbin/boundscheck"
+      - "/usr/sbin/boundscheck"
+      - "/usr/pkg/boundscheck"
+      - "/usr/boundscheck"
+      - "/opt/bin/boundscheck"
+      - "/bin/boundscheck"
+      - "/opt/sbin/boundscheck"
+      - "/sbin/boundscheck"
+      - "/opt/boundscheck"
+      - "/usr/X11R6/bin/boundscheck"
+      - "/sw/bin/boundscheck"
+      - "/sw/sbin/boundscheck"
+      - "/sw/boundscheck"
+      - "/opt/local/bin/boundscheck"
+      - "/opt/local/sbin/boundscheck"
+      - "/opt/local/boundscheck"
+      - "/Users/lukebartram/Applications/boundscheck"
+      - "/Applications/boundscheck"
+      - "/Applications/Xcode.app/Contents/Applications/boundscheck"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/boundscheck"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/drmemory"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/drmemory"
+      - "/opt/homebrew/bin/drmemory"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/drmemory"
+      - "/opt/homebrew/sbin/drmemory"
+      - "/usr/local/bin/drmemory"
+      - "/System/Cryptexes/App/usr/bin/drmemory"
+      - "/usr/bin/drmemory"
+      - "/bin/drmemory"
+      - "/usr/sbin/drmemory"
+      - "/sbin/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/drmemory"
+      - "/usr/X11R6/sbin/boundscheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/drmemory"
+      - "/usr/X11R6/boundscheck"
+      - "/opt/pkg/env/active/bin/drmemory"
+      - "/usr/pkg/bin/boundscheck"
+      - "/opt/pmk/env/global/bin/drmemory"
+      - "/usr/pkg/sbin/boundscheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/drmemory"
+      - "/Users/lukebartram/.cargo/bin/drmemory"
+      - "/Applications/Codex.app/Contents/Resources/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/drmemory"
+      - "/opt/homebrew/bin/drmemory"
+      - "/opt/homebrew/sbin/drmemory"
+      - "/opt/homebrew/drmemory"
+      - "/usr/local/bin/drmemory"
+      - "/usr/pkg/boundscheck"
+      - "/opt/bin/boundscheck"
+      - "/opt/sbin/boundscheck"
+      - "/opt/boundscheck"
+      - "/usr/local/sbin/drmemory"
+      - "/sw/bin/boundscheck"
+      - "/usr/local/drmemory"
+      - "/sw/sbin/boundscheck"
+      - "/usr/bin/drmemory"
+      - "/sw/boundscheck"
+      - "/usr/sbin/drmemory"
+      - "/opt/local/bin/boundscheck"
+      - "/usr/drmemory"
+      - "/opt/local/sbin/boundscheck"
+      - "/bin/drmemory"
+      - "/opt/local/boundscheck"
+      - "/sbin/drmemory"
+      - "/Users/lukebartram/Applications/boundscheck"
+      - "/usr/X11R6/bin/drmemory"
+      - "/Applications/boundscheck"
+      - "/usr/X11R6/sbin/drmemory"
+      - "/Applications/Xcode.app/Contents/Applications/boundscheck"
+      - "/usr/X11R6/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/boundscheck"
+      - "/usr/pkg/bin/drmemory"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/drmemory"
+      - "/usr/pkg/sbin/drmemory"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/drmemory"
+      - "/usr/pkg/drmemory"
+      - "/opt/bin/drmemory"
+      - "/opt/sbin/drmemory"
+      - "/opt/homebrew/bin/drmemory"
+      - "/opt/drmemory"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/drmemory"
+      - "/sw/bin/drmemory"
+      - "/opt/homebrew/sbin/drmemory"
+      - "/sw/sbin/drmemory"
+      - "/usr/local/bin/drmemory"
+      - "/sw/drmemory"
+      - "/System/Cryptexes/App/usr/bin/drmemory"
+      - "/opt/local/bin/drmemory"
+      - "/usr/bin/drmemory"
+      - "/opt/local/sbin/drmemory"
+      - "/bin/drmemory"
+      - "/opt/local/drmemory"
+      - "/usr/sbin/drmemory"
+      - "/Users/lukebartram/Applications/drmemory"
+      - "/sbin/drmemory"
+      - "/Applications/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/drmemory"
+      - "/Applications/Xcode.app/Contents/Applications/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/drmemory"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/cuda-memcheck"
+      - "/opt/pkg/env/active/bin/drmemory"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/cuda-memcheck"
+      - "/opt/pmk/env/global/bin/drmemory"
+      - "/opt/homebrew/bin/cuda-memcheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/drmemory"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/cuda-memcheck"
+      - "/Users/lukebartram/.cargo/bin/drmemory"
+      - "/opt/homebrew/sbin/cuda-memcheck"
+      - "/Applications/Codex.app/Contents/Resources/drmemory"
+      - "/usr/local/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/drmemory"
+      - "/System/Cryptexes/App/usr/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/drmemory"
+      - "/usr/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/drmemory"
+      - "/bin/cuda-memcheck"
+      - "/opt/homebrew/bin/drmemory"
+      - "/usr/sbin/cuda-memcheck"
+      - "/opt/homebrew/sbin/drmemory"
+      - "/sbin/cuda-memcheck"
+      - "/opt/homebrew/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/cuda-memcheck"
+      - "/usr/local/bin/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/cuda-memcheck"
+      - "/usr/local/sbin/drmemory"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/cuda-memcheck"
+      - "/usr/local/drmemory"
+      - "/opt/pkg/env/active/bin/cuda-memcheck"
+      - "/usr/bin/drmemory"
+      - "/opt/pmk/env/global/bin/cuda-memcheck"
+      - "/usr/sbin/drmemory"
+      - "/Applications/VMware Fusion.app/Contents/Public/cuda-memcheck"
+      - "/usr/drmemory"
+      - "/Users/lukebartram/.cargo/bin/cuda-memcheck"
+      - "/bin/drmemory"
+      - "/Applications/Codex.app/Contents/Resources/cuda-memcheck"
+      - "/sbin/drmemory"
+      - "/usr/X11R6/bin/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/cuda-memcheck"
+      - "/opt/homebrew/bin/cuda-memcheck"
+      - "/opt/homebrew/sbin/cuda-memcheck"
+      - "/opt/homebrew/cuda-memcheck"
+      - "/usr/X11R6/sbin/drmemory"
+      - "/usr/X11R6/drmemory"
+      - "/usr/pkg/bin/drmemory"
+      - "/usr/local/bin/cuda-memcheck"
+      - "/usr/pkg/sbin/drmemory"
+      - "/usr/local/sbin/cuda-memcheck"
+      - "/usr/pkg/drmemory"
+      - "/usr/local/cuda-memcheck"
+      - "/opt/bin/drmemory"
+      - "/usr/bin/cuda-memcheck"
+      - "/opt/sbin/drmemory"
+      - "/usr/sbin/cuda-memcheck"
+      - "/opt/drmemory"
+      - "/usr/cuda-memcheck"
+      - "/sw/bin/drmemory"
+      - "/bin/cuda-memcheck"
+      - "/sw/sbin/drmemory"
+      - "/sbin/cuda-memcheck"
+      - "/sw/drmemory"
+      - "/usr/X11R6/bin/cuda-memcheck"
+      - "/opt/local/bin/drmemory"
+      - "/usr/X11R6/sbin/cuda-memcheck"
+      - "/opt/local/sbin/drmemory"
+      - "/usr/X11R6/cuda-memcheck"
+      - "/opt/local/drmemory"
+      - "/usr/pkg/bin/cuda-memcheck"
+      - "/Users/lukebartram/Applications/drmemory"
+      - "/Applications/drmemory"
+      - "/Applications/Xcode.app/Contents/Applications/drmemory"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/drmemory"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/cuda-memcheck"
+      - "/usr/pkg/sbin/cuda-memcheck"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/cuda-memcheck"
+      - "/usr/pkg/cuda-memcheck"
+      - "/opt/homebrew/bin/cuda-memcheck"
+      - "/opt/bin/cuda-memcheck"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/cuda-memcheck"
+      - "/opt/sbin/cuda-memcheck"
+      - "/opt/homebrew/sbin/cuda-memcheck"
+      - "/opt/cuda-memcheck"
+      - "/usr/local/bin/cuda-memcheck"
+      - "/sw/bin/cuda-memcheck"
+      - "/System/Cryptexes/App/usr/bin/cuda-memcheck"
+      - "/sw/sbin/cuda-memcheck"
+      - "/usr/bin/cuda-memcheck"
+      - "/sw/cuda-memcheck"
+      - "/bin/cuda-memcheck"
+      - "/opt/local/bin/cuda-memcheck"
+      - "/usr/sbin/cuda-memcheck"
+      - "/opt/local/sbin/cuda-memcheck"
+      - "/sbin/cuda-memcheck"
+      - "/opt/local/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/cuda-memcheck"
+      - "/Users/lukebartram/Applications/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/cuda-memcheck"
+      - "/opt/pkg/env/active/bin/cuda-memcheck"
+      - "/opt/pmk/env/global/bin/cuda-memcheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/cuda-memcheck"
+      - "/Applications/cuda-memcheck"
+      - "/Users/lukebartram/.cargo/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Applications/cuda-memcheck"
+      - "/Applications/Codex.app/Contents/Resources/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/cuda-memcheck"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/cuda-memcheck"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/cuda-memcheck"
+      - "/opt/homebrew/bin/compute-sanitizer"
+      - "/opt/homebrew/bin/cuda-memcheck"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/compute-sanitizer"
+      - "/opt/homebrew/sbin/cuda-memcheck"
+      - "/opt/homebrew/sbin/compute-sanitizer"
+      - "/opt/homebrew/cuda-memcheck"
+      - "/usr/local/bin/compute-sanitizer"
+      - "/usr/local/bin/cuda-memcheck"
+      - "/System/Cryptexes/App/usr/bin/compute-sanitizer"
+      - "/usr/local/sbin/cuda-memcheck"
+      - "/usr/bin/compute-sanitizer"
+      - "/usr/local/cuda-memcheck"
+      - "/bin/compute-sanitizer"
+      - "/usr/bin/cuda-memcheck"
+      - "/usr/sbin/compute-sanitizer"
+      - "/usr/sbin/cuda-memcheck"
+      - "/sbin/compute-sanitizer"
+      - "/usr/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/compute-sanitizer"
+      - "/bin/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/compute-sanitizer"
+      - "/sbin/cuda-memcheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/compute-sanitizer"
+      - "/usr/X11R6/bin/cuda-memcheck"
+      - "/opt/pkg/env/active/bin/compute-sanitizer"
+      - "/usr/X11R6/sbin/cuda-memcheck"
+      - "/opt/pmk/env/global/bin/compute-sanitizer"
+      - "/usr/X11R6/cuda-memcheck"
+      - "/Applications/VMware Fusion.app/Contents/Public/compute-sanitizer"
+      - "/usr/pkg/bin/cuda-memcheck"
+      - "/Users/lukebartram/.cargo/bin/compute-sanitizer"
+      - "/usr/pkg/sbin/cuda-memcheck"
+      - "/Applications/Codex.app/Contents/Resources/compute-sanitizer"
+      - "/usr/pkg/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/compute-sanitizer"
+      - "/opt/bin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/compute-sanitizer"
+      - "/opt/sbin/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/compute-sanitizer"
+      - "/opt/cuda-memcheck"
+      - "/opt/homebrew/bin/compute-sanitizer"
+      - "/sw/bin/cuda-memcheck"
+      - "/opt/homebrew/sbin/compute-sanitizer"
+      - "/sw/sbin/cuda-memcheck"
+      - "/opt/homebrew/compute-sanitizer"
+      - "/sw/cuda-memcheck"
+      - "/usr/local/bin/compute-sanitizer"
+      - "/opt/local/bin/cuda-memcheck"
+      - "/usr/local/sbin/compute-sanitizer"
+      - "/opt/local/sbin/cuda-memcheck"
+      - "/usr/local/compute-sanitizer"
+      - "/opt/local/cuda-memcheck"
+      - "/usr/bin/compute-sanitizer"
+      - "/Users/lukebartram/Applications/cuda-memcheck"
+      - "/usr/sbin/compute-sanitizer"
+      - "/Applications/cuda-memcheck"
+      - "/usr/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Applications/cuda-memcheck"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/cuda-memcheck"
+      - "/bin/compute-sanitizer"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/compute-sanitizer"
+      - "/sbin/compute-sanitizer"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/compute-sanitizer"
+      - "/usr/X11R6/bin/compute-sanitizer"
+      - "/opt/homebrew/bin/compute-sanitizer"
+      - "/usr/X11R6/sbin/compute-sanitizer"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/compute-sanitizer"
+      - "/usr/X11R6/compute-sanitizer"
+      - "/opt/homebrew/sbin/compute-sanitizer"
+      - "/usr/local/bin/compute-sanitizer"
+      - "/System/Cryptexes/App/usr/bin/compute-sanitizer"
+      - "/usr/pkg/bin/compute-sanitizer"
+      - "/usr/bin/compute-sanitizer"
+      - "/usr/pkg/sbin/compute-sanitizer"
+      - "/bin/compute-sanitizer"
+      - "/usr/pkg/compute-sanitizer"
+      - "/usr/sbin/compute-sanitizer"
+      - "/opt/bin/compute-sanitizer"
+      - "/sbin/compute-sanitizer"
+      - "/opt/sbin/compute-sanitizer"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/compute-sanitizer"
+      - "/opt/compute-sanitizer"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/compute-sanitizer"
+      - "/sw/bin/compute-sanitizer"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/compute-sanitizer"
+      - "/sw/sbin/compute-sanitizer"
+      - "/opt/pkg/env/active/bin/compute-sanitizer"
+      - "/sw/compute-sanitizer"
+      - "/opt/pmk/env/global/bin/compute-sanitizer"
+      - "/opt/local/bin/compute-sanitizer"
+      - "/Applications/VMware Fusion.app/Contents/Public/compute-sanitizer"
+      - "/opt/local/sbin/compute-sanitizer"
+      - "/Users/lukebartram/.cargo/bin/compute-sanitizer"
+      - "/opt/local/compute-sanitizer"
+      - "/Applications/Codex.app/Contents/Resources/compute-sanitizer"
+      - "/Users/lukebartram/Applications/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/compute-sanitizer"
+      - "/Applications/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Applications/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/compute-sanitizer"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/compute-sanitizer"
+      - "/opt/homebrew/bin/compute-sanitizer"
+    found: false
+      - "/opt/homebrew/sbin/compute-sanitizer"
+    search_context:
+      - "/opt/homebrew/compute-sanitizer"
+      - "/usr/local/bin/compute-sanitizer"
+      - "/usr/local/sbin/compute-sanitizer"
+      ENV{PATH}:
+      - "/usr/local/compute-sanitizer"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+      - "/usr/bin/compute-sanitizer"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+      - "/usr/sbin/compute-sanitizer"
+        - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C"
+      - "/usr/compute-sanitizer"
+        - "/opt/homebrew/bin"
+      - "/bin/compute-sanitizer"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+      - "/sbin/compute-sanitizer"
+        - "/opt/homebrew/bin"
+      - "/usr/X11R6/bin/compute-sanitizer"
+        - "/opt/homebrew/sbin"
+      - "/usr/X11R6/sbin/compute-sanitizer"
+        - "/usr/local/bin"
+      - "/usr/X11R6/compute-sanitizer"
+        - "/System/Cryptexes/App/usr/bin"
+      - "/usr/pkg/bin/compute-sanitizer"
+        - "/usr/bin"
+      - "/usr/pkg/sbin/compute-sanitizer"
+        - "/bin"
+      - "/usr/pkg/compute-sanitizer"
+        - "/usr/sbin"
+      - "/opt/bin/compute-sanitizer"
+        - "/sbin"
+      - "/opt/sbin/compute-sanitizer"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+      - "/opt/compute-sanitizer"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+      - "/sw/bin/compute-sanitizer"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+      - "/sw/sbin/compute-sanitizer"
+        - "/opt/pkg/env/active/bin"
+      - "/sw/compute-sanitizer"
+        - "/opt/pmk/env/global/bin"
+      - "/opt/local/bin/compute-sanitizer"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+      - "/opt/local/sbin/compute-sanitizer"
+        - "/Users/lukebartram/.cargo/bin"
+      - "/opt/local/compute-sanitizer"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+      - "/Users/lukebartram/Applications/compute-sanitizer"
+        - "/Applications/Codex.app/Contents/Resources"
+      - "/Applications/compute-sanitizer"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      - "/Applications/Xcode.app/Contents/Applications/compute-sanitizer"
+      CMAKE_SYSTEM_PREFIX_PATH:
+      - "/Applications/Xcode.app/Contents/Developer/Applications/compute-sanitizer"
+        - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr"
+    found: false
+        - "/opt/homebrew"
+    search_context:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/opt/homebrew"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+        - "/sw"
+        - "/opt/local"
+      ENV{PATH}:
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/Users/lukebartram/Applications"
+        - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C"
+        - "/Applications"
+        - "/opt/homebrew/bin"
+        - "/Applications/Xcode.app/Contents/Applications"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Applications/Xcode.app/Contents/Developer/Applications"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/opt/pkg/env/active/bin"
+        - "/opt/pmk/env/global/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Users/lukebartram/.cargo/bin"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/Applications/Codex.app/Contents/Resources"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr"
+        - "/opt/homebrew"
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/opt/homebrew"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+        - "/sw"
+        - "/opt/local"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/Users/lukebartram/Applications"
+        - "/Applications"
+        - "/Applications/Xcode.app/Contents/Applications"
+        - "/Applications/Xcode.app/Contents/Developer/Applications"
+  -
+  -
+    kind: "find-v1"
+    kind: "find-v1"
+    backtrace:
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CTest.cmake:196 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CTest.cmake:196 (find_program)"
+      - "CMakeLists.txt:27 (include)"
+      - "CMakeLists.txt:27 (include)"
+    mode: "program"
+    mode: "program"
+    variable: "COVERAGE_COMMAND"
+    variable: "COVERAGE_COMMAND"
+    description: "Path to the coverage program that CTest uses for performing coverage inspection"
+    description: "Path to the coverage program that CTest uses for performing coverage inspection"
+    settings:
+    settings:
+      SearchFramework: "FIRST"
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+    names:
+      - "gcov"
+      - "gcov"
+    candidate_directories:
+    candidate_directories:
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/"
+      - "/opt/homebrew/bin/"
+      - "/opt/homebrew/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/opt/pkg/env/active/bin/"
+      - "/opt/pkg/env/active/bin/"
+      - "/opt/pmk/env/global/bin/"
+      - "/opt/pmk/env/global/bin/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/Users/lukebartram/.cargo/bin/"
+      - "/Users/lukebartram/.cargo/bin/"
+      - "/Applications/Codex.app/Contents/Resources/"
+      - "/Applications/Codex.app/Contents/Resources/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/"
+      - "/opt/homebrew/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/"
+      - "/opt/homebrew/sbin/"
+      - "/opt/homebrew/bin/"
+      - "/opt/homebrew/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/"
+      - "/usr/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/sbin/"
+      - "/opt/homebrew/"
+      - "/usr/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/sbin/"
+      - "/usr/local/"
+      - "/usr/X11R6/bin/"
+      - "/usr/bin/"
+      - "/usr/X11R6/sbin/"
+      - "/usr/sbin/"
+      - "/usr/X11R6/"
+      - "/usr/"
+      - "/usr/pkg/bin/"
+      - "/bin/"
+      - "/usr/pkg/sbin/"
+      - "/sbin/"
+      - "/usr/pkg/"
+      - "/usr/X11R6/bin/"
+      - "/opt/bin/"
+      - "/usr/X11R6/sbin/"
+      - "/opt/sbin/"
+      - "/usr/X11R6/"
+      - "/opt/"
+      - "/usr/pkg/bin/"
+      - "/sw/bin/"
+      - "/usr/pkg/sbin/"
+      - "/sw/sbin/"
+      - "/usr/pkg/"
+      - "/sw/"
+      - "/opt/bin/"
+      - "/opt/local/bin/"
+      - "/opt/sbin/"
+      - "/opt/local/sbin/"
+      - "/opt/"
+      - "/opt/local/"
+      - "/sw/bin/"
+      - "/Users/lukebartram/Applications/"
+      - "/sw/sbin/"
+      - "/Applications/"
+      - "/sw/"
+      - "/Applications/Xcode.app/Contents/Applications/"
+      - "/opt/local/bin/"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/"
+      - "/opt/local/sbin/"
+    searched_directories:
+      - "/opt/local/"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/gcov"
+      - "/Users/lukebartram/Applications/"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/gcov"
+      - "/Applications/"
+      - "/opt/homebrew/bin/gcov"
+      - "/Applications/Xcode.app/Contents/Applications/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/gcov"
+      - "/Applications/Xcode.app/Contents/Developer/Applications/"
+      - "/opt/homebrew/sbin/gcov"
+    searched_directories:
+      - "/usr/local/bin/gcov"
+      - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/gcov"
+      - "/System/Cryptexes/App/usr/bin/gcov"
+      - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C/gcov"
+    found: "/usr/bin/gcov"
+      - "/opt/homebrew/bin/gcov"
+    search_context:
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/gcov"
+      - "/opt/homebrew/sbin/gcov"
+      - "/usr/local/bin/gcov"
+      - "/System/Cryptexes/App/usr/bin/gcov"
+      ENV{PATH}:
+    found: "/usr/bin/gcov"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+    search_context:
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C"
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/opt/homebrew/bin"
+      ENV{PATH}:
+        - "/opt/homebrew/sbin"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/usr/local/bin"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/Users/lukebartram/.codex/tmp/arg0/codex-arg0wVvL4C"
+        - "/usr/bin"
+        - "/opt/homebrew/bin"
+        - "/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/usr/sbin"
+        - "/opt/homebrew/bin"
+        - "/sbin"
+        - "/opt/homebrew/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/usr/bin"
+        - "/opt/pkg/env/active/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/opt/pmk/env/global/bin"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Users/lukebartram/.cargo/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Applications/Codex.app/Contents/Resources"
+        - "/opt/pkg/env/active/bin"
+        - "/opt/pmk/env/global/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+        - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/Users/lukebartram/.cargo/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin"
+        - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr"
+        - "/Applications/Codex.app/Contents/Resources"
+        - "/opt/homebrew"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+        - "/usr/local"
+        - "/usr"
+        - "/"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/opt/homebrew"
+        - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr"
+        - "/usr/local"
+        - "/opt/homebrew"
+        - "/usr/X11R6"
+        - "/usr/local"
+        - "/usr/pkg"
+        - "/usr"
+        - "/opt"
+        - "/"
+        - "/sw"
+        - "/opt/homebrew"
+        - "/opt/local"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/opt"
+        - "/Users/lukebartram/Applications"
+        - "/sw"
+        - "/Applications"
+        - "/opt/local"
+        - "/Applications/Xcode.app/Contents/Applications"
+        - "/Applications/Xcode.app/Contents/Developer/Applications"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/Users/lukebartram/Applications"
+        - "/Applications"
+        - "/Applications/Xcode.app/Contents/Applications"
+        - "/Applications/Xcode.app/Contents/Developer/Applications"
+...
+...
