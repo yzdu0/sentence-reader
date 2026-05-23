@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sentence Reader Reference</title>
+    <meta
+      name="description"
+      content="Browse the grammar rules and vocabulary currently used by Sentence Reader."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-accent" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link" href="/">Parser</a>
+          <a class="site-nav__link is-active" href="/reference.html">Reference</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="hero hero--compact">
+      <div class="hero__copy">
+        <h1>Grammar and vocab</h1>
+        <p>Reference lists pulled from the parser source and vocabulary file.</p>
+      </div>
+    </header>
+
+    <main class="shell shell--reference">
+      <section class="panel panel--results">
+        <div class="panel__header">
+          <div>
+            <h2>Production rules</h2>
+          </div>
+          <div class="status-pill" data-reference-status>Loading</div>
+        </div>
+
+        <div class="reference-list reference-list--rules" data-rule-list></div>
+      </section>
+
+      <section class="panel panel--results">
+        <div class="panel__header">
+          <div>
+            <h2>Words and entries</h2>
+          </div>
+        </div>
+
+        <div class="reference-groups" data-vocabulary-groups></div>
+      </section>
+    </main>
+
+    <script type="module" src="/reference.js"></script>
+  </body>
+</html>

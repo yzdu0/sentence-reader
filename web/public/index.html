@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sentence Reader</title>
+    <meta
+      name="description"
+      content="Explore multiple parse interpretations for a sentence using a C++ Earley parser."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-accent" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link is-active" href="/">Parser</a>
+          <a class="site-nav__link" href="/reference.html">Reference</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="hero">
+      <div class="hero__copy">
+        <h1>SentenceReader</h1>
+        <p>Input a sentence, which gets broken down by a C++ parser. In the case of ambiguous sentences, it displays every interpretation it finds.</p>
+
+      </div>
+    </header>
+
+
+    <main class="shell">
+      <section class="panel panel--composer">
+        <div class="panel__header">
+          <div>
+            <h1>Input</h1>
+          </div>
+        </div>
+
+        <form class="composer" data-parse-form>
+          <label class="composer__label" for="sentence-input">Sentence</label>
+          <textarea
+            id="sentence-input"
+            class="composer__input"
+            name="sentence"
+            rows="4"
+            spellcheck="false"
+          >I saw the man with the telescope.</textarea>
+
+          <div class="composer__actions">
+            <button class="button" type="submit" data-submit-button>Parse sentence</button>
+          </div>
+        </form>
+
+        <div class="samples">
+          <div class="samples__header">
+            <p>Examples</p>
+          </div>
+          <div class="samples__list">
+            <button class="sample-chip" type="button" data-sample="I saw the man with the telescope.">
+              I saw the man with the telescope
+            </button>
+            <button class="sample-chip" type="button" data-sample="All humans are mortal, therefore I am not human.">
+              All humans are mortal, therefore I am not human
+            </button>
+            <button class="sample-chip" type="button" data-sample="They saw the fish in the park at night.">
+              They saw the fish in the park at night
+            </button>
+            <button class="sample-chip" type="button" data-sample="He walks.">
+              He walks
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--results" data-results-panel data-state="idle">
+        <div class="panel__header">
+          <div>
+            <h2>Interpretations</h2>
+          </div>
+          <div class="status-pill" data-status-pill>Ready</div>
+        </div>
+
+        <div class="results-summary">
+          <div class="metric-card">
+            <span class="metric-card__label">Interpretations</span>
+            <strong class="metric-card__value" data-interpretation-count>0</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card__label">Tokens</span>
+            <strong class="metric-card__value" data-token-count>0</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card__label">Unknown words</span>
+            <strong class="metric-card__value" data-unknown-count>0</strong>
+          </div>
+        </div>
+
+        <div class="results-message" data-message>
+          Choose a sentence or enter your own to see how the parser analyzes it.
+        </div>
+
+        <div class="token-strip" data-token-strip hidden></div>
+        <div class="unknown-strip" data-unknown-strip hidden></div>
+        <div class="legend legend--compact" aria-label="Color key">
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 355deg;"></span>
+            <span>sentence</span>
+          </div>
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 36deg;"></span>
+            <span>noun</span>
+          </div>
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 140deg;"></span>
+            <span>verb</span>
+          </div>
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 190deg;"></span>
+            <span>aux/adj</span>
+          </div>
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 240deg;"></span>
+            <span>prep</span>
+          </div>
+          <div class="legend__item legend__item--compact">
+            <span class="legend__swatch" style="--legend-hue: 300deg;"></span>
+            <span>connective</span>
+          </div>
+        </div>
+        <div class="interpretation-grid" data-interpretation-grid></div>
+      </section>
+    </main>
+
+    <template id="interpretation-template">
+      <article class="interpretation-card">
+        <div class="interpretation-card__header">
+          <div>
+            <h3 class="interpretation-card__title"></h3>
+          </div>
+        </div>
+
+        <div class="tree-shell"></div>
+
+        <details class="raw-output">
+          <summary>Raw s-expression</summary>
+          <pre></pre>
+        </details>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

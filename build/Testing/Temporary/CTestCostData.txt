@@ -1,4 +1,5 @@
-sentence_reader_ambiguous_pp_attachment 2 0.00240406
-sentence_reader_handles_punctuation 2 0.00142888
-sentence_reader_handles_inflected_verbs 2 0.00118694
+sentence_reader_ambiguous_pp_attachment 7 0.000698327
+sentence_reader_handles_punctuation 6 0.000881653
+sentence_reader_handles_inflected_verbs 7 0.000380946
+sentence_reader_json_output 4 0.000746052
 ---

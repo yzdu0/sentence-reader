@@ -1,11 +1,17 @@
 # ninja log v7
-3	817	1779497964884895360	CMakeFiles/sentence-reader.dir/src/Rule.cpp.o	7d40c7661847d3b0
-3	823	1779497964884567781	CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o	404e2e634ce6d9ab
-4	689	1779498015817269100	CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o	393b9215365471af
+27	526	1779508181995347114	CMakeFiles/sentence-reader.dir/src/Rule.cpp.o	c3c698cbf875c90e
+27	520	1779508181995109783	CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o	69f76d996ea80f6f
+27	603	1779508181995230615	CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o	8408fc0a83956a94
 3	967	1779497964884783820	CMakeFiles/sentence-reader.dir/src/Parser.cpp.o	f87df884e21eb532
-2	54	1779498083557792146	build.ninja	cfbb57270289a918
-2	54	1779498083556677452	/Users/lukebartram/Documents/GitHub/sentence-reader/build/cmake_install.cmake	cfbb57270289a918
-2	54	1779498083557087947	/Users/lukebartram/Documents/GitHub/sentence-reader/build/CTestTestfile.cmake	cfbb57270289a918
-5	654	1779498015817658137	CMakeFiles/sentence-reader.dir/src/main.cpp.o	25c983ce8a84fd85
-3	985	1779497964884371034	CMakeFiles/sentence-reader.dir/src/Earley.cpp.o	e377d885a2926a58
-689	792	1779498016501400425	sentence-reader	954480c104ad37f8
+2	94	1779512045869000145	build.ninja	cfbb57270289a918
+2	94	1779512045866529195	/Users/lukebartram/Documents/GitHub/sentence-reader/build/cmake_install.cmake	cfbb57270289a918
+2	94	1779512045867008943	/Users/lukebartram/Documents/GitHub/sentence-reader/build/CTestTestfile.cmake	cfbb57270289a918
+27	559	1779508181995454946	CMakeFiles/sentence-reader.dir/src/main.cpp.o	80dbc8c27aded1a4
+27	642	1779508181994879784	CMakeFiles/sentence-reader.dir/src/Earley.cpp.o	61dd165ff931b996
+643	766	1779508182610541410	sentence-reader	a72ae96eeef8fc1c
+18	647	1779512045901759781	CMakeFiles/sentence-reader.dir/src/Rule.cpp.o	eb60f3525ff66983
+18	657	1779512045901529782	CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o	4d8413dd61df1c13
+18	690	1779512045901937405	CMakeFiles/sentence-reader.dir/src/main.cpp.o	9a7451f12ac710c5
+18	751	1779512045901653156	CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o	b980618497a2335b
+17	896	1779512045901302699	CMakeFiles/sentence-reader.dir/src/Earley.cpp.o	e2f4afee1474673c
+896	1004	1779512046779875186	sentence-reader	4615674c81ef0e31

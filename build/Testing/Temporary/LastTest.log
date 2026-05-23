@@ -1,10 +1,10 @@
-Start testing: May 23 13:00 NZST
+Start testing: May 23 13:19 NZST
 ----------------------------------------------------------
-1/3 Testing: sentence_reader_ambiguous_pp_attachment
-1/3 Test: sentence_reader_ambiguous_pp_attachment
+1/4 Testing: sentence_reader_ambiguous_pp_attachment
+1/4 Test: sentence_reader_ambiguous_pp_attachment
 Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "I saw the man with the telescope"
 Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
-"sentence_reader_ambiguous_pp_attachment" start time: May 23 13:00 NZST
+"sentence_reader_ambiguous_pp_attachment" start time: May 23 13:19 NZST
 Output:
 ----------------------------------------------------------
 Input: i saw the man with the telescope
@@ -16,34 +16,32 @@ Test time =   0.00 sec
 ----------------------------------------------------------
 Test Pass Reason:
 Required regular expression found. Regex=[Found 2 interpretation\(s\)\.]
-"sentence_reader_ambiguous_pp_attachment" end time: May 23 13:00 NZST
+"sentence_reader_ambiguous_pp_attachment" end time: May 23 13:19 NZST
 "sentence_reader_ambiguous_pp_attachment" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/3 Testing: sentence_reader_handles_punctuation
-2/3 Test: sentence_reader_handles_punctuation
-Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "All humans are mortal, therefore I am not human."
+2/4 Testing: sentence_reader_handles_punctuation
+2/4 Test: sentence_reader_handles_punctuation
+Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--json" "--sentence" "All humans are mortal, therefore I am not human."
 Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
-"sentence_reader_handles_punctuation" start time: May 23 13:00 NZST
+"sentence_reader_handles_punctuation" start time: May 23 13:19 NZST
 Output:
 ----------------------------------------------------------
-Input: all humans are mortal therefore i am not human
-Found 1 interpretation(s).
-[1] (S0 (S (S (NP (Det "all") (N "humans")) (VP (Cop "are") (AdjP (Adj "mortal")))) (Conj "therefore") (S (NP (Pron "i")) (VP (Aux "am") (Neg "not") (NP (N "human"))))))
+{"success":true,"rawInput":"All humans are mortal, therefore I am not human.","normalizedInput":"all humans are mortal therefore i am not human","tokens":["all","humans","are","mortal","therefore","i","am","not","human"],"interpretationCount":4,"interpretations":["(S0 (S (S (NP (Det \"all\") (N \"humans\")) (VP (AuxP (Aux \"are\")) (AdjP (Adj \"mortal\")))) (Conj (ConjAdv (THEREFORE \"therefore\"))) (S (NP (Pron \"i\")) (VP (AuxP (Aux \"am\") (Neg \"not\")) (NP (N \"human\"))))))","(S0 (S (S (NP (Det \"all\") (N \"humans\")) (VP (AuxP (Aux \"are\")) (AdjP (Adj \"mortal\")))) (Conj (ConjAdv (THEREFORE \"therefore\"))) (S (NP (Pron \"i\")) (VP (CopP (Cop \"am\") (Neg \"not\")) (NP (N \"human\"))))))","(S0 (S (S (NP (Det \"all\") (N \"humans\")) (VP (CopP (Cop \"are\")) (AdjP (Adj \"mortal\")))) (Conj (ConjAdv (THEREFORE \"therefore\"))) (S (NP (Pron \"i\")) (VP (AuxP (Aux \"am\") (Neg \"not\")) (NP (N \"human\"))))))","(S0 (S (S (NP (Det \"all\") (N \"humans\")) (VP (CopP (Cop \"are\")) (AdjP (Adj \"mortal\")))) (Conj (ConjAdv (THEREFORE \"therefore\"))) (S (NP (Pron \"i\")) (VP (CopP (Cop \"am\") (Neg \"not\")) (NP (N \"human\"))))))"],"unknownWords":[],"error":""}
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Pass Reason:
-Required regular expression found. Regex=[Found 1 interpretation\(s\)\.]
-"sentence_reader_handles_punctuation" end time: May 23 13:00 NZST
+Required regular expression found. Regex=["success":true]
+"sentence_reader_handles_punctuation" end time: May 23 13:19 NZST
 "sentence_reader_handles_punctuation" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/3 Testing: sentence_reader_handles_inflected_verbs
-3/3 Test: sentence_reader_handles_inflected_verbs
+3/4 Testing: sentence_reader_handles_inflected_verbs
+3/4 Test: sentence_reader_handles_inflected_verbs
 Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--sentence" "he walks"
 Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
-"sentence_reader_handles_inflected_verbs" start time: May 23 13:00 NZST
+"sentence_reader_handles_inflected_verbs" start time: May 23 13:19 NZST
 Output:
 ----------------------------------------------------------
 Input: he walks
@@ -54,8 +52,25 @@ Test time =   0.00 sec
 ----------------------------------------------------------
 Test Pass Reason:
 Required regular expression found. Regex=[Found 1 interpretation\(s\)\.]
-"sentence_reader_handles_inflected_verbs" end time: May 23 13:00 NZST
+"sentence_reader_handles_inflected_verbs" end time: May 23 13:19 NZST
 "sentence_reader_handles_inflected_verbs" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: May 23 13:00 NZST
+4/4 Testing: sentence_reader_json_output
+4/4 Test: sentence_reader_json_output
+Command: "/Users/lukebartram/Documents/GitHub/sentence-reader/build/sentence-reader" "--json" "--sentence" "I saw the man with the telescope"
+Directory: /Users/lukebartram/Documents/GitHub/sentence-reader/build
+"sentence_reader_json_output" start time: May 23 13:19 NZST
+Output:
+----------------------------------------------------------
+{"success":true,"rawInput":"I saw the man with the telescope","normalizedInput":"i saw the man with the telescope","tokens":["i","saw","the","man","with","the","telescope"],"interpretationCount":2,"interpretations":["(S0 (S (NP (Pron \"i\")) (VP (V \"saw\") (NP (NP (Det \"the\") (N \"man\")) (PP (P \"with\") (NP (Det \"the\") (N \"telescope\")))))))","(S0 (S (NP (Pron \"i\")) (VP (VP (V \"saw\") (NP (Det \"the\") (N \"man\"))) (PP (P \"with\") (NP (Det \"the\") (N \"telescope\"))))))"],"unknownWords":[],"error":""}
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Pass Reason:
+Required regular expression found. Regex=["success":true]
+"sentence_reader_json_output" end time: May 23 13:19 NZST
+"sentence_reader_json_output" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 23 13:19 NZST

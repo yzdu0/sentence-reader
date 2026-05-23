@@ -1,0 +1,17 @@
+[Unit]
+Description=Sentence Reader web app
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/sentence-reader
+Environment=HOST=127.0.0.1
+Environment=PORT=4173
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=3
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

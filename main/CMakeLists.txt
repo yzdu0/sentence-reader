@@ -8,7 +8,6 @@ add_executable(sentence-reader
     src/Earley.cpp
     src/Grammar.cpp
     src/Lexicon.cpp
-    src/Parser.cpp
     src/Rule.cpp
     src/main.cpp
 )
@@ -38,10 +37,10 @@ if(BUILD_TESTING)
 
     add_test(
         NAME sentence_reader_handles_punctuation
-        COMMAND $<TARGET_FILE:sentence-reader> --sentence "All humans are mortal, therefore I am not human."
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "All humans are mortal, therefore I am not human."
     )
     set_tests_properties(sentence_reader_handles_punctuation PROPERTIES
-        PASS_REGULAR_EXPRESSION "Found 1 interpretation\\(s\\)\\."
+        PASS_REGULAR_EXPRESSION "\"success\":true"
     )
 
     add_test(
@@ -50,5 +49,13 @@ if(BUILD_TESTING)
     )
     set_tests_properties(sentence_reader_handles_inflected_verbs PROPERTIES
         PASS_REGULAR_EXPRESSION "Found 1 interpretation\\(s\\)\\."
+    )
+
+    add_test(
+        NAME sentence_reader_json_output
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "I saw the man with the telescope"
+    )
+    set_tests_properties(sentence_reader_json_output PROPERTIES
+        PASS_REGULAR_EXPRESSION "\"success\":true"
     )
 endif()

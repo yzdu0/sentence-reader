@@ -1,0 +1,10 @@
+{
+  "name": "sentence-reader",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:parser": "cmake -S main -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build",
+    "start": "node web/server.mjs",
+    "start:prod": "HOST=0.0.0.0 PORT=4173 node web/server.mjs"
+  }
+}
