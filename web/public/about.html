@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How Sentence Reader Works</title>
+    <meta
+      name="description"
+      content="An overview of how the C++ parser and the website work together."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-accent" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link" href="/">Parser</a>
+          <a class="site-nav__link" href="/reference.html">Reference</a>
+          <a class="site-nav__link is-active" href="/about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="hero hero--compact">
+      <div class="hero__copy">
+        <h1>How it works</h1>
+        <p>Backend: hand coded parser in C++<br>
+            Frontend: mostly vibed website with Codex
+        </p>
+      </div>
+    </header>
+
+    <main class="shell shell--reference">
+      <section class="panel panel--results prose-panel">
+        <div class="panel__header">
+          <div>
+            <h2>Overview</h2>
+          </div>
+        </div>
+
+        <div class="prose-block">
+          <p>
+            The core of this project is a C++ sentence parser. It reads an input sentence, normalizes it,
+            looks up the words in a lexicon, applies a grammar, and builds one or more parse trees.
+            If a sentence is ambiguous, the parser keeps multiple valid interpretations instead of forcing one answer (which is the cool part!)
+          </p>
+        </div>
+      </section>
+
+      <section class="panel panel--results prose-panel">
+        <div class="panel__header">
+          <div>
+            <h2>C++ parser flow</h2>
+          </div>
+        </div>
+
+        <div class="prose-block">
+          <p>To be completed.</p>
+          <p>
+            Project repository:
+            <a class="inline-link" href="https://github.com/yzdu0/sentence-reader">github.com/yzdu0/sentence-reader</a>
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

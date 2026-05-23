@@ -577,6 +577,31 @@ kbd {
   gap: 0.85rem;
 }
 
+.prose-panel {
+  max-width: 52rem;
+}
+
+.prose-block {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.prose-block p {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.inline-link {
+  color: #2f5f9a;
+  text-decoration: underline;
+  text-underline-offset: 0.16rem;
+}
+
+.inline-link:hover {
+  color: #21497a;
+}
+
 .reference-item {
   padding: 0.75rem 0.85rem;
   border: 1px solid var(--line);
