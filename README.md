@@ -2,7 +2,7 @@
 
 Sentence Reader is an English sentence parser written in C++. It now includes a local website that sends sentences to the C++ parser and renders each interpretation in the browser.
 
-https://sentence-reader.onrender.com/
+https://sentence-reader.up.railway.app/
 
 ## What changed
 
