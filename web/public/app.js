@@ -12,17 +12,23 @@ const unknownStrip = document.querySelector("[data-unknown-strip]");
 const interpretationGrid = document.querySelector("[data-interpretation-grid]");
 const interpretationTemplate = document.querySelector("#interpretation-template");
 const sampleButtons = document.querySelectorAll("[data-sample]");
+let connectorLayoutFrame = 0;
 
 const nodeHueMap = {
   S0: "355deg",
   S: "355deg",
+  RelClause: "342deg",
   Inf: "330deg",
   NP: "36deg",
   Pron: "52deg",
+  Name: "58deg",
   Det: "64deg",
+  Num: "76deg",
   N: "86deg",
   VP: "140deg",
   V: "152deg",
+  AdvP: "168deg",
+  Adv: "168deg",
   AuxP: "176deg",
   Aux: "176deg",
   CopP: "196deg",
@@ -36,7 +42,9 @@ const nodeHueMap = {
   Conj: "304deg",
   CoordConj: "304deg",
   ConjAdv: "318deg",
+  SubordConj: "312deg",
   THEREFORE: "318deg",
+  RelPron: "326deg",
   Neg: "332deg"
 };
 
@@ -195,6 +203,36 @@ function getNodeHue(label) {
   return `${hash}deg`;
 }
 
+function layoutTreeConnectors(scope = interpretationGrid) {
+  const groups = scope.querySelectorAll(".tree-children");
+
+  for (const group of groups) {
+    const edges = [...group.children].filter((child) => child.classList.contains("tree-edge"));
+    if (edges.length === 0) {
+      continue;
+    }
+
+    const first = edges[0];
+    const last = edges[edges.length - 1];
+    const start = first.offsetLeft + first.offsetWidth / 2;
+    const end = group.clientWidth - (last.offsetLeft + last.offsetWidth / 2);
+
+    group.style.setProperty("--branch-start", `${start}px`);
+    group.style.setProperty("--branch-end", `${end}px`);
+  }
+}
+
+function scheduleTreeConnectorLayout() {
+  if (connectorLayoutFrame) {
+    cancelAnimationFrame(connectorLayoutFrame);
+  }
+
+  connectorLayoutFrame = requestAnimationFrame(() => {
+    connectorLayoutFrame = 0;
+    layoutTreeConnectors();
+  });
+}
+
 function renderTreeNode(node) {
   const element = document.createElement("div");
   element.className = "tree-node";
@@ -277,6 +315,8 @@ function renderSuccess(result) {
       createInterpretationCard(interpretation, index)
     )
   );
+
+  scheduleTreeConnectorLayout();
 }
 
 function renderFailure(result) {
@@ -367,6 +407,8 @@ for (const button of sampleButtons) {
     handleSubmit();
   });
 }
+
+window.addEventListener("resize", scheduleTreeConnectorLayout);
 
 resetResults();
 handleSubmit();

@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_sentence-reader: phony || .
 build CMakeFiles/sentence-reader.dir/src/Earley.cpp.o: CXX_COMPILER__sentence-reader_unscanned_Release /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Earley.cpp || cmake_object_order_depends_target_sentence-reader
   CONFIG = Release
   DEP_FILE = CMakeFiles/sentence-reader.dir/src/Earley.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   INCLUDES = -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   OBJECT_FILE_DIR = CMakeFiles/sentence-reader.dir/src
@@ -60,7 +60,7 @@ build CMakeFiles/sentence-reader.dir/src/Earley.cpp.o: CXX_COMPILER__sentence-re
 build CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o: CXX_COMPILER__sentence-reader_unscanned_Release /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Grammar.cpp || cmake_object_order_depends_target_sentence-reader
   CONFIG = Release
   DEP_FILE = CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   INCLUDES = -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   OBJECT_FILE_DIR = CMakeFiles/sentence-reader.dir/src
@@ -68,7 +68,7 @@ build CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o: CXX_COMPILER__sentence-r
 build CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o: CXX_COMPILER__sentence-reader_unscanned_Release /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Lexicon.cpp || cmake_object_order_depends_target_sentence-reader
   CONFIG = Release
   DEP_FILE = CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   INCLUDES = -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   OBJECT_FILE_DIR = CMakeFiles/sentence-reader.dir/src
@@ -76,7 +76,7 @@ build CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o: CXX_COMPILER__sentence-r
 build CMakeFiles/sentence-reader.dir/src/Rule.cpp.o: CXX_COMPILER__sentence-reader_unscanned_Release /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/Rule.cpp || cmake_object_order_depends_target_sentence-reader
   CONFIG = Release
   DEP_FILE = CMakeFiles/sentence-reader.dir/src/Rule.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   INCLUDES = -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   OBJECT_FILE_DIR = CMakeFiles/sentence-reader.dir/src
@@ -84,7 +84,7 @@ build CMakeFiles/sentence-reader.dir/src/Rule.cpp.o: CXX_COMPILER__sentence-read
 build CMakeFiles/sentence-reader.dir/src/main.cpp.o: CXX_COMPILER__sentence-reader_unscanned_Release /Users/lukebartram/Documents/GitHub/sentence-reader/main/src/main.cpp || cmake_object_order_depends_target_sentence-reader
   CONFIG = Release
   DEP_FILE = CMakeFiles/sentence-reader.dir/src/main.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   INCLUDES = -I/Users/lukebartram/Documents/GitHub/sentence-reader/main/include
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   OBJECT_FILE_DIR = CMakeFiles/sentence-reader.dir/src
@@ -99,7 +99,7 @@ build CMakeFiles/sentence-reader.dir/src/main.cpp.o: CXX_COMPILER__sentence-read
 
 build sentence-reader: CXX_EXECUTABLE_LINKER__sentence-reader_Release CMakeFiles/sentence-reader.dir/src/Earley.cpp.o CMakeFiles/sentence-reader.dir/src/Grammar.cpp.o CMakeFiles/sentence-reader.dir/src/Lexicon.cpp.o CMakeFiles/sentence-reader.dir/src/Rule.cpp.o CMakeFiles/sentence-reader.dir/src/main.cpp.o
   CONFIG = Release
-  FLAGS = -O3 -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  FLAGS = -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
   LINK_FLAGS = -Wl,-search_paths_first -Wl,-headerpad_max_install_names
   OBJECT_DIR = CMakeFiles/sentence-reader.dir
   POST_BUILD = cd /Users/lukebartram/Documents/GitHub/sentence-reader/build && /opt/homebrew/bin/cmake -E copy_directory /Users/lukebartram/Documents/GitHub/sentence-reader/main/data /Users/lukebartram/Documents/GitHub/sentence-reader/build/data

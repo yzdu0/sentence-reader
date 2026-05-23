@@ -7,6 +7,19 @@
 #include <vector>
 
 namespace {
+bool is_vowel(char ch) {
+    switch (ch) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+        return true;
+    default:
+        return false;
+    }
+}
+
 bool ends_with(const std::string& word, const std::string& suffix) {
     return word.size() >= suffix.size()
         && word.compare(word.size() - suffix.size(), suffix.size(), suffix) == 0;
@@ -32,6 +45,40 @@ std::string build_regular_plural(const std::string& lemma) {
     return lemma + "s";
 }
 
+bool ends_with_cvc(const std::string& word) {
+    if (word.size() < 3 || word.size() > 4) {
+        return false;
+    }
+
+    if (ends_with_any(word, { "en", "er", "el" })) {
+        return false;
+    }
+
+    const char first = word[word.size() - 3];
+    const char second = word[word.size() - 2];
+    const char third = word[word.size() - 1];
+
+    return !is_vowel(first)
+        && is_vowel(second)
+        && !is_vowel(third)
+        && third != 'w'
+        && third != 'x'
+        && third != 'y';
+}
+
+std::string build_regular_past(const std::string& lemma) {
+    if (lemma.size() > 1 && lemma.back() == 'y' && !is_vowel(lemma[lemma.size() - 2])) {
+        return lemma.substr(0, lemma.size() - 1) + "ied";
+    }
+    if (ends_with(lemma, "e")) {
+        return lemma + "d";
+    }
+    if (ends_with_cvc(lemma)) {
+        return lemma + lemma.back() + "ed";
+    }
+    return lemma + "ed";
+}
+
 std::string build_third_person_singular(const std::string& lemma) {
     if (ends_with_any(lemma, { "s", "sh", "ch", "x", "z", "o" })) {
         return lemma + "es";
@@ -50,7 +97,43 @@ std::string build_gerund(const std::string& lemma) {
     if (lemma.size() > 1 && lemma.back() == 'e' && !ends_with(lemma, "ee")) {
         return lemma.substr(0, lemma.size() - 1) + "ing";
     }
+    if (ends_with_cvc(lemma)) {
+        return lemma + lemma.back() + "ing";
+    }
     return lemma + "ing";
+}
+
+bool prefers_periphrastic_comparison(const std::string& lemma) {
+    return ends_with_any(lemma, {
+        "ful", "ous", "ive", "less", "ing", "ed", "able", "ible", "al",
+        "ic", "ish", "ent", "ant", "ary", "ory"
+    });
+}
+
+std::string build_regular_comparative(const std::string& lemma) {
+    if (lemma.size() > 1 && lemma.back() == 'y' && !is_vowel(lemma[lemma.size() - 2])) {
+        return lemma.substr(0, lemma.size() - 1) + "ier";
+    }
+    if (ends_with(lemma, "e")) {
+        return lemma + "r";
+    }
+    if (ends_with_cvc(lemma)) {
+        return lemma + lemma.back() + "er";
+    }
+    return lemma + "er";
+}
+
+std::string build_regular_superlative(const std::string& lemma) {
+    if (lemma.size() > 1 && lemma.back() == 'y' && !is_vowel(lemma[lemma.size() - 2])) {
+        return lemma.substr(0, lemma.size() - 1) + "iest";
+    }
+    if (ends_with(lemma, "e")) {
+        return lemma + "st";
+    }
+    if (ends_with_cvc(lemma)) {
+        return lemma + lemma.back() + "est";
+    }
+    return lemma + "est";
 }
 
 std::ifstream open_vocab_file() {
@@ -128,6 +211,13 @@ Lexicon::Lexicon() {
 void Lexicon::add_to_dictionary(const std::string& word, const std::string& POS) {
     auto [it, inserted] = dictionary.emplace(word, std::vector<Word>{});
     (void)inserted;
+
+    for (const Word& entry : it->second) {
+        if (entry.word == word && entry.POS == POS) {
+            return;
+        }
+    }
+
     it->second.push_back(Word(word, POS));
 }
 
@@ -172,11 +262,7 @@ void Lexicon::create_verbs(const std::vector<std::string>& input) {
 
     std::string past_tense = find_overload(input, "past");
     if (past_tense == "-") {
-        past_tense = base_word;
-        if (past_tense.back() != 'e') {
-            past_tense.push_back('e');
-        }
-        past_tense.push_back('d');
+        past_tense = build_regular_past(base_word);
     }
     add_to_dictionary(past_tense, POS);
 
@@ -200,7 +286,26 @@ void Lexicon::create_verbs(const std::vector<std::string>& input) {
 }
 
 void Lexicon::create_adjectives(const std::vector<std::string>& input) {
-    add_to_dictionary(input[1], input[0]);
+    const std::string& base_word = input[1];
+    const std::string& POS = input[0];
+
+    add_to_dictionary(base_word, POS);
+
+    std::string comparative = find_overload(input, "comparative");
+    if (comparative != "-") {
+        add_to_dictionary(comparative, POS);
+    }
+    else if (!prefers_periphrastic_comparison(base_word)) {
+        add_to_dictionary(build_regular_comparative(base_word), POS);
+    }
+
+    std::string superlative = find_overload(input, "superlative");
+    if (superlative != "-") {
+        add_to_dictionary(superlative, POS);
+    }
+    else if (!prefers_periphrastic_comparison(base_word)) {
+        add_to_dictionary(build_regular_superlative(base_word), POS);
+    }
 }
 
 void Lexicon::create_misc(const std::vector<std::string>& input) {

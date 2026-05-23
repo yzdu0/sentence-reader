@@ -13,6 +13,7 @@ const publicDir = path.join(serverDir, "public");
 const host = process.env.HOST || "127.0.0.1";
 const port = Number(process.env.PORT || "4173");
 const explicitParserBinary = process.env.PARSER_BINARY || "";
+const logSentenceRequests = /^(1|true|yes|on)$/i.test(process.env.LOG_SENTENCE_REQUESTS || "");
 const maxRequestBytes = 32 * 1024;
 
 const mimeTypes = {
@@ -142,6 +143,46 @@ async function readJsonBody(request) {
   });
 }
 
+function getHeaderValue(value) {
+  if (typeof value === "string") {
+    return value;
+  }
+
+  if (Array.isArray(value) && value.length > 0) {
+    return value[0];
+  }
+
+  return "";
+}
+
+function getClientIp(request) {
+  const forwardedFor = getHeaderValue(request.headers["x-forwarded-for"]);
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  const realIp = getHeaderValue(request.headers["x-real-ip"]);
+  if (realIp) {
+    return realIp.trim();
+  }
+
+  return request.socket?.remoteAddress || "";
+}
+
+function logSentenceRequest(request, details) {
+  if (!logSentenceRequests || !details.sentence) {
+    return;
+  }
+
+  console.log(JSON.stringify({
+    event: "parse_request",
+    timestamp: new Date().toISOString(),
+    clientIp: getClientIp(request),
+    userAgent: getHeaderValue(request.headers["user-agent"]),
+    ...details
+  }));
+}
+
 async function runParser(sentence) {
   const parserBinary = resolveParserBinary();
   if (!parserBinary) {
@@ -223,9 +264,11 @@ const server = createServer(async (request, response) => {
   }
 
   if (request.method === "POST" && url.pathname === "/api/parse") {
+    let sentence = "";
+
     try {
       const payload = await readJsonBody(request);
-      const sentence = typeof payload.sentence === "string" ? payload.sentence.trim() : "";
+      sentence = typeof payload.sentence === "string" ? payload.sentence.trim() : "";
 
       if (!sentence) {
         sendJson(response, 400, {
@@ -236,6 +279,10 @@ const server = createServer(async (request, response) => {
       }
 
       if (sentence.length > 400) {
+        logSentenceRequest(request, {
+          sentence,
+          status: "rejected_too_long"
+        });
         sendJson(response, 400, {
           success: false,
           error: "Please keep sentences under 400 characters for the demo site."
@@ -244,8 +291,21 @@ const server = createServer(async (request, response) => {
       }
 
       const result = await runParser(sentence);
+      logSentenceRequest(request, {
+        sentence,
+        normalizedSentence: typeof result.normalizedInput === "string" ? result.normalizedInput : "",
+        interpretationCount: Number.isInteger(result.interpretationCount) ? result.interpretationCount : 0,
+        status: result.success ? "parsed" : "no_parse",
+        success: Boolean(result.success),
+        unknownWords: Array.isArray(result.unknownWords) ? result.unknownWords : []
+      });
       sendJson(response, 200, result);
     } catch (error) {
+      logSentenceRequest(request, {
+        sentence,
+        status: "server_error",
+        error: error.message || "Unexpected server error."
+      });
       sendJson(response, 500, {
         success: false,
         error: error.message || "Unexpected server error."

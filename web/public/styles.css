@@ -483,10 +483,11 @@ kbd {
 
 .tree-node {
   --node-hue: 210deg;
+  --tree-gap: 0.65rem;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.65rem;
+  gap: var(--tree-gap);
   min-width: max-content;
 }
 
@@ -525,15 +526,27 @@ kbd {
   content: "";
   position: absolute;
   top: 0.42rem;
-  left: 1.15rem;
-  right: 1.15rem;
+  left: var(--branch-start, 50%);
+  right: var(--branch-end, 50%);
   border-top: 1px solid var(--line-strong);
 }
 
+.tree-children::after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--tree-gap));
+  left: calc(50% - 0.5px);
+  width: 1px;
+  height: calc(0.42rem + var(--tree-gap));
+  background: var(--line-strong);
+}
+
 .tree-children.is-single::before {
-  left: 50%;
-  right: auto;
-  width: 0;
+  display: none;
+}
+
+.tree-children.is-single::after {
+  height: calc(0.92rem + var(--tree-gap));
 }
 
 .tree-edge {
@@ -545,7 +558,7 @@ kbd {
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
+  left: calc(50% - 0.5px);
   width: 1px;
   height: 0.92rem;
   background: var(--line-strong);

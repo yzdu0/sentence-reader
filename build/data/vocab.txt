@@ -1,36 +1,57 @@
 # Closed classes (just list surface forms)
-Pron: he she they i we you him her them me us it who whom what which someone somebody anyone anybody everyone everybody nobody nothing something anything
-Det: the a an this that these those my your his her their our each every all no some any another either neither enough many few several much most both such
-P: with in on at by from over for under between among before after during without across along around behind beside beyond inside into near off onto outside through toward upon within above below past amid
+Pron: he she they i we you him her them me us it who whom what which someone somebody anyone anybody everyone everybody nobody nothing something anything whoever whichever
+Det: the a an this that these those my your his her their our each every all no some any another either neither enough many few several much most both such certain various
+P: with in on at by from over for under between among before after during without across along around behind beside beyond inside into near off onto outside through toward upon within above below past amid against beneath beside despite except underneath throughout
 
-# Conjunctions
+# Conjunctions and clause markers
 AND: and
 OR: or
 BUT: but
 NOR: nor
 YET: yet
 SO: so
-THEREFORE: therefore thus hence
-SubordConj: because although while if when since unless though whereas whenever after before
+THEREFORE: therefore thus hence however moreover nevertheless meanwhile
+SubordConj: because although while if when since unless though whereas whenever after before once until
 
 Neg: not never
-Aux: am are is did do does have has had
-Cop: am are is was were be been
+Aux: am are is was were be been being do does did have has had having can could will would shall should may might must
+Cop: am are is was were be been being seem seems seemed become becomes became remain remains remained appear appears appeared feel feels felt look looks looked sound sounds sounded stay stays stayed
 TO: to
 FOR: for
+RelPron: who whom that which
 
-# Open classes: give lemma, then optional overrides after '|'.
+# Open classes and terminal categories
+# Names
+Name: alice amelia ava ben charlie clara daniel david ella emma ethan evelyn finn gabriel grace hannah harper henry isaac jack james julia leo levi lily logan lucas lucy maria mason mia nora noah oliver oscar peter quinn rachel ruby sam sarah sophie theo thomas victor violet william zoe
+
+# Numbers
+Num: one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand
+
+# Adverbs
+Adv: abruptly actually almost already always badly barely carefully certainly clearly closely constantly deeply eagerly easily equally especially exactly fairly finally gently gladly greatly happily hardly honestly just later loudly maybe nearly nearby neatly now often only probably quickly quietly rather really recently sadly simply slightly slowly softly sometimes soon suddenly together tomorrow tonight truly very well yesterday today here there nearby upstairs downstairs outside inside away forward backward
+
 # Verbs: lemma [| past=... pres3=... gerund=... part=...]
+V: accept
+V: admire
+V: agree
+V: analyze
+V: answer
+V: appear
+V: approach
 V: arrive
 V: ask
+V: bake
 V: believe
 V: become | past=became part=become
 V: begin | past=began gerund=beginning part=begun
+V: borrow
+V: break | past=broke part=broken
 V: bring | past=brought part=brought
 V: build | past=built part=built
 V: buy | past=bought part=bought
 V: call
-V: carry | past=carried pres3=carries gerund=carrying
+V: carry
+V: catch | past=caught part=caught
 V: change
 V: chase
 V: choose | past=chose part=chosen
@@ -38,12 +59,18 @@ V: clean
 V: climb
 V: close
 V: collect
+V: compare
+V: complete
+V: consider
 V: continue
 V: cook
 V: create
 V: dance
 V: decide
+V: deliver
+V: describe
 V: design
+V: develop
 V: discover
 V: discuss
 V: draw | past=drew part=drawn
@@ -51,21 +78,37 @@ V: drink | past=drank part=drunk
 V: drive | past=drove part=driven
 V: eat | past=ate part=eaten
 V: enjoy
+V: enter
+V: examine
 V: explain
+V: explore
 V: feel | past=felt part=felt
 V: find | past=found part=found
+V: finish
 V: follow
 V: forget | past=forgot part=forgotten
+V: gather
 V: give | past=gave part=given
+V: greet
+V: grow | past=grew part=grown
+V: handle
 V: happen
 V: hear | past=heard part=heard
 V: help
 V: hold | past=held part=held
 V: hope
+V: identify
 V: imagine
+V: improve
+V: include
+V: introduce
+V: invite
 V: join
 V: jump
+V: keep | past=kept part=kept
 V: know | past=knew part=known
+V: laugh
+V: lead | past=led part=led
 V: learn
 V: leave | past=left part=left
 V: like
@@ -74,14 +117,28 @@ V: live
 V: look
 V: love
 V: make | past=made gerund=making part=made
+V: manage
+V: mean | past=meant part=meant
 V: meet | past=met part=met
 V: move
 V: need
 V: notice
+V: observe
 V: open
+V: organize
+V: pass
+V: plan
 V: play
+V: prepare
+V: present
+V: protect
+V: publish
 V: read | past=read pres3=reads gerund=reading part=read
+V: reach
 V: receive
+V: record
+V: reduce
+V: reflect
 V: remember
 V: return
 V: run | past=ran pres3=runs gerund=running part=run
@@ -96,32 +153,53 @@ V: sit | past=sat pres3=sits gerund=sitting part=sat
 V: sleep | past=slept part=slept
 V: smile
 V: smoke
+V: solve
 V: speak | past=spoke part=spoken
-V: study | past=studied pres3=studies gerund=studying
+V: start
+V: stop
+V: study
+V: support
 V: take | past=took gerund=taking part=taken
+V: talk
 V: teach | past=taught part=taught
+V: test
 V: think | past=thought part=thought
+V: touch
+V: train
 V: travel
-V: try | past=tried pres3=tries gerund=trying
+V: try
+V: understand | past=understood part=understood
+V: use
+V: value
 V: visit
 V: wait
 V: walk
 V: watch
+V: win | past=won part=won
 V: work
 V: write | past=wrote part=written
 
 # Nouns: lemma [| plural=...]
+N: actor
 N: animal
 N: answer
 N: apartment
 N: apple
+N: area
+N: article
 N: artist
+N: assignment
+N: audience
+N: author
+N: autumn
 N: bag
+N: balloon
 N: banana
 N: beach
 N: bear
 N: bed
 N: bicycle
+N: bill
 N: bird
 N: boat
 N: book
@@ -130,57 +208,116 @@ N: box | plural=boxes
 N: boy
 N: bread
 N: bridge
+N: brother
 N: building
+N: bus | plural=buses
 N: cake
 N: camera
+N: captain
 N: car
+N: case
+N: castle
 N: cat
+N: century | plural=centuries
 N: chair
 N: child | plural=children
+N: church
+N: circle
 N: city | plural=cities
+N: classroom
+N: client
 N: cloud
-N: clock
+N: coast
 N: coat
 N: coffee
 N: college
 N: company | plural=companies
 N: computer
+N: conversation
+N: country | plural=countries
+N: course
+N: cousin
+N: customer
+N: daughter
 N: day
+N: decision
+N: desk
+N: detail
+N: diary | plural=diaries
 N: doctor
+N: document
 N: dog
 N: door
 N: dream
+N: driver
+N: earth
+N: editor
+N: effect
+N: engineer
 N: evening
+N: exam
+N: factory | plural=factories
 N: family | plural=families
 N: farmer
+N: field
+N: file
+N: fire
 N: fish | plural=fish
 N: flower
 N: food
 N: forest
+N: formula
 N: fox | plural=foxes
 N: friend
 N: game
 N: garden
 N: gift
 N: girl
+N: glass
+N: goal
+N: group
+N: guest
+N: guide
+N: habit
+N: hall
+N: harbor
+N: heart
 N: hill
+N: history | plural=histories
+N: holiday
 N: horse
+N: hospital
+N: hotel
 N: house
 N: human
 N: idea
+N: image
 N: island
 N: job
+N: journal
+N: judge
+N: key
+N: king
 N: kitchen
+N: knowledge
 N: lake
 N: language
+N: lesson
 N: letter
-N: library
+N: library | plural=libraries
+N: line
 N: machine
 N: man | plural=men
+N: manager
+N: map
 N: market
 N: meal
 N: message
+N: method
+N: minute
 N: mirror
+N: model
+N: money
 N: morning
 N: mountain
 N: mouse | plural=mice
@@ -188,44 +325,85 @@ N: movie
 N: museum
 N: music
 N: neighbor
+N: network
 N: night
+N: note
 N: ocean
 N: office
 N: painting
 N: paper
+N: parent
 N: park
 N: path
+N: patient
+N: pattern
 N: person | plural=people
 N: phone
 N: photograph
 N: picture
+N: place
+N: planet
+N: plan
 N: plane
 N: poem
+N: point
 N: problem
+N: process
+N: product
+N: professor
+N: program
 N: project
 N: question
 N: rabbit
 N: radio
 N: rain
+N: reason
+N: report
+N: research
+N: restaurant
+N: result
 N: river
 N: road
 N: room
 N: school
 N: scientist
+N: sea
+N: season
+N: sentence
+N: server
+N: ship
+N: sister
+N: skill
+N: sky
 N: song
+N: speaker
+N: square
+N: star
 N: station
-N: story
+N: story | plural=stories
 N: street
 N: student
+N: subject
+N: success
 N: sun
+N: system
 N: table
+N: task
 N: teacher
 N: team
 N: tea
+N: technology
 N: telescope
+N: temperature
+N: theater
+N: theory | plural=theories
 N: ticket
 N: time
+N: town
+N: train
 N: tree
+N: university | plural=universities
+N: valley
 N: village
 N: voice
 N: wall
@@ -233,7 +411,9 @@ N: water
 N: weekend
 N: window
 N: wind
+N: winter
 N: woman | plural=women
+N: word
 N: world
 N: writer
 N: year
@@ -253,38 +433,67 @@ Adj: careful
 Adj: cheerful
 Adj: clear
 Adj: clever
+Adj: close
 Adj: cold
+Adj: comfortable
+Adj: complex
 Adj: curious
 Adj: dark
+Adj: deep
+Adj: different
+Adj: difficult
 Adj: early
+Adj: easy
 Adj: empty
+Adj: excellent
+Adj: fair
+Adj: familiar
 Adj: famous
+Adj: far | comparative=farther superlative=farthest
 Adj: fast
+Adj: final
+Adj: fine
+Adj: formal
+Adj: free
 Adj: friendly
+Adj: full
+Adj: general
 Adj: gentle
 Adj: golden
 Adj: good | comparative=better superlative=best
 Adj: green
 Adj: happy | comparative=happier superlative=happiest
+Adj: heavy | comparative=heavier superlative=heaviest
 Adj: honest
+Adj: important
 Adj: kind
 Adj: large
 Adj: late
-Adj: little
+Adj: light
+Adj: little | comparative=less superlative=least
+Adj: local
+Adj: long
 Adj: loud
+Adj: lucky
 Adj: modern
 Adj: mortal
 Adj: narrow
+Adj: natural
 Adj: new
 Adj: old
 Adj: open
 Adj: patient
+Adj: perfect
 Adj: polite
 Adj: poor
+Adj: popular
+Adj: possible
 Adj: proud
+Adj: public
 Adj: quick
 Adj: quiet
 Adj: ready
+Adj: real
 Adj: red
 Adj: rich
 Adj: safe
@@ -294,9 +503,10 @@ Adj: short
 Adj: shy
 Adj: silent
 Adj: simple
-Adj: small
 Adj: slow
+Adj: small
 Adj: soft
+Adj: special
 Adj: strange
 Adj: strong
 Adj: sweet
@@ -304,6 +514,7 @@ Adj: tall
 Adj: tired
 Adj: useful
 Adj: warm
+Adj: wide
 Adj: wild
 Adj: wise
 Adj: wonderful

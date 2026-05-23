@@ -58,4 +58,36 @@ if(BUILD_TESTING)
     set_tests_properties(sentence_reader_json_output PROPERTIES
         PASS_REGULAR_EXPRESSION "\"success\":true"
     )
+
+    add_test(
+        NAME sentence_reader_handles_aux_adv_number_np
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "Alice could quickly write three careful letters."
+    )
+    set_tests_properties(sentence_reader_handles_aux_adv_number_np PROPERTIES
+        PASS_REGULAR_EXPRESSION "\"success\":true"
+    )
+
+    add_test(
+        NAME sentence_reader_handles_relative_clause
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "The scientist who discovered the planet smiled."
+    )
+    set_tests_properties(sentence_reader_handles_relative_clause PROPERTIES
+        PASS_REGULAR_EXPRESSION "\"success\":true"
+    )
+
+    add_test(
+        NAME sentence_reader_handles_fronted_pp_and_cop
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "In the morning the teacher remained calm."
+    )
+    set_tests_properties(sentence_reader_handles_fronted_pp_and_cop PROPERTIES
+        PASS_REGULAR_EXPRESSION "\"success\":true"
+    )
+
+    add_test(
+        NAME sentence_reader_handles_inflected_adjectives
+        COMMAND $<TARGET_FILE:sentence-reader> --json --sentence "The happier child is very quiet."
+    )
+    set_tests_properties(sentence_reader_handles_inflected_adjectives PROPERTIES
+        PASS_REGULAR_EXPRESSION "\"success\":true"
+    )
 endif()

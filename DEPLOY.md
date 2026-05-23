@@ -67,6 +67,27 @@ your-domain.example {
 
 The same config is included as `deploy/Caddyfile.example`. With Caddy, once your domain points at the server, HTTPS is handled automatically.
 
+## Railway request logs
+
+If you want to record every sentence submitted to `POST /api/parse`, set this environment variable on Railway:
+
+```bash
+LOG_SENTENCE_REQUESTS=true
+```
+
+When enabled, the app writes one JSON log line per sentence to standard output, which Railway captures in its deploy/runtime logs. Example fields include:
+
+- `sentence`
+- `normalizedSentence`
+- `status`
+- `success`
+- `interpretationCount`
+- `unknownWords`
+- `clientIp`
+- `userAgent`
+
+This is the best fit for Railway because container files are not durable across restarts or redeploys. If you need long-term retention or analytics, forward these logs into a database or external log sink.
+
 ## Easiest real-server setup
 
 If you want the shortest path on a VPS:
