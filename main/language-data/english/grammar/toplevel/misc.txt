@@ -1,0 +1,26 @@
+
+Conj -> CoordConj  
+Conj -> SubordConj
+Conj -> ConjAdv
+CoordConj -> AND
+CoordConj -> NOR
+CoordConj -> BUT
+CoordConj -> OR
+CoordConj -> YET
+CoordConj -> SO
+ConjAdv -> THEREFORE
+
+AuxP -> Aux 
+AuxP -> Aux Neg 
+
+CopP -> Cop 
+CopP -> Cop Neg 
+
+PP -> P NP 
+PP -> FOR NP Inf 
+
+RelClause -> RelPron VP 
+
+Inf -> TO VP 
+TO -> to
+FOR -> for

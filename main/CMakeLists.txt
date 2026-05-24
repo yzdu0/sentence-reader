@@ -19,8 +19,8 @@ target_include_directories(sentence-reader
 
 add_custom_command(TARGET sentence-reader POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/data
-        $<TARGET_FILE_DIR:sentence-reader>/data
+        ${CMAKE_SOURCE_DIR}/language-data
+        $<TARGET_FILE_DIR:sentence-reader>/language-data
 )
 
 option(BUILD_TESTING "Build parser tests" ON)

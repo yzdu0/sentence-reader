@@ -1,0 +1,14 @@
+NP -> Pron 
+NP -> Name 
+NP -> Det N 
+NP -> Det AdjP N 
+NP -> Det Num N 
+NP -> Det Num AdjP N
+NP -> AdjP N
+NP -> Num N 
+NP -> Num AdjP N 
+
+NP -> NP PP 
+NP -> NP RelClause 
+NP -> N 
+NP -> NP CoordConj NP

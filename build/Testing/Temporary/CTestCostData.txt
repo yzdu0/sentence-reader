@@ -1,9 +1,9 @@
-sentence_reader_ambiguous_pp_attachment 10 0.000262938
-sentence_reader_handles_punctuation 9 0.000253
-sentence_reader_handles_inflected_verbs 10 0.000225
-sentence_reader_json_output 7 0.000302095
-sentence_reader_handles_aux_adv_number_np 2 0.00146294
-sentence_reader_handles_relative_clause 1 0.00202792
-sentence_reader_handles_fronted_pp_and_cop 2 0.000961271
-sentence_reader_handles_inflected_adjectives 2 0.00106731
+sentence_reader_ambiguous_pp_attachment 13 0.0276753
+sentence_reader_handles_punctuation 12 0.000438538
+sentence_reader_handles_inflected_verbs 13 0.000405301
+sentence_reader_json_output 10 0.000274771
+sentence_reader_handles_aux_adv_number_np 5 0.00052365
+sentence_reader_handles_relative_clause 4 0.000658292
+sentence_reader_handles_fronted_pp_and_cop 5 0.000468117
+sentence_reader_handles_inflected_adjectives 5 0.000406192
 ---

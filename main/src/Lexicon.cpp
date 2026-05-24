@@ -138,10 +138,11 @@ std::string build_regular_superlative(const std::string& lemma) {
 
 std::ifstream open_vocab_file() {
     const std::vector<std::string> candidates = {
-        "data/vocab.txt",
-        "main/data/vocab.txt",
-        "../data/vocab.txt",
-        "../main/data/vocab.txt"
+        "language-data/english/vocab.txt",
+        "main/language-data/english/vocab.txt",
+        "../language-data/english/vocab.txt",
+        "../main/language-data/english/vocab.txt",
+        
     };
 
     for (const std::string& candidate : candidates) {

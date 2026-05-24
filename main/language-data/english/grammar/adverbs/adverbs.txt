@@ -1,0 +1,2 @@
+AdvP -> Adv
+AdvP -> Adv AdvP

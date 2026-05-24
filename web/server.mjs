@@ -1,6 +1,6 @@
 import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { createServer } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -44,21 +44,137 @@ function stripCppComments(source) {
     .replace(/\/\/.*$/gm, "");
 }
 
-async function loadGrammarRules() {
-  const grammarPath = path.join(rootDir, "main", "src", "Grammar.cpp");
-  const source = await readFile(grammarPath, "utf8");
-  const stripped = stripCppComments(source);
-  const match = stripped.match(/rules_string\s*=\s*\{([\s\S]*?)\};/);
+function resolveExistingPath(candidates, type = "file") {
+  for (const candidate of candidates) {
+    if (!existsSync(candidate)) {
+      continue;
+    }
 
-  if (!match) {
-    throw new Error("Could not extract grammar rules from Grammar.cpp.");
+    if (type === "directory") {
+      return candidate;
+    }
+
+    return candidate;
   }
 
-  return [...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1].trim());
+  return "";
+}
+
+function resolveLanguageDataDirectory() {
+  return resolveExistingPath([
+    path.join(rootDir, "main", "language-data"),
+    path.join(rootDir, "language-data"),
+    path.join(rootDir, "build", "language-data")
+  ], "directory");
+}
+
+function resolveGrammarSourceFile() {
+  return resolveExistingPath([
+    path.join(rootDir, "main", "src", "Grammar.cpp")
+  ]);
+}
+
+function resolveVocabularyFile() {
+  return resolveExistingPath([
+    path.join(rootDir, "main", "language-data", "english", "vocab.txt"),
+    path.join(rootDir, "language-data", "english", "vocab.txt"),
+    path.join(rootDir, "build", "language-data", "english", "vocab.txt"),
+    path.join(rootDir, "main", "data", "vocab.txt"),
+    path.join(rootDir, "data", "vocab.txt"),
+    path.join(rootDir, "build", "data", "vocab.txt")
+  ]);
+}
+
+async function collectGrammarFiles(rootDirPath) {
+  const entries = await readdir(rootDirPath, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const entryPath = path.join(rootDirPath, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...await collectGrammarFiles(entryPath));
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith(".txt") && entry.name !== "MakeGrammar.txt") {
+      files.push(entryPath);
+    }
+  }
+
+  files.sort();
+  return files;
+}
+
+async function loadGrammarFiles() {
+  const languageDataDir = resolveLanguageDataDirectory();
+  if (languageDataDir) {
+    const entries = await readdir(languageDataDir, { withFileTypes: true });
+    const grammarFiles = [];
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) {
+        continue;
+      }
+
+      const grammarDir = path.join(languageDataDir, entry.name, "grammar");
+      if (!existsSync(grammarDir)) {
+        continue;
+      }
+
+      const files = await collectGrammarFiles(grammarDir);
+      for (const file of files) {
+        const source = await readFile(file, "utf8");
+        const rules = [];
+        for (const rawLine of source.split(/\r?\n/)) {
+          const line = rawLine.replace(/#.*/, "").trim();
+          if (line) {
+            rules.push(line);
+          }
+        }
+
+        grammarFiles.push({
+          relativePath: [entry.name, path.relative(grammarDir, file).split(path.sep).join("/")].join("/"),
+          rules
+        });
+      }
+    }
+
+    grammarFiles.sort((left, right) => left.relativePath.localeCompare(right.relativePath));
+
+    if (grammarFiles.length > 0) {
+      return {
+        root: "",
+        files: grammarFiles
+      };
+    }
+  }
+
+  const grammarSourcePath = resolveGrammarSourceFile();
+  if (grammarSourcePath) {
+    const source = await readFile(grammarSourcePath, "utf8");
+    const stripped = stripCppComments(source);
+    const match = stripped.match(/rules_string\s*=\s*\{([\s\S]*?)\};/);
+
+    if (match) {
+      return {
+        root: "",
+        files: [{
+          relativePath: "english/Grammar.cpp",
+          rules: [...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1].trim())
+        }]
+      };
+    }
+  }
+
+  throw new Error("Could not locate grammar rule files.");
 }
 
 async function loadVocabularyGroups() {
-  const vocabPath = path.join(rootDir, "main", "data", "vocab.txt");
+  const vocabPath = resolveVocabularyFile();
+  if (!vocabPath) {
+    throw new Error("Could not locate vocab.txt");
+  }
+
   const source = await readFile(vocabPath, "utf8");
   const groups = new Map();
 
@@ -122,7 +238,11 @@ function parseVocabularyEntry(value) {
 }
 
 async function loadVocabularyCatalog() {
-  const vocabPath = path.join(rootDir, "main", "data", "vocab.txt");
+  const vocabPath = resolveVocabularyFile();
+  if (!vocabPath) {
+    throw new Error("Could not locate vocab.txt");
+  }
+
   const source = await readFile(vocabPath, "utf8");
   const surface = Object.create(null);
   const catalog = {
@@ -794,13 +914,15 @@ const server = createServer(async (request, response) => {
 
   if (request.method === "GET" && url.pathname === "/api/reference") {
     try {
-      const [grammarRules, vocabularyGroups] = await Promise.all([
-        loadGrammarRules(),
+      const [grammarReference, vocabularyGroups] = await Promise.all([
+        loadGrammarFiles(),
         loadVocabularyGroups()
       ]);
 
       sendJson(response, 200, {
-        grammarRules,
+        grammarRoot: grammarReference.root,
+        grammarFiles: grammarReference.files,
+        grammarRules: grammarReference.files.flatMap((file) => file.rules),
         vocabularyGroups
       });
     } catch (error) {

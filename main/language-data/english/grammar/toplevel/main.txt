@@ -1,0 +1,16 @@
+S0 -> S
+
+# Basic declarative sentence 
+S -> NP VP 
+
+# Compound sentence
+S -> S Conj S 
+
+# Sentence-initial adverbs
+S -> AdvP S 
+
+# Fronted prepositional phrase
+S -> PP S
+
+# Imperatives and verbless commands
+S -> VP

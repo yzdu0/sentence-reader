@@ -2,6 +2,8 @@
 #include <algorithm>
 
 namespace {
+constexpr const char* kStartSymbol = "S0";
+
 bool valid(const StatePointer& p) {
     return p.word_index < 1000 && p.item_index < 1000;
 }
@@ -135,7 +137,15 @@ ParseResult Earley::parse(const std::vector<std::string>& sentence) const {
     }
 
     std::vector<Column> chart(sentence.size() + 1);
-    chart[0].add(State{ 0, 0, 0 });
+    for (std::size_t i = 0; i < grammar.rules.size(); ++i) {
+        if (grammar.rules[i].left == kStartSymbol) {
+            chart[0].add(State{ i, 0, 0 });
+        }
+    }
+
+    if (chart[0].size() == 0) {
+        return result;
+    }
 
     for (std::size_t k = 0; k <= sentence.size(); ++k) {
         for (std::size_t x = 0; x < chart[k].size(); ++x) {
@@ -159,7 +169,9 @@ ParseResult Earley::parse(const std::vector<std::string>& sentence) const {
     bool found_complete_parse = false;
     for (std::size_t i = 0; i < chart.back().size(); ++i) {
         const State& state = chart.back().items[i];
-        if (state.rule_id == 0 && state.origin == 0 && is_finished(state)) {
+        if (grammar.rules[state.rule_id].left == kStartSymbol
+            && state.origin == 0
+            && is_finished(state)) {
             completed_sentence = StatePointer{ chart.size() - 1, i };
             found_complete_parse = true;
             break;

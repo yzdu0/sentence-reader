@@ -1,0 +1,17 @@
+VP -> V
+VP -> V NP 
+VP -> VP PP
+VP -> VP AdvP 
+VP -> AdvP VP 
+VP -> VP CoordConj VP 
+
+VP -> V Inf 
+VP -> AuxP VP 
+VP -> AuxP AdjP 
+VP -> AuxP NP 
+
+VP -> CopP AdjP 
+VP -> CopP NP 
+VP -> CopP PP
+VP -> CopP AdvP 
+

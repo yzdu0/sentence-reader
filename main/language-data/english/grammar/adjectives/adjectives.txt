@@ -1,0 +1,3 @@
+AdjP -> Adj 
+AdjP -> Adj AdjP 
+AdjP -> AdvP AdjP

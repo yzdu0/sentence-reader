@@ -1,93 +1,87 @@
 #include <sentence-reader/Grammar.h>
+#include <algorithm>
+#include <filesystem>
+#include <fstream>
+#include <stdexcept>
+#include <string>
 #include <vector>
 
-Grammar::Grammar() {
-    std::vector<std::string> rules_string = {
-        "S0 -> S",
-        "S -> NP VP", // Basic declarative sentence: subject + predicate
-        "S -> S Conj S",
-        "S -> AdvP S", // Sentence-initial adverbs: "suddenly the dog barked"
-        "S -> PP S", // Fronted prepositional phrase: "in the morning the teacher smiled"
-        "S -> VP", // Imperatives and verbless commands: "run"
+namespace {
+std::string trim(std::string value) {
+    const auto first = value.find_first_not_of(" \t\r\n");
+    if (first == std::string::npos) {
+        return "";
+    }
 
-        "Conj -> CoordConj",
-        "Conj -> SubordConj",
-        "Conj -> ConjAdv",
+    const auto last = value.find_last_not_of(" \t\r\n");
+    return value.substr(first, last - first + 1);
+}
 
-        "CoordConj -> AND",
-        "CoordConj -> NOR",
-        "CoordConj -> BUT",
-        "CoordConj -> OR",
-        "CoordConj -> YET",
-        "CoordConj -> SO",
+std::vector<std::filesystem::path> collect_grammar_files(const std::filesystem::path& root) {
+    std::vector<std::filesystem::path> files;
 
-        "ConjAdv -> THEREFORE",
+    for (const std::filesystem::directory_entry& entry : std::filesystem::recursive_directory_iterator(root)) {
+        if (!entry.is_regular_file()) {
+            continue;
+        }
 
-        /*"Conj -> AND",
-        "Conj -> OR",
-        "Conj -> BUT",
-        "Conj -> NOR",
-        "Conj -> YET",
-        "Conj -> AND",
-        "Conj -> SO",
-        "Conj -> THEREFORE",*/
+        const std::filesystem::path& path = entry.path();
+        if (path.extension() != ".txt" || path.filename() == "MakeGrammar.txt") {
+            continue;
+        }
 
-        "VP -> V", // Intransitive verb
-        "VP -> V NP", // Transitive verb
-        "VP -> VP PP", // VP post-modification by a prepositional phrase: "eat pizza in the park"
-        "VP -> VP AdvP", // VP post-modification by an adverb: "walk quickly"
-        "VP -> AdvP VP", // VP pre-modification by an adverb: "quietly walked home"
-        "VP -> VP CoordConj VP", // Coordinated verb phrases: "ran and jumped"
+        files.push_back(path);
+    }
 
-        "VP -> V Inf",
-        "VP -> AuxP VP", // Auxiliary + verbal predicate: "can see the dog"
-        "VP -> AuxP AdjP", // Auxillary phrase, aux + optional negation
-        "VP -> AuxP NP",
-        "VP -> CopP AdjP", // Copular phrase, copular + optional negation
-        "VP -> CopP NP",
-        "VP -> CopP PP", // Copular + PP: "is in the garden"
-        "VP -> CopP AdvP", // Copular + adverb: "is here"
+    std::sort(files.begin(), files.end());
+    return files;
+}
 
-        "NP -> Pron",
-        "NP -> Name",
-        "NP -> Det N",
-        "NP -> Det AdjP N",
-        "NP -> Det Num N",
-        "NP -> Det Num AdjP N",
-        "NP -> AdjP N",
-        "NP -> Num N",
-        "NP -> Num AdjP N",
-
-        "NP -> NP PP",
-        "NP -> NP RelClause",
-        "NP -> N",
-        "NP -> NP CoordConj NP", // coordinated noun phrases: "cats and dogs"
-
-
-        "AdjP -> Adj",
-        "AdjP -> Adj AdjP", // Multiple adjectives behave the same as one
-        "AdjP -> AdvP AdjP", // Adverb-modified adjectives: "very calm"
-
-        "AdvP -> Adv",
-        "AdvP -> Adv AdvP",
-
-        "AuxP -> Aux",
-        "AuxP -> Aux Neg", // Auxiliary with negation
-
-        "CopP -> Cop",
-        "CopP -> Cop Neg", // Copular verb with negation
-
-        "PP -> P NP",
-        "PP -> FOR NP Inf",
-
-        "RelClause -> RelPron VP",
-
-        "Inf -> TO VP",
-
-        "TO -> to",
-
-        "FOR -> for",
+std::vector<std::string> load_grammar_rules() {
+    const std::vector<std::filesystem::path> candidates = {
+        "language-data/english/grammar",
+        "main/language-data/english/grammar",
+        "../language-data/english/grammar",
+        "../main/language-data/english/grammar",
     };
+
+    for (const std::filesystem::path& candidate : candidates) {
+        if (!std::filesystem::exists(candidate) || !std::filesystem::is_directory(candidate)) {
+            continue;
+        }
+
+        std::vector<std::string> rules;
+        for (const std::filesystem::path& path : collect_grammar_files(candidate)) {
+            std::ifstream file(path);
+            if (!file.is_open()) {
+                throw std::runtime_error("Could not read grammar file: " + path.string());
+            }
+
+            std::string line;
+            while (std::getline(file, line)) {
+                const std::size_t comment = line.find('#');
+                if (comment != std::string::npos) {
+                    line.erase(comment);
+                }
+
+                line = trim(line);
+                if (!line.empty()) {
+                    rules.push_back(line);
+                }
+            }
+        }
+
+        if (!rules.empty()) {
+            return rules;
+        }
+    }
+
+    throw std::runtime_error("Could not locate grammar directory under language-data/english/grammar");
+}
+}
+
+Grammar::Grammar() {
+    const std::vector<std::string> rules_string = load_grammar_rules();
 
     std::vector<std::string> negation_rules_string = {
         "NP VP <-> NP Neg(VP)",

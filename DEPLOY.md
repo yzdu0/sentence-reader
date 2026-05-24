@@ -104,4 +104,4 @@ That route avoids having to install Node, CMake, or a compiler directly on the h
 
 - The parser binary is auto-discovered in `build/`.
 - You can override the binary path with `PARSER_BINARY=/absolute/path/to/sentence-reader`.
-- The reference page reads from `main/src/Grammar.cpp` and `main/data/vocab.txt`, so those files are included in the Docker image too.
+- The reference page reads from `main/language-data/english/grammar` and `main/language-data/english/vocab.txt`, so those files are included in the Docker image too.
