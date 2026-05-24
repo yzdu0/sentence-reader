@@ -40,8 +40,21 @@ a {
 code,
 pre,
 kbd {
+
   font-family: "SFMono-Regular", monospace;
 }
+pre2 {
+    background: #f4f4f4;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+code2 {
+  font-family: Consolas, Monaco, monospace;
+    font-size: 0.95rem;
+}
+
+
 
 .page-accent {
   height: 0.35rem;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How Sentence Reader Works</title>
+    <title>How SentenceLab Works</title>
     <meta
       name="description"
       content="An overview of how the C++ parser and the website work together."
@@ -46,18 +46,69 @@
             looks up the words in a lexicon, applies a grammar, and builds one or more parse trees.
             If a sentence is ambiguous, the parser keeps multiple valid interpretations instead of forcing one answer (which is the cool part!)
           </p>
+          <p>
+            Project repository:
+            <a class="inline-link" href="https://github.com/yzdu0/sentence-reader">github.com/yzdu0/sentence-reader</a>
+          </p>
         </div>
       </section>
 
       <section class="panel panel--results prose-panel">
         <div class="panel__header">
           <div>
-            <h2>C++ parser flow</h2>
+            <h2>Algorithm used</h2>
           </div>
         </div>
 
         <div class="prose-block">
-          <p>To be completed.</p>
+          <p>
+            Mathematically, the program uses a Context-Free Grammar to parse a sentence. 
+            In the <a class="inline-link" href="/reference.html">Reference</a> section of this website, there is a list of grammar rules 
+            such as S -> NP VP. S denotes entire sentence, NP denotes "Noun Phrase" - a chunk of our sentence that functions as a noun
+            (person place or thing) and VP denotes "Verb Phrase" - a chunk of our sentence that functions as a verb (an action)
+            <br><br>
+            For the sentence "The cat saw the man", the first phrase "The cat" is our noun phrase and "saw the man" is the verb phrase. 
+            Syntactically, combining a noun phrase and a verb phrase makes a sentence that sounds right - hence the rule S -> NP VP is present 
+            in our program. 
+            <br><br>
+            The most natural way for our program to find this breakdown is by recursively applying every single possible rule.
+            We begin with the assumption that this is a functional sentence, that is, "The cat saw the man" can be explained by rule "S -> NP VP"
+            <br><br>
+            Now imagine a divider between two words that dictates where the NP ends and the VP ends. There are a few options, but the program
+            will try all possibilities: <br>" | The cat saw the man", "The | cat saw the man", "The cat | saw the man"...
+            <br><br>
+            We have six trial explanations in total now. (four if we disregard the cases where one phrase is empty.) 
+            <br><br>
+            Now, let's consider the third sentence "The cat | saw the man" as we know this is the correct one. 
+            The program recursively does the same process to both parts of the sentence; it tries to explain "The cat" as a Noun Phrase, and explain "saw the man" as a Verb Phrase.
+            (The program also does this to the other five trial explanations, as it doesn't yet know which is correct, of course).
+            <br><br>
+            For the Noun Phrase, we have a few rules:<br>
+            NP -> Pron <br>
+            NP -> Det N <br>
+            NP -> Det AdjP N <br>
+            "Det" refers to determiner; the word "the" in this phrase. <br>
+            The program will then loop through all rules with NP on the left hand side. For every single rule, it will recursively try every single segmentation.
+            It will find that the second one (NP -> Det N) works with the segmentation "The | cat". 
+            As we are trying to explain "The" as a Det and "cat" as a N (Noun), we have reached the two base cases; as we are now only trying to explain single words.
+            
+          </p>
+        </div>
+      </section>
+
+      <section class="panel panel--results prose-panel">
+        <div class="panel__header">
+          <div>
+            <h2>C++ implementation</h2>
+          </div>
+        </div>
+
+        <div class="prose-block">
+          <p>
+            The time complexity of the above is pretty ridiculous but dynamic programming (caching results) allows this to be done in polynomial time. 
+            Additionally, I ended up switching to a bottom-up method rather than recursion, as it already has nice research done on it, and was easier to extend this to find ALL interpretations.
+            <a class="inline-link" href="https://en.wikipedia.org/wiki/Earley_parser">Bottom Up method</a>
+          </p>
           <p>
             Project repository:
             <a class="inline-link" href="https://github.com/yzdu0/sentence-reader">github.com/yzdu0/sentence-reader</a>
